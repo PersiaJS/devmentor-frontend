@@ -17,6 +17,8 @@ export default function Home() {
         <Link href="/auth/reset">Reset</Link>
         <Link href="/auth/forget">Forget</Link>
         <Link href="/auth/verify">Verify</Link>
+
+        <h1>تست سایت و فونت</h1>
       </div>
     </>
   );
