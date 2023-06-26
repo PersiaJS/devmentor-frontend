@@ -33,9 +33,11 @@ const Reset = () => {
           <Input my={2} placeholder="کلمه عبور" />
           <Input my={2} placeholder="تکرار کلمه عبور" />
           <br />
-          <Button my={2} colorScheme="blue" w="100%">
-            <Link href="/auth/login">به روز رسانی</Link>
-          </Button>
+          <Link href="/auth/login">
+            <Button my={2} colorScheme="blue" w="100%">
+              به روز رسانی
+            </Button>
+          </Link>
           <Text
             textAlign="right"
             w="100%"

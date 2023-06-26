@@ -31,9 +31,11 @@ const Verify = () => {
         </Heading>
         <FormControl w={{ base: "auto", md: "md" }}>
           <Input my={2} placeholder="کد امنیتی" />
-          <Button my={2} colorScheme="blue" w="100%">
-            <Link href="/">بازیابی</Link>
-          </Button>
+          <Link href="/">
+            <Button my={2} colorScheme="blue" w="100%">
+              بازیابی
+            </Button>
+          </Link>
           <Text
             textAlign="right"
             w="100%"

@@ -37,9 +37,11 @@ const Register = () => {
           <Input my={2} placeholder="کلمه عبور" />
           <Checkbox my={2}>ظوابط و قوانین را می پذیرم</Checkbox>
           <br />
-          <Button my={2} colorScheme="blue" w="100%">
-            <Link href="/auth/login">ثبت نام</Link>
-          </Button>
+          <Link href="/auth/login">
+            <Button my={2} colorScheme="blue" w="100%">
+              ثبت نام
+            </Button>
+          </Link>
           <Text
             textAlign="right"
             w="100%"

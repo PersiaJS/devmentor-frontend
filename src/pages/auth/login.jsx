@@ -34,9 +34,11 @@ const Login = () => {
           <Input my={2} placeholder="کلمه عبور" />
           <Checkbox my={2}>من رو به خاطر بسپار</Checkbox>
           <br />
-          <Button my={2} colorScheme="blue" w="100%">
-            <Link href="/">ورود</Link>
-          </Button>
+          <Link href="/auth/register">
+            <Button my={2} colorScheme="blue" w="100%">
+              ثبت نام
+            </Button>
+          </Link>
           <Text
             textAlign="right"
             w="100%"
