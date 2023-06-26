@@ -32,12 +32,23 @@ const Register = () => {
         <Checkbox my={2}>ظوابط و قوانین را می پذیرم</Checkbox>
         <br />
         <Button my={2} colorScheme="blue" w="100%">
-          <Link href="/auth/login">Login</Link>
+          <Link href="/auth/login">ثبت نام</Link>
         </Button>
-        <Text textAlign="right" w="100%" as="span" mx="2">
+        <Text
+          textAlign="right"
+          w="100%"
+          as="span"
+          mx="2"
+          fontSize={{ base: "sm", md: "md" }}
+        >
           حساب کاربری دارید؟
+          <Link
+            href="/auth/login"
+            style={{ margin: "0 4px", color: "#2B6CB0" }}
+          >
+            ورود
+          </Link>
         </Text>
-        <Link href="/auth/login">ورود</Link>
       </FormControl>
     </Container>
   );
