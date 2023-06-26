@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -9,9 +10,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1>DEV MENTOR</h1>
-      </main>
+      <main>HOME PAGE</main>
+      <div>
+        <Link href="/auth/register">Register</Link>
+        <Link href="/auth/login">Login</Link>
+        <Link href="/auth/reset">Reset</Link>
+        <Link href="/auth/forget">Forget</Link>
+        <Link href="/auth/verify">Verify</Link>
+      </div>
     </>
   );
 }
