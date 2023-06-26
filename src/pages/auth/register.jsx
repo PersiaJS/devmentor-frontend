@@ -27,15 +27,17 @@ const Register = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading as="h2" size="xl" my={8}>
-          Dev Mentor
-        </Heading>
+        <Link href="/">
+          <Heading as="h2" size="xl" my={8}>
+            Dev Mentor
+          </Heading>
+        </Link>
         <FormControl w={{ base: "auto", md: "md" }}>
           <Input my={2} placeholder="نام" />
           <Input my={2} placeholder="نام خانوادگی" />
           <Input my={2} placeholder="ایمیل" />
           <Input my={2} placeholder="کلمه عبور" />
-          <Checkbox my={2}>ظوابط و قوانین را می پذیرم</Checkbox>
+          <Checkbox my={2}>ضوابط و قوانین را می پذیرم</Checkbox>
           <br />
           <Link href="/auth/login">
             <Button my={2} colorScheme="blue" w="100%">

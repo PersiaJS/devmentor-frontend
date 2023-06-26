@@ -26,9 +26,11 @@ const Verify = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading as="h2" size="xl" my={8}>
-          Dev Mentor
-        </Heading>
+        <Link href="/">
+          <Heading as="h2" size="xl" my={8}>
+            Dev Mentor
+          </Heading>
+        </Link>
         <FormControl w={{ base: "auto", md: "md" }}>
           <Input my={2} placeholder="کد امنیتی" />
           <Link href="/">
