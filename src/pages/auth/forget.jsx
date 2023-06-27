@@ -12,17 +12,20 @@ import {
   Heading,
   Box,
 } from "@chakra-ui/react";
+import { forgetSchema } from "@/utils/yup/authValidations";
 
 const Forget = () => {
-  
   const formik = useFormik({
     initialValues: {
       email: "",
     },
+    validationSchema: forgetSchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
     <>
@@ -41,17 +44,19 @@ const Forget = () => {
         <Heading as="h2" size="xl" my={8}>
           Dev Mentor
         </Heading>
-
         <Box w={{ base: "auto", md: "md" }}>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <FormControl>
               <Input
                 my={2}
                 placeholder="ایمیل"
                 name="email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
+                value={values.email}
+                onChange={handleChange}
               />
+              {errors.email && touched.email && (
+                <Text color="red">{errors.email}</Text>
+              )}
             </FormControl>
             <Button my={2} colorScheme="blue" w="100%" type="submit">
               بازیابی

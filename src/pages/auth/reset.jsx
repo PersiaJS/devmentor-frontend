@@ -13,16 +13,21 @@ import {
   Box,
 } from "@chakra-ui/react";
 
+import { resetSchema } from "@/utils/yup/authValidations";
+
 const Reset = () => {
   const formik = useFormik({
     initialValues: {
       password: "",
       confirmPassword: "",
     },
+    validationSchema: resetSchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
     <>
@@ -42,24 +47,30 @@ const Reset = () => {
           Dev Mentor
         </Heading>
         <Box w={{ base: "auto", md: "md" }}>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <FormControl>
               <Input
                 my={2}
                 placeholder="کلمه عبور"
                 name="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
+                value={values.password}
+                onChange={handleChange}
               />
+              {errors.password && touched.password && (
+                <Text color="red">{errors.password}</Text>
+              )}
             </FormControl>
             <FormControl>
               <Input
                 my={2}
                 placeholder="تایید کلمه عبور"
                 name="confirmPassword"
-                value={formik.values.confirmPassword}
-                onChange={formik.handleChange}
+                value={values.confirmPassword}
+                onChange={handleChange}
               />
+              {errors.confirmPassword && touched.confirmPassword && (
+                <Text color="red">{errors.confirmPassword}</Text>
+              )}
             </FormControl>
             <Button my={2} colorScheme="blue" w="100%" type="submit">
               به روز رسانی

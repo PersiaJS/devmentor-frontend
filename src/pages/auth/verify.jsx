@@ -12,16 +12,21 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useFormik } from "formik";
+import { verifySchema } from "@/utils/yup/authValidations";
 
 const Verify = () => {
   const formik = useFormik({
     initialValues: {
       code: "",
     },
+    validationSchema : verifySchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  const { errors, touched, values, handleChange, handleSubmit } = formik;
+
 
   return (
     <>
@@ -41,15 +46,18 @@ const Verify = () => {
           Dev Mentor
         </Heading>
         <Box w={{ base: "auto", md: "md" }}>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <FormControl>
               <Input
                 my={2}
                 placeholder="کد امنیتی"
                 name="code"
-                value={formik.values.code}
-                onChange={formik.handleChange}
+                value={values.code}
+                onChange={handleChange}
               />
+              {errors.code && touched.code && (
+                <Text color="red">{errors.code}</Text>
+              )}
             </FormControl>
             <Button my={2} colorScheme="blue" w="100%" type="submit">
               بازیابی

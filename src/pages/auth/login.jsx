@@ -14,6 +14,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 
+import { loginSchema } from "@/utils/yup/authValidations";
+
 const Login = () => {
   const formik = useFormik({
     initialValues: {
@@ -21,10 +23,13 @@ const Login = () => {
       password: "",
       rememberMe: false,
     },
+    validationSchema: loginSchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
     <>
@@ -44,30 +49,36 @@ const Login = () => {
           Dev Mentor
         </Heading>
         <Box w={{ base: "auto", md: "md" }}>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <FormControl>
               <Input
                 my={2}
                 placeholder="ایمیل"
                 name="email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
+                value={values.email}
+                onChange={handleChange}
               />
+              {errors.email && touched.email && (
+                <Text color="red">{errors.email}</Text>
+              )}
             </FormControl>
             <FormControl>
               <Input
                 my={2}
                 placeholder="کلمه عبور"
                 name="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
+                value={values.password}
+                onChange={handleChange}
               />
+              {errors.password && touched.password && (
+                <Text color="red">{errors.password}</Text>
+              )}
             </FormControl>
             <Checkbox
               my={2}
               name="rememberMe"
-              value={formik.values.rememberMe}
-              onChange={formik.handleChange}
+              value={values.rememberMe}
+              onChange={handleChange}
             >
               من را بخاطر بسپار
             </Checkbox>

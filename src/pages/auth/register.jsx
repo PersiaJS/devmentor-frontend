@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Head from "next/head";
 
+import { registerSchema } from "@/utils/yup/authValidations";
 import { useFormik } from "formik";
 import {
   Container,
@@ -12,7 +14,6 @@ import {
   Checkbox,
   Box,
 } from "@chakra-ui/react";
-import Head from "next/head";
 
 const Register = () => {
   const formik = useFormik({
@@ -23,10 +24,13 @@ const Register = () => {
       password: "",
       terms: false,
     },
-    onSubmit: (values) => {
+    validationSchema: registerSchema,
+    onSubmit: async (values) => {
       console.log(values);
     },
   });
+
+  const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
     <>
@@ -46,51 +50,66 @@ const Register = () => {
           Dev Mentor
         </Heading>
         <Box w={{ base: "auto", md: "md" }}>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <FormControl>
               <Input
                 my={2}
                 placeholder="نام"
                 name="firstName"
-                value={formik.values.firstName}
-                onChange={formik.handleChange}
+                value={values.firstName}
+                onChange={handleChange}
               />
+              {errors.firstName && touched.firstName && (
+                <Text color="red">{errors.firstName}</Text>
+              )}
             </FormControl>
             <FormControl>
               <Input
                 my={2}
                 placeholder="نام خانوادگی"
                 name="lastName"
-                value={formik.values.lastName}
-                onChange={formik.handleChange}
+                value={values.lastName}
+                onChange={handleChange}
               />
+              {errors.lastName && touched.lastName && (
+                <Text color="red">{errors.lastName}</Text>
+              )}
             </FormControl>
             <FormControl>
               <Input
                 my={2}
                 placeholder="ایمیل"
                 name="email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
+                value={values.email}
+                onChange={handleChange}
               />
+              {errors.email && touched.email && (
+                <Text color="red">{errors.email}</Text>
+              )}
             </FormControl>
             <FormControl>
               <Input
                 my={2}
                 placeholder="کلمه عبور"
                 name="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
+                value={values.password}
+                onChange={handleChange}
               />
+              {errors.password && touched.password && (
+                <Text color="red">{errors.password}</Text>
+              )}
             </FormControl>
             <Checkbox
               my={2}
               name="terms"
-              value={formik.values.terms}
-              onChange={formik.handleChange}
+              value={values.terms}
+              onChange={handleChange}
             >
               ظوابط و قوانین را می پذیرم
             </Checkbox>
+            {errors.terms && touched.terms && (
+              <Text color="red">{errors.terms}</Text>
+            )}
             <br />
             <Button my={2} colorScheme="blue" w="100%" type="submit">
               ثبت نام
