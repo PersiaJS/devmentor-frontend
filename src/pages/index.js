@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -20,7 +21,9 @@ export default function Home() {
         <Link href="/auth/verify">Verify</Link>
         <h1>تست سایت و فونت</h1>
         #Card component test
-        <Card />
+        <Flex flex flexDir="row" flexWrap="wrap" justifyContent="space-evenly">
+          <Card />
+        </Flex>
       </div>
     </>
   );
