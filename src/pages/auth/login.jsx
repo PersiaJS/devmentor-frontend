@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Head from "next/head";
 
+import { useFormik } from "formik";
 import {
   Container,
   FormControl,
@@ -9,9 +11,21 @@ import {
   Button,
   Heading,
   Checkbox,
+  Box,
 } from "@chakra-ui/react";
-import Head from "next/head";
+
 const Login = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <>
       <Head>
@@ -29,16 +43,39 @@ const Login = () => {
         <Heading as="h2" size="xl" my={8}>
           Dev Mentor
         </Heading>
-        <FormControl w={{ base: "auto", md: "md" }}>
-          <Input my={2} placeholder="ایمیل" />
-          <Input my={2} placeholder="کلمه عبور" />
-          <Checkbox my={2}>من رو به خاطر بسپار</Checkbox>
-          <br />
-          <Link href="/auth/register">
-            <Button my={2} colorScheme="blue" w="100%">
-              ثبت نام
+        <Box w={{ base: "auto", md: "md" }}>
+          <form onSubmit={formik.handleSubmit}>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="ایمیل"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="کلمه عبور"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <Checkbox
+              my={2}
+              name="rememberMe"
+              value={formik.values.rememberMe}
+              onChange={formik.handleChange}
+            >
+              من را بخاطر بسپار
+            </Checkbox>
+            <br />
+            <Button my={2} colorScheme="blue" w="100%" type="submit">
+              ورود
             </Button>
-          </Link>
+          </form>
           <Text
             textAlign="right"
             w="100%"
@@ -62,7 +99,7 @@ const Login = () => {
           >
             <Link href="/auth/forget">کلمه عبور خود را فراموش کرده اید؟</Link>
           </Text>
-        </FormControl>
+        </Box>
       </Container>
     </>
   );

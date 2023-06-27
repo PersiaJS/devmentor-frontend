@@ -8,10 +8,21 @@ import {
   Input,
   Button,
   Heading,
+  Box,
 } from "@chakra-ui/react";
 import Head from "next/head";
+import { useFormik } from "formik";
 
 const Verify = () => {
+  const formik = useFormik({
+    initialValues: {
+      code: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <>
       <Head>
@@ -29,13 +40,21 @@ const Verify = () => {
         <Heading as="h2" size="xl" my={8}>
           Dev Mentor
         </Heading>
-        <FormControl w={{ base: "auto", md: "md" }}>
-          <Input my={2} placeholder="کد امنیتی" />
-          <Link href="/">
-            <Button my={2} colorScheme="blue" w="100%">
+        <Box w={{ base: "auto", md: "md" }}>
+          <form onSubmit={formik.handleSubmit}>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="کد امنیتی"
+                name="code"
+                value={formik.values.code}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <Button my={2} colorScheme="blue" w="100%" type="submit">
               بازیابی
             </Button>
-          </Link>
+          </form>
           <Text
             textAlign="right"
             w="100%"
@@ -65,7 +84,7 @@ const Verify = () => {
               ثبت نام
             </Link>
           </Text>
-        </FormControl>
+        </Box>
       </Container>
     </>
   );

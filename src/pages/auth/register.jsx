@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 
+import { useFormik } from "formik";
 import {
   Container,
   FormControl,
@@ -9,10 +10,24 @@ import {
   Button,
   Heading,
   Checkbox,
+  Box,
 } from "@chakra-ui/react";
 import Head from "next/head";
 
 const Register = () => {
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      terms: false,
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <>
       <Head>
@@ -30,18 +45,57 @@ const Register = () => {
         <Heading as="h2" size="xl" my={8}>
           Dev Mentor
         </Heading>
-        <FormControl w={{ base: "auto", md: "md" }}>
-          <Input my={2} placeholder="نام" />
-          <Input my={2} placeholder="نام خانوادگی" />
-          <Input my={2} placeholder="ایمیل" />
-          <Input my={2} placeholder="کلمه عبور" />
-          <Checkbox my={2}>ظوابط و قوانین را می پذیرم</Checkbox>
-          <br />
-          <Link href="/auth/login">
-            <Button my={2} colorScheme="blue" w="100%">
+        <Box w={{ base: "auto", md: "md" }}>
+          <form onSubmit={formik.handleSubmit}>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="نام"
+                name="firstName"
+                value={formik.values.firstName}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="نام خانوادگی"
+                name="lastName"
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="ایمیل"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="کلمه عبور"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+              />
+            </FormControl>
+            <Checkbox
+              my={2}
+              name="terms"
+              value={formik.values.terms}
+              onChange={formik.handleChange}
+            >
+              ظوابط و قوانین را می پذیرم
+            </Checkbox>
+            <br />
+            <Button my={2} colorScheme="blue" w="100%" type="submit">
               ثبت نام
             </Button>
-          </Link>
+          </form>
           <Text
             textAlign="right"
             w="100%"
@@ -57,7 +111,7 @@ const Register = () => {
               ورود
             </Link>
           </Text>
-        </FormControl>
+        </Box>
       </Container>
     </>
   );
