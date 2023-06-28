@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Head from "next/head";
 
+import { useFormik } from "formik";
 import {
   Container,
   FormControl,
@@ -9,9 +11,40 @@ import {
   Button,
   Heading,
   Checkbox,
+  Box,
+  useToast,
 } from "@chakra-ui/react";
-import Head from "next/head";
+
+import { loginSchema } from "@/utils/yup/authValidations";
+
 const Login = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
+    validationSchema: loginSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const { errors, values, handleChange, handleSubmit } = formik;
+
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.email && toast({ title: errors.email, ...options });
+    errors.password && toast({ title: errors.password, ...options });
+  };
+
   return (
     <>
       <Head>
@@ -26,21 +59,48 @@ const Login = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Link href="/">
-          <Heading as="h2" size="xl" my={8}>
-            Dev Mentor
-          </Heading>
-        </Link>
-        <FormControl w={{ base: "auto", md: "md" }}>
-          <Input my={2} placeholder="ایمیل" />
-          <Input my={2} placeholder="کلمه عبور" />
-          <Checkbox my={2}>من رو به خاطر بسپار</Checkbox>
-          <br />
-          <Link href="/auth/register">
-            <Button my={2} colorScheme="blue" w="100%">
-              ثبت نام
+        <Heading as="h2" size="xl" my={8}>
+          Dev Mentor
+        </Heading>
+        <Box w={{ base: "auto", md: "md" }}>
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="ایمیل"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="کلمه عبور"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <Checkbox
+              my={2}
+              name="rememberMe"
+              value={values.rememberMe}
+              onChange={handleChange}
+            >
+              من را بخاطر بسپار
+            </Checkbox>
+            <br />
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
+              ورود
             </Button>
-          </Link>
+          </form>
           <Text
             textAlign="right"
             w="100%"
@@ -64,7 +124,7 @@ const Login = () => {
           >
             <Link href="/auth/forget">کلمه عبور خود را فراموش کرده اید؟</Link>
           </Text>
-        </FormControl>
+        </Box>
       </Container>
     </>
   );

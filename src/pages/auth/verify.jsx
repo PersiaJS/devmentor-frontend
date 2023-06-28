@@ -8,10 +8,38 @@ import {
   Input,
   Button,
   Heading,
+  Box,
+  useToast,
 } from "@chakra-ui/react";
 import Head from "next/head";
+import { useFormik } from "formik";
+import { verifySchema } from "@/utils/yup/authValidations";
 
 const Verify = () => {
+  const formik = useFormik({
+    initialValues: {
+      code: "",
+    },
+    validationSchema: verifySchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const { errors, values, handleChange, handleSubmit } = formik;
+
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.code && toast({ title: errors.code, ...options });
+  };
+
   return (
     <>
       <Head>
@@ -26,18 +54,30 @@ const Verify = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Link href="/">
-          <Heading as="h2" size="xl" my={8}>
-            Dev Mentor
-          </Heading>
-        </Link>
-        <FormControl w={{ base: "auto", md: "md" }}>
-          <Input my={2} placeholder="کد امنیتی" />
-          <Link href="/">
-            <Button my={2} colorScheme="blue" w="100%">
+        <Heading as="h2" size="xl" my={8}>
+          Dev Mentor
+        </Heading>
+        <Box w={{ base: "auto", md: "md" }}>
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="کد امنیتی"
+                name="code"
+                value={values.code}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               بازیابی
             </Button>
-          </Link>
+          </form>
           <Text
             textAlign="right"
             w="100%"
@@ -67,7 +107,7 @@ const Verify = () => {
               ثبت نام
             </Link>
           </Text>
-        </FormControl>
+        </Box>
       </Container>
     </>
   );

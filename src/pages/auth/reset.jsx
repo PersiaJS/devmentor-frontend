@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Head from "next/head";
 
+import { useFormik } from "formik";
 import {
   Container,
   FormControl,
@@ -8,10 +10,40 @@ import {
   Input,
   Button,
   Heading,
+  Box,
+  useToast,
 } from "@chakra-ui/react";
-import Head from "next/head";
+
+import { resetSchema } from "@/utils/yup/authValidations";
 
 const Reset = () => {
+  const formik = useFormik({
+    initialValues: {
+      password: "",
+      confirmPassword: "",
+    },
+    validationSchema: resetSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const { errors, values, handleChange, handleSubmit } = formik;
+
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.password && toast({ title: errors.password, ...options });
+    errors.confirmPassword &&
+      toast({ title: errors.confirmPassword, ...options });
+  };
+
   return (
     <>
       <Head>
@@ -26,20 +58,39 @@ const Reset = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Link href="/">
-          <Heading as="h2" size="xl" my={8}>
-            Dev Mentor
-          </Heading>
-        </Link>
-        <FormControl w={{ base: "auto", md: "md" }}>
-          <Input my={2} placeholder="کلمه عبور" />
-          <Input my={2} placeholder="تکرار کلمه عبور" />
-          <br />
-          <Link href="/auth/login">
-            <Button my={2} colorScheme="blue" w="100%">
+        <Heading as="h2" size="xl" my={8}>
+          Dev Mentor
+        </Heading>
+        <Box w={{ base: "auto", md: "md" }}>
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="کلمه عبور"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                my={2}
+                placeholder="تایید کلمه عبور"
+                name="confirmPassword"
+                value={values.confirmPassword}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               به روز رسانی
             </Button>
-          </Link>
+          </form>
           <Text
             textAlign="right"
             w="100%"
@@ -68,7 +119,7 @@ const Reset = () => {
               ثبت نام
             </Link>
           </Text>
-        </FormControl>
+        </Box>
       </Container>
     </>
   );
