@@ -11,6 +11,7 @@ import {
   Button,
   Heading,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 
 import { resetSchema } from "@/utils/yup/authValidations";
@@ -27,7 +28,21 @@ const Reset = () => {
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, values, handleChange, handleSubmit } = formik;
+
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.password && toast({ title: errors.password, ...options });
+    errors.confirmPassword &&
+      toast({ title: errors.confirmPassword, ...options });
+  };
 
   return (
     <>
@@ -56,9 +71,6 @@ const Reset = () => {
                 value={values.password}
                 onChange={handleChange}
               />
-              {errors.password && touched.password && (
-                <Text color="red">{errors.password}</Text>
-              )}
             </FormControl>
             <FormControl>
               <Input
@@ -68,11 +80,14 @@ const Reset = () => {
                 value={values.confirmPassword}
                 onChange={handleChange}
               />
-              {errors.confirmPassword && touched.confirmPassword && (
-                <Text color="red">{errors.confirmPassword}</Text>
-              )}
             </FormControl>
-            <Button my={2} colorScheme="blue" w="100%" type="submit">
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               به روز رسانی
             </Button>
           </form>

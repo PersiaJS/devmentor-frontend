@@ -12,6 +12,7 @@ import {
   Heading,
   Checkbox,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 
 import { loginSchema } from "@/utils/yup/authValidations";
@@ -29,7 +30,20 @@ const Login = () => {
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, values, handleChange, handleSubmit } = formik;
+
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.email && toast({ title: errors.email, ...options });
+    errors.password && toast({ title: errors.password, ...options });
+  };
 
   return (
     <>
@@ -58,9 +72,6 @@ const Login = () => {
                 value={values.email}
                 onChange={handleChange}
               />
-              {errors.email && touched.email && (
-                <Text color="red">{errors.email}</Text>
-              )}
             </FormControl>
             <FormControl>
               <Input
@@ -70,9 +81,6 @@ const Login = () => {
                 value={values.password}
                 onChange={handleChange}
               />
-              {errors.password && touched.password && (
-                <Text color="red">{errors.password}</Text>
-              )}
             </FormControl>
             <Checkbox
               my={2}
@@ -83,7 +91,13 @@ const Login = () => {
               من را بخاطر بسپار
             </Checkbox>
             <br />
-            <Button my={2} colorScheme="blue" w="100%" type="submit">
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               ورود
             </Button>
           </form>

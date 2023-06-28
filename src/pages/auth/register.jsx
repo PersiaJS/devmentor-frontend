@@ -13,6 +13,7 @@ import {
   Heading,
   Checkbox,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 
 const Register = () => {
@@ -30,7 +31,22 @@ const Register = () => {
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, values, handleChange, handleSubmit } = formik;
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.firstName && toast({ title: errors.firstName, ...options });
+    errors.lastName && toast({ title: errors.lastName, ...options });
+    errors.email && toast({ title: errors.email, ...options });
+    errors.password && toast({ title: errors.password, ...options });
+    errors.terms && toast({ title: errors.terms, ...options });
+  };
 
   return (
     <>
@@ -59,9 +75,6 @@ const Register = () => {
                 value={values.firstName}
                 onChange={handleChange}
               />
-              {errors.firstName && touched.firstName && (
-                <Text color="red">{errors.firstName}</Text>
-              )}
             </FormControl>
             <FormControl>
               <Input
@@ -71,9 +84,6 @@ const Register = () => {
                 value={values.lastName}
                 onChange={handleChange}
               />
-              {errors.lastName && touched.lastName && (
-                <Text color="red">{errors.lastName}</Text>
-              )}
             </FormControl>
             <FormControl>
               <Input
@@ -83,9 +93,6 @@ const Register = () => {
                 value={values.email}
                 onChange={handleChange}
               />
-              {errors.email && touched.email && (
-                <Text color="red">{errors.email}</Text>
-              )}
             </FormControl>
             <FormControl>
               <Input
@@ -95,9 +102,6 @@ const Register = () => {
                 value={values.password}
                 onChange={handleChange}
               />
-              {errors.password && touched.password && (
-                <Text color="red">{errors.password}</Text>
-              )}
             </FormControl>
             <Checkbox
               my={2}
@@ -107,11 +111,14 @@ const Register = () => {
             >
               ظوابط و قوانین را می پذیرم
             </Checkbox>
-            {errors.terms && touched.terms && (
-              <Text color="red">{errors.terms}</Text>
-            )}
             <br />
-            <Button my={2} colorScheme="blue" w="100%" type="submit">
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               ثبت نام
             </Button>
           </form>

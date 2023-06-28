@@ -11,6 +11,7 @@ import {
   Button,
   Heading,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 import { forgetSchema } from "@/utils/yup/authValidations";
 
@@ -25,7 +26,19 @@ const Forget = () => {
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, values, handleChange, handleSubmit } = formik;
+
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.email && toast({ title: errors.email, ...options });
+  };
 
   return (
     <>
@@ -54,11 +67,14 @@ const Forget = () => {
                 value={values.email}
                 onChange={handleChange}
               />
-              {errors.email && touched.email && (
-                <Text color="red">{errors.email}</Text>
-              )}
             </FormControl>
-            <Button my={2} colorScheme="blue" w="100%" type="submit">
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               بازیابی
             </Button>
           </form>

@@ -9,6 +9,7 @@ import {
   Button,
   Heading,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useFormik } from "formik";
@@ -19,14 +20,25 @@ const Verify = () => {
     initialValues: {
       code: "",
     },
-    validationSchema : verifySchema,
+    validationSchema: verifySchema,
     onSubmit: (values) => {
       console.log(values);
     },
   });
 
-  const { errors, touched, values, handleChange, handleSubmit } = formik;
+  const { errors, values, handleChange, handleSubmit } = formik;
 
+  const toast = useToast();
+
+  const handleToasts = () => {
+    const options = {
+      duration: 4000,
+      position: "top-right",
+      variant: "left-accent",
+    };
+
+    errors.code && toast({ title: errors.code, ...options });
+  };
 
   return (
     <>
@@ -55,11 +67,14 @@ const Verify = () => {
                 value={values.code}
                 onChange={handleChange}
               />
-              {errors.code && touched.code && (
-                <Text color="red">{errors.code}</Text>
-              )}
             </FormControl>
-            <Button my={2} colorScheme="blue" w="100%" type="submit">
+            <Button
+              my={2}
+              colorScheme="blue"
+              w="100%"
+              type="submit"
+              onClick={handleToasts}
+            >
               بازیابی
             </Button>
           </form>
