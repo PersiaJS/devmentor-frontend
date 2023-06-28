@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import { Card } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -14,9 +15,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Layout>
-        <main>
+        <div>
           <Link href="/auth/register">Register</Link>
           <Link href="/auth/login">Login</Link>
           <Link href="/auth/reset">Reset</Link>
