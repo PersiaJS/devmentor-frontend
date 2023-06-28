@@ -2,6 +2,9 @@ import Layout from "@/components/Layout/Layout";
 import Head from "next/head";
 import Link from "next/link";
 
+import MentorCard from "@/components/MentorCard";
+import { Flex, Grid } from "@chakra-ui/react";
+
 export default function Home() {
   return (
     <>
@@ -19,6 +22,11 @@ export default function Home() {
           <Link href="/auth/reset">Reset</Link>
           <Link href="/auth/forget">Forget</Link>
           <Link href="/auth/verify">Verify</Link>
+          <Flex gap="2">
+          <MentorCard />
+          <MentorCard />
+          <MentorCard />
+          </Flex>
         </main>
       </Layout>
     </>
