@@ -8,6 +8,7 @@ function Logo() {
         fontFamily={"heading"}
         color={useColorModeValue("gray.800", "white")}
         fontWeight={800}
+        lineHeight={2}
       >
         DEV MENTOR
       </Text>
