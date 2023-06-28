@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import { Card } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 
