@@ -1,4 +1,6 @@
 import Layout from "@/components/Layout/Layout";
+import MiniCard from "@/components/MiniCard/MiniCard";
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -13,13 +15,21 @@ export default function Home() {
       </Head>
 
       <Layout>
-        <main>
+        {/* <main>
           <Link href="/auth/register">Register</Link>
           <Link href="/auth/login">Login</Link>
           <Link href="/auth/reset">Reset</Link>
           <Link href="/auth/forget">Forget</Link>
           <Link href="/auth/verify">Verify</Link>
-        </main>
+        </main> */}
+        <Box
+          display={"flex"}
+          flexDir={"row"}
+          flexWrap={"wrap"}
+          justifyContent={"space-evenly"}
+        >
+          <MiniCard />
+        </Box>
       </Layout>
     </>
   );
