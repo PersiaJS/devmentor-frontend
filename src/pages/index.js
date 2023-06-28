@@ -23,11 +23,11 @@ export default function Home() {
           <Link href="/auth/forget">Forget</Link>
           <Link href="/auth/verify">Verify</Link>
           <Flex gap="2">
-          <MentorCard />
-          <MentorCard />
-          <MentorCard />
+            <MentorCard />
+            <MentorCard />
+            <MentorCard />
           </Flex>
-        </main>
+        </div>
       </Layout>
     </>
   );
