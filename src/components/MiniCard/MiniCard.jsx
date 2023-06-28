@@ -11,7 +11,7 @@ function MiniCard() {
       alignItems={"flex-start"}
       padding={2.5}
       rounded={20}
-      boxShadow={"0 0 10px gray"}
+      boxShadow={"0 0 10px rgba(0,0,0,.4 )"}
       width={{ base: "80", sm: "sm", md: "xl", lg: "2xl" }}
     >
       <Image
