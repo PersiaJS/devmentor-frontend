@@ -1,5 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import React from "react";
+import { BiSupport, BiBadgeCheck, BiPhone, BiChat } from "react-icons/bi";
 
 function MiniCard() {
   const textColor = "#253f62";
@@ -27,7 +28,7 @@ function MiniCard() {
         display={"flex"}
         flexDir={"column"}
         h={"100%"}
-        w={"50%"}
+        w={"63%"}
         justifyContent={"space-evenly"}
       >
         <Box>
@@ -40,22 +41,58 @@ function MiniCard() {
         </Box>
         {/* {Text components below are temporarily redundant. Will implement it dynamically} */}
         <Box display={"flex"} flexDir={"row"} flexWrap={"wrap"} mr={3}>
-          <Text fontSize={16} fontWeight={"semibold"} color={textColor} mx={2}>
-            {"چت شخصی"}
-          </Text>
-          <Text fontSize={16} fontWeight={"semibold"} color={textColor} mx={2}>
-            {"راهنمایی عملی"}
-          </Text>
-          <Text fontSize={16} fontWeight={"semibold"} color={textColor} mx={2}>
-            {"تماس مستقیم"}
-          </Text>
-          <Text fontSize={16} fontWeight={"semibold"} color={textColor} mx={2}>
-            {"پشتیبانی"}
-          </Text>
+          <Box
+            color={textColor}
+            mx={2}
+            my={0.5}
+            display="flex"
+            alignItems="center"
+          >
+            <BiPhone size={17} />
+            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+              {"تماس مستقیم"}
+            </Text>
+          </Box>
+          <Box
+            color={textColor}
+            mx={2}
+            my={0.5}
+            display="flex"
+            alignItems="center"
+          >
+            <BiChat size={17} />
+            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+              {"چت شخصی"}
+            </Text>
+          </Box>
+          <Box
+            color={textColor}
+            mx={2}
+            my={0.5}
+            display="flex"
+            alignItems="center"
+          >
+            <BiBadgeCheck size={17} />
+            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+              {"راهنمایی عملی"}
+            </Text>
+          </Box>
+          <Box
+            color={textColor}
+            mx={2}
+            my={0.5}
+            display="flex"
+            alignItems="center"
+          >
+            <BiSupport size={17} />
+            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+              {"پشتیبانی"}
+            </Text>
+          </Box>
         </Box>
       </Box>
       <Box fontSize={18} mr={"auto"} alignSelf={"flex-start"}>
-        <Text fontWeight={"semibold"}>3 عدد باقی مانده</Text>
+        <Text fontWeight={"semibold"}>3 عدد</Text>
       </Box>
     </Box>
   );
