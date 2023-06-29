@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout/Layout";
-import Hero from "@/components/Hero/Hero";
+import MiniCard from "@/components/MiniCard/MiniCard";
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import MentorCard from "@/components/MentorCard";
@@ -15,38 +16,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Box>
-          <Flex h="80vh" alignItems="center" justifyContent="center">
-            <Hero
-              title="مربی خودتو پیدا کن"
-              description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
-              textOfMentorLogo="منتورهاتو پیدا کن"
-            />
-          </Flex>
-          <Grid
-            templateColumns="repeat(auto-fit, minmax(250px, 1fr))"
-            mb="20"
-            gap={3}
-          >
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-          </Grid>
+        {/* <main>
+          <Link href="/auth/register">Register</Link>
+          <Link href="/auth/login">Login</Link>
+          <Link href="/auth/reset">Reset</Link>
+          <Link href="/auth/forget">Forget</Link>
+          <Link href="/auth/verify">Verify</Link>
+        </main> */}
+        <Box
+          display={"flex"}
+          flexDir={"row"}
+          flexWrap={"wrap"}
+          justifyContent={"space-evenly"}
+        >
+          <MiniCard />
         </Box>
       </Layout>
     </>
