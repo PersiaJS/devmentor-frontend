@@ -4,7 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 
 import MentorCard from "@/components/MentorCard";
-import { Flex, Grid } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import ResultSearchMentor from "@/components/ResultSearchMentor";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
             <MentorCard />
             <MentorCard />
           </Flex>
+          <ResultSearchMentor />
         </div>
       </Layout>
     </>
