@@ -5,7 +5,8 @@ import Head from "next/head";
 import Link from "next/link";
 
 import MentorCard from "@/components/MentorCard";
-import { Flex, Grid } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import ResultSearchMentor from "@/components/ResultSearchMentor";
 
 export default function Home() {
   return (
@@ -34,25 +35,8 @@ export default function Home() {
             <MentorCard />
             <MentorCard />
           </Flex>
-        </main>
-
-        <Box
-          display={"flex"}
-          flexDir={"row"}
-          flexWrap={"wrap"}
-          justifyContent={"space-evenly"}
-        >
-          {children}
-          <Box margin={5}>
-            <MiniCard />
-          </Box>
-          <Box margin={5}>
-            <MiniCard />
-          </Box>
-          <Box margin={5}>
-            <MiniCard />
-          </Box>
-        </Box>
+          <ResultSearchMentor />
+        </div>
       </Layout>
     </>
   );
