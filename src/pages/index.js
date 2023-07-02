@@ -1,9 +1,11 @@
 import Layout from "@/components/Layout/Layout";
 import Hero from "@/components/Hero/Hero";
+import { Card } from "@chakra-ui/react";
 import Head from "next/head";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import Link from "next/link";
+
 import MentorCard from "@/components/MentorCard";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Grid } from "@chakra-ui/react";
 
 export default function Home() {
   return (
@@ -15,39 +17,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Box>
-          <Flex h="80vh" alignItems="center" justifyContent="center">
-            <Hero
-              title="مربی خودتو پیدا کن"
-              description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
-              textOfMentorLogo="منتورهاتو پیدا کن"
-            />
+        <div>
+          <Link href="/auth/register">Register</Link>
+          <Link href="/auth/login">Login</Link>
+          <Link href="/auth/reset">Reset</Link>
+          <Link href="/auth/forget">Forget</Link>
+          <Link href="/auth/verify">Verify</Link>
+          <Hero
+            title="مربی خودتو پیدا کن"
+            description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
+            textOfMentorLogo="منتورهاتو پیدا کن"
+          />
+
+          <Flex gap="2">
+            <MentorCard />
+            <MentorCard />
+            <MentorCard />
           </Flex>
-          <Grid
-            templateColumns="repeat(auto-fit, minmax(250px, 1fr))"
-            mb="20"
-            gap={3}
-          >
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-          </Grid>
-        </Box>
+        </div>
       </Layout>
     </>
   );
