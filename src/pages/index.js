@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import Hero from "@/components/Hero/Hero";
 import { Card } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
@@ -22,6 +23,12 @@ export default function Home() {
           <Link href="/auth/reset">Reset</Link>
           <Link href="/auth/forget">Forget</Link>
           <Link href="/auth/verify">Verify</Link>
+          <Hero
+            title="مربی خودتو پیدا کن"  
+            description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
+            textOfMentorLogo="منتورهاتو پیدا کن"
+          />
+
           <Flex gap="2">
             <MentorCard />
             <MentorCard />
