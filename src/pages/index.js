@@ -23,7 +23,13 @@ export default function Home() {
           <Link href="/auth/verify">Verify</Link>
         </main>
 
-        <FlexContainer>
+        <Box
+          display={"flex"}
+          flexDir={"row"}
+          flexWrap={"wrap"}
+          justifyContent={"space-evenly"}
+        >
+          {children}
           <Box margin={5}>
             <MiniCard />
           </Box>
@@ -33,7 +39,7 @@ export default function Home() {
           <Box margin={5}>
             <MiniCard />
           </Box>
-        </FlexContainer>
+        </Box>
       </Layout>
     </>
   );

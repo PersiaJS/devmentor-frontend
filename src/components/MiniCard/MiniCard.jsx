@@ -40,7 +40,7 @@ function MiniCard() {
           </Text>
         </Box>
         {/* {Text components below are temporarily redundant. Will implement it dynamically} */}
-        <Box display={"flex"} flexDir={"row"} flexWrap={"wrap"} mr={3}>
+        <Box display={"flex"} flexDir={"row"} flexWrap={"wrap"} mr={3} mt={5}>
           <Box
             color={textColor}
             mx={2}
