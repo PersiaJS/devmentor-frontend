@@ -1,9 +1,12 @@
 import Layout from "@/components/Layout/Layout";
-import MiniCard from "@/components/MiniCard/MiniCard";
-import FlexContainer from "@/containers/FlexContainer/FlexContainer";
-import { Box } from "@chakra-ui/react";
+import Hero from "@/components/Hero/Hero";
+import { Card } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
+
+import MentorCard from "@/components/MentorCard";
+import { Flex } from "@chakra-ui/react";
+import ResultSearchMentor from "@/components/ResultSearchMentor";
 
 export default function Home() {
   return (
@@ -14,17 +17,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Layout>
-        <main>
+        <div>
           <Link href="/auth/register">Register</Link>
           <Link href="/auth/login">Login</Link>
           <Link href="/auth/reset">Reset</Link>
           <Link href="/auth/forget">Forget</Link>
           <Link href="/auth/verify">Verify</Link>
-        </main>
+          <Hero
+            title="مربی خودتو پیدا کن"  
+            description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
+            textOfMentorLogo="منتورهاتو پیدا کن"
+          />
 
-        <FlexContainer>
+          <FlexContainer>
           <Box margin={5}>
             <MiniCard />
           </Box>
@@ -35,6 +41,14 @@ export default function Home() {
             <MiniCard />
           </Box>
         </FlexContainer>
+    
+          <Flex gap="2">
+            <MentorCard />
+            <MentorCard />
+            <MentorCard />
+          </Flex>
+          <ResultSearchMentor />
+        </div>
       </Layout>
     </>
   );
