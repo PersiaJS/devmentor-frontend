@@ -30,6 +30,18 @@ export default function Home() {
             textOfMentorLogo="منتورهاتو پیدا کن"
           />
 
+          <FlexContainer>
+          <Box margin={5}>
+            <MiniCard />
+          </Box>
+          <Box margin={5}>
+            <MiniCard />
+          </Box>
+          <Box margin={5}>
+            <MiniCard />
+          </Box>
+        </FlexContainer>
+    
           <Flex gap="2">
             <MentorCard />
             <MentorCard />
