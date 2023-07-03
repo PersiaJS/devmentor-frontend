@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout/Layout";
 import Hero from "@/components/Hero/Hero";
-import { Card } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
-
+import MiniCard from "@/components/MiniCard/MiniCard";
+import { Box } from "@chakra-ui/react";
 import MentorCard from "@/components/MentorCard";
 import { Flex } from "@chakra-ui/react";
 import ResultSearchMentor from "@/components/ResultSearchMentor";
@@ -30,7 +30,12 @@ export default function Home() {
             textOfMentorLogo="منتورهاتو پیدا کن"
           />
 
-          <FlexContainer>
+        <Box
+           display={"flex"}
+          flexDir={"row"}
+          flexWrap={"wrap"}
+          justifyContent={"space-evenly"}
+        >
           <Box margin={5}>
             <MiniCard />
           </Box>
@@ -38,9 +43,11 @@ export default function Home() {
             <MiniCard />
           </Box>
           <Box margin={5}>
-            <MiniCard />
+            <Min
+        </Box>
+    
+          iCard />
           </Box>
-        </FlexContainer>
     
           <Flex gap="2">
             <MentorCard />
