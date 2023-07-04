@@ -18,8 +18,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <main>
-          <Link href="/auth/register">Register</Link>
+        <div>
+          {/* <Link href="/auth/register">Register</Link>
           <Link href="/auth/login">Login</Link>
           <Link href="/auth/reset">Reset</Link>
           <Link href="/auth/forget">Forget</Link>
@@ -28,14 +28,31 @@ export default function Home() {
             title="مربی خودتو پیدا کن"
             description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
             textOfMentorLogo="منتورهاتو پیدا کن"
-          />
+          /> */}
 
-          <Flex gap="2">
+          <Box
+            display={"flex"}
+            flexDir={"row"}
+            flexWrap={"wrap"}
+            justifyContent={"space-evenly"}
+          >
+            <Box margin={5}>
+              <MiniCard />
+            </Box>
+            <Box margin={5}>
+              <MiniCard />
+            </Box>
+            <Box margin={5}>
+              <MiniCard />
+            </Box>
+          </Box>
+
+          {/* <Flex gap="2">
             <MentorCard />
             <MentorCard />
             <MentorCard />
           </Flex>
-          <ResultSearchMentor />
+          <ResultSearchMentor /> */}
         </div>
       </Layout>
     </>
