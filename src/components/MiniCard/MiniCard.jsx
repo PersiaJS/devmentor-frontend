@@ -63,7 +63,7 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiPhone size={13} />
+            <BiPhone size={16.5} />
             <Text
               fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
               fontWeight={"semibold"}
@@ -79,7 +79,7 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiChat size={13} />
+            <BiChat size={16.5} />
             <Text
               fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
               fontWeight={"semibold"}
@@ -95,7 +95,7 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiBadgeCheck size={13} />
+            <BiBadgeCheck size={16.5} />
             <Text
               fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
               fontWeight={"semibold"}
@@ -111,7 +111,7 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiSupport size={13} />
+            <BiSupport size={16.5} />
             <Text
               fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
               fontWeight={"semibold"}
