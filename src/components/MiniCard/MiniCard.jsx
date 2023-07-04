@@ -48,8 +48,12 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiPhone size={17} />
-            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+            <BiPhone size={16.5} />
+            <Text
+              fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
+              fontWeight={"semibold"}
+              mx={1.5}
+            >
               {"تماس مستقیم"}
             </Text>
           </Box>
@@ -60,8 +64,12 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiChat size={17} />
-            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+            <BiChat size={16.5} />
+            <Text
+              fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
+              fontWeight={"semibold"}
+              mx={1.5}
+            >
               {"چت شخصی"}
             </Text>
           </Box>
@@ -72,8 +80,12 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiBadgeCheck size={17} />
-            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+            <BiBadgeCheck size={16.5} />
+            <Text
+              fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
+              fontWeight={"semibold"}
+              mx={1.5}
+            >
               {"راهنمایی عملی"}
             </Text>
           </Box>
@@ -84,8 +96,12 @@ function MiniCard() {
             display="flex"
             alignItems="center"
           >
-            <BiSupport size={17} />
-            <Text fontSize={16} fontWeight={"semibold"} mx={1.5}>
+            <BiSupport size={16.5} />
+            <Text
+              fontSize={{ base: 10, sm: 13, md: 15, lg: 17 }}
+              fontWeight={"semibold"}
+              mx={1.5}
+            >
               {"پشتیبانی"}
             </Text>
           </Box>
