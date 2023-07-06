@@ -1,7 +1,8 @@
+import Header from "@/containers/Header/Header";
 import Footer from "@/containers/Footer/Footer";
 
-const { Container, Box } = require("@chakra-ui/react");
-import Header from "@/containers/Header/Header";
+import { Container, Box } from "@chakra-ui/react";
+
 const Layout = function ({ children }) {
   return (
     <Container

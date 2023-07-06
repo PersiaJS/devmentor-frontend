@@ -1,11 +1,9 @@
 import Layout from "@/components/Layout/Layout";
 import Hero from "@/components/Hero/Hero";
 import Head from "next/head";
-import MiniCard from "@/components/MiniCard/MiniCard";
-import { Box } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import MentorCard from "@/components/MentorCard";
 import { Flex } from "@chakra-ui/react";
-import ResultSearchMentor from "@/components/ResultSearchMentor";
 
 export default function Home() {
   return (
@@ -17,42 +15,43 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div>
-          <Link href="/auth/register">Register</Link>
-          <Link href="/auth/login">Login</Link>
-          <Link href="/auth/reset">Reset</Link>
-          <Link href="/auth/forget">Forget</Link>
-          <Link href="/auth/verify">Verify</Link>
-          <Hero
-            title="مربی خودتو پیدا کن"
-            description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
-            textOfMentorLogo="منتورهاتو پیدا کن"
-          />
-          <Box
-            display={"flex"}
-            flexDir={"row"}
-            flexWrap={"wrap"}
-            justifyContent={"space-evenly"}
-          >
-            <Box margin={5}>
-              <MiniCard />
-            </Box>
-            <Box margin={5}>
-              <MiniCard />
-            </Box>
-            <Box margin={5}>
-              <MiniCard />
-            </Box>
-          </Box>
-
-          <Flex gap="2">
-            <MentorCard />
-            <MentorCard />
-            <MentorCard />
+        <Box>
+          <Flex h="80vh" alignItems="center" justifyContent="center">
+            <Hero
+              title="مربی خودتو پیدا کن"
+              description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
+              textOfMentorLogo="منتورهاتو پیدا کن"
+            />
           </Flex>
-          <ResultSearchMentor />
-          <ResultSearchMentor />
-        </div>
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)",
+            }}
+            mb="20"
+            gap={3}
+          >
+            <GridItem display="flex" justifyContent="center">
+              <MentorCard />
+            </GridItem>
+            <GridItem display="flex" justifyContent="center">
+              <MentorCard />
+            </GridItem>
+            <GridItem display="flex" justifyContent="center">
+              <MentorCard />
+            </GridItem>
+            <GridItem display="flex" justifyContent="center">
+              <MentorCard />
+            </GridItem>
+            <GridItem display="flex" justifyContent="center">
+              <MentorCard />
+            </GridItem>
+            <GridItem display="flex" justifyContent="center">
+              <MentorCard />
+            </GridItem>
+          </Grid>
+        </Box>
       </Layout>
     </>
   );
