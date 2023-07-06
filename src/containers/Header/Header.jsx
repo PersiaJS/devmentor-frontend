@@ -102,14 +102,14 @@ export default function WithSubnavigation() {
 const NAV_ITEMS = [
   {
     label: "منتورها",
-    href: "#",
+    href: "find-a-mentor",
   },
   {
     label: "درباره ما",
-    href: "#",
+    href: "about",
   },
   {
     label: "تماس با ما",
-    href: "#",
+    href: "contact",
   },
 ];
