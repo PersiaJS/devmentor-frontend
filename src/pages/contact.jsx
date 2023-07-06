@@ -19,16 +19,9 @@ import {
   Textarea,
   Select,
 } from "@chakra-ui/react";
-import {
-  MdPhone,
-  MdEmail,
-  MdLocationOn,
-  MdFacebook,
-  MdOutlineEmail,
-} from "react-icons/md";
+import { MdFacebook, MdOutlineEmail } from "react-icons/md";
 import * as Yup from "yup";
 import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
-import { color } from "framer-motion";
 import { ErrorMessage, Field, Formik } from "formik";
 
 const contactSchema = Yup.object().shape({
@@ -151,10 +144,9 @@ const Contact = () => {
                                 >
                                   <FormLabel>نام</FormLabel>
                                   <InputGroup borderColor="#E0E1E7">
-                                    <InputLeftElement
-                                      pointerEvents="none"
-                                      children={<BsPerson color="gray.800" />}
-                                    />
+                                    <InputLeftElement pointerEvents="none">
+                                      <BsPerson color="gray.800" />
+                                    </InputLeftElement>
                                     <Field
                                       as={Input}
                                       type="text"
@@ -179,10 +171,9 @@ const Contact = () => {
                                 >
                                   <FormLabel> نام خانوادگی</FormLabel>
                                   <InputGroup borderColor="#E0E1E7">
-                                    <InputLeftElement
-                                      pointerEvents="none"
-                                      children={<BsPerson color="gray.800" />}
-                                    />
+                                    <InputLeftElement pointerEvents="none">
+                                      <BsPerson color="gray.800" />
+                                    </InputLeftElement>
                                     <Field
                                       placeholder={"نام خانوادگی"}
                                       as={Input}
@@ -237,12 +228,10 @@ const Contact = () => {
                                 >
                                   <FormLabel>ایمیل</FormLabel>
                                   <InputGroup borderColor="#E0E1E7">
-                                    <InputLeftElement
-                                      pointerEvents="none"
-                                      children={
-                                        <MdOutlineEmail color="gray.800" />
-                                      }
-                                    />
+                                    <InputLeftElement pointerEvents="none">
+                                      <MdOutlineEmail color="gray.800" />
+                                    </InputLeftElement>
+
                                     <Field
                                       placeholder={"ایمیل خودرا وارد کنید "}
                                       as={Input}
@@ -264,12 +253,9 @@ const Contact = () => {
                                 >
                                   <FormLabel>وب سایت</FormLabel>
                                   <InputGroup borderColor="#E0E1E7">
-                                    <InputLeftElement
-                                      pointerEvents="none"
-                                      children={
-                                        <MdOutlineEmail color="gray.800" />
-                                      }
-                                    />
+                                    <InputLeftElement pointerEvents="none">
+                                      <MdOutlineEmail color="gray.800" />
+                                    </InputLeftElement>
                                     <Field
                                       as={Input}
                                       size="md"
