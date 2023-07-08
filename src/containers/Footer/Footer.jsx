@@ -20,9 +20,10 @@ import {
 import { BsCodeSlash } from "react-icons/bs";
 import { links } from "./_data";
 import Link from "next/link";
+import Logo from "@/components/Logo/logo";
 const Footer = () => {
   return (
-    <Box bg="#2B6CB0" color="#fff">
+    <Box borderTop={"2px solid #E2E8F0"}>
       <Container as="footer" role="contentinfo" maxWidth="max-content">
         <Stack
           justify="space-between"
@@ -44,23 +45,7 @@ const Footer = () => {
             }}
             align="start"
           >
-            <Text
-              display="flex"
-              fontSize="3xl"
-              fontWeight="bold"
-              justifyContent="center"
-              alignItems="center"
-              border="3px solid #ffffff"
-              outline="3px solid #fff"
-              outlineOffset="6px"
-              padding="7px"
-              gap="5px"
-              textColor="#1312129f"
-              backgroundColor="#fff"
-            >
-              <span>DevMentor</span>
-              <BsCodeSlash size="4rem" color="#1312129f" />
-            </Text>
+            <Logo />
             <Text
               color="on-accent-muted"
               fontSize="18px"
@@ -109,7 +94,7 @@ const Footer = () => {
             ))}
           </SimpleGrid>
         </Stack>
-        <Divider borderColor="bg-accent-subtle" />
+        <Divider borderColor="#E2E8F0" />
         <Stack
           pt="8"
           pb="12"
