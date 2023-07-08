@@ -7,18 +7,13 @@ const Layout = function ({ children }) {
     <Container
       display="flex"
       flexDirection="column"
-      maxWidth="100vw"
+      maxWidth="full"
       minHeight="100vh"
       padding={0}
+      overflow="hidden"
     >
       <Header />
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        maxWidth="full"
-        minHeight="100vh"
-      >
+      <Box maxWidth="full" minHeight="100vh">
         {children}
       </Box>
       <Footer />
