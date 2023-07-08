@@ -15,6 +15,7 @@ import {
   Box,
   useToast,
 } from "@chakra-ui/react";
+import Logo from "@/components/Logo/logo";
 
 const Register = () => {
   const formik = useFormik({
@@ -55,17 +56,17 @@ const Register = () => {
         <meta name="description" content="Description of Register" />
       </Head>
       <Container
-        maxW={990}
+        maxW={"30rem"}
         h="100vh"
         display="flex"
         flexFlow="column"
         justifyContent="center"
         alignItems="center"
       >
-        <Heading as="h2" size="xl" my={8}>
-          Dev Mentor
-        </Heading>
-        <Box w={{ base: "auto", md: "md" }}>
+        <Link href="/">
+          <Logo />
+        </Link>
+        <Box w={"100%"} mt={20}>
           <form onSubmit={handleSubmit}>
             <FormControl>
               <Input
@@ -114,7 +115,7 @@ const Register = () => {
             <br />
             <Button
               my={2}
-              colorScheme="blue"
+              colorScheme="red"
               w="100%"
               type="submit"
               onClick={handleToasts}
@@ -122,21 +123,23 @@ const Register = () => {
               ثبت نام
             </Button>
           </form>
-          <Text
-            textAlign="right"
-            w="100%"
-            as="span"
-            mx="2"
-            fontSize={{ base: "sm", md: "md" }}
-          >
-            حساب کاربری دارید؟
-            <Link
-              href="/auth/login"
-              style={{ margin: "0 4px", color: "#2B6CB0" }}
+          <Box mt={4}>
+            <Text
+              textAlign="right"
+              w="100%"
+              as="span"
+              mx="2"
+              fontSize={{ base: "sm", md: "md" }}
             >
-              ورود
-            </Link>
-          </Text>
+              حساب کاربری دارید؟
+              <Link
+                href="/auth/login"
+                style={{ margin: "0 4px", color: "red" }}
+              >
+                ورود
+              </Link>
+            </Text>
+          </Box>
         </Box>
       </Container>
     </>
