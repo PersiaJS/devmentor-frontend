@@ -5,20 +5,13 @@ import { Container, Box } from "@chakra-ui/react";
 
 const Layout = function ({ children }) {
   return (
-    <Container
-      display="flex"
-      flexDirection="column"
-      maxWidth="full"
-      minHeight="100vh"
-      padding={0}
-      overflow="hidden"
-    >
+    <Box>
       <Header />
-      <Box maxWidth="full" minHeight="100vh">
+      <Container maxW="container.xl" mt="10">
         {children}
-      </Box>
+      </Container>
       <Footer />
-    </Container>
+    </Box>
   );
 };
 
