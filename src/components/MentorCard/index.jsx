@@ -20,10 +20,10 @@ const MentorCard = () => {
   return (
     <Card
       sx={{
-        w: "sm",
         border: "1px solid #eaeaea",
         boxShadow: "sm",
       }}
+      w={{base : "xs" , lg : "sm"}}
     >
       <CardBody>
         <Box
@@ -68,7 +68,8 @@ const MentorCard = () => {
               w: "full",
               bg: "#2b6db0",
               h: "6rem",
-              opacity: ".5",
+              opacity: ".4",
+              backdropFilter:"opacity(30%)",
               bottom: "0",
               maskImage:
                 "linear-gradient(to top, #ffffff 70%, transparent 100%)",
@@ -78,10 +79,11 @@ const MentorCard = () => {
               justifyContent: "flex-end",
             }}
           >
-            <Text mx="2" fontWeight="bold">
+            <Text mx="2" fontWeight="bold" 
+            >
               کری ریتر
             </Text>
-            <Text mx="2">مهندس نرم افزار در مایکروسافت</Text>
+            <Text mx="2" >مهندس نرم افزار در مایکروسافت</Text>
           </Box>
         </Box>
         <Text fontSize="sm" p="2">
