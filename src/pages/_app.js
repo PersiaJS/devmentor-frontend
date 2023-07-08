@@ -2,7 +2,6 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { Vazirmatn } from "next/font/google";
 
 const vazirmatnFont = Vazirmatn({ subsets: ["latin"] });
-
 const theme = extendTheme({
   styles: {
     global: {

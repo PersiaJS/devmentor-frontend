@@ -23,30 +23,30 @@ export default function Home() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-          <Hero
-            title="مربی خودتو پیدا کن"
-            description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
-            textOfMentorLogo="منتورهاتو پیدا کن"
-          />
-
-          <Box
-            display={"flex"}
-            flexDir={"row"}
-            flexWrap={"wrap"}
-            justifyContent={"space-evenly"}
           >
-            <Box margin={5}>
-              <MiniCard />
-            </Box>
-            <Box margin={5}>
-              <MiniCard />
-            </Box>
-            <Box margin={5}>
-              <MiniCard />
-            </Box>
-          </Box>
+            <Hero
+              title="مربی خودتو پیدا کن"
+              description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
+              textOfMentorLogo="منتورهاتو پیدا کن"
+            />
 
-          >
+            <Box
+              display={"flex"}
+              flexDir={"row"}
+              flexWrap={"wrap"}
+              justifyContent={"space-evenly"}
+            >
+              <Box margin={5}>
+                <MiniCard />
+              </Box>
+              <Box margin={5}>
+                <MiniCard />
+              </Box>
+              <Box margin={5}>
+                <MiniCard />
+              </Box>
+            </Box>
+
             <MentorCard />
             <MentorCard />
             <MentorCard />
