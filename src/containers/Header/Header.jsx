@@ -8,10 +8,11 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Logo from "@/components/Logo/logo";
 import DesktopNav from "./Nav/DesktopNav/DesktopNav";
 import MobileNav from "./Nav/MobileNav/MobileNav";
+import Link from "next/link";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -51,7 +52,9 @@ export default function WithSubnavigation() {
               aria-label={"Toggle Navigation"}
             />
           </Flex>
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
 
           <DesktopNav NAV_ITEMS={NAV_ITEMS} />
 
@@ -80,10 +83,10 @@ export default function WithSubnavigation() {
               fontSize={"sm"}
               fontWeight={600}
               color={"white"}
-              bg={"blue.400"}
+              bg={"red.500"}
               href={"#"}
               _hover={{
-                bg: "blue.600",
+                bg: "red.600",
               }}
             >
               ثبت نام
