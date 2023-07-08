@@ -18,39 +18,39 @@ export default function Home() {
       </Head>
       <Layout>
         <div>
-          <Flex
-            gap="2"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
+          <Link href="/auth/register">Register</Link>
+          <Link href="/auth/login">Login</Link>
+          <Link href="/auth/reset">Reset</Link>
+          <Link href="/auth/forget">Forget</Link>
+          <Link href="/auth/verify">Verify</Link>
+          <Hero
+            title="مربی خودتو پیدا کن"
+            description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
+            textOfMentorLogo="منتورهاتو پیدا کن"
+          />
+          <Box
+            display={"flex"}
+            flexDir={"row"}
+            flexWrap={"wrap"}
+            justifyContent={"space-evenly"}
           >
-            <Hero
-              title="مربی خودتو پیدا کن"
-              description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
-              textOfMentorLogo="منتورهاتو پیدا کن"
-            />
-
-            <Box
-              display={"flex"}
-              flexDir={"row"}
-              flexWrap={"wrap"}
-              justifyContent={"space-evenly"}
-            >
-              <Box margin={5}>
-                <MiniCard />
-              </Box>
-              <Box margin={5}>
-                <MiniCard />
-              </Box>
-              <Box margin={5}>
-                <MiniCard />
-              </Box>
+            <Box margin={5}>
+              <MiniCard />
             </Box>
+            <Box margin={5}>
+              <MiniCard />
+            </Box>
+            <Box margin={5}>
+              <MiniCard />
+            </Box>
+          </Box>
 
+          <Flex gap="2">
             <MentorCard />
             <MentorCard />
             <MentorCard />
           </Flex>
+          <ResultSearchMentor />
           <ResultSearchMentor />
         </div>
       </Layout>
