@@ -1,4 +1,6 @@
 import React from "react";
+import { FaStar } from "react-icons/fa";
+import { BsChat, BsTelephone } from "react-icons/bs";
 
 import {
   Box,
@@ -13,8 +15,6 @@ import {
   Divider,
   Button,
 } from "@chakra-ui/react";
-import { FaStar } from "react-icons/fa";
-import { BsChat, BsPhone, BsTelephone } from "react-icons/bs";
 
 const MentorCard = () => {
   return (
@@ -110,7 +110,7 @@ const MentorCard = () => {
         <Divider />
         <Box>
           <Flex p="2" alignItems="center">
-            <Text fontSize="2xl" fontWeght="bold">
+            <Text fontSize="2xl" fontWeight="bold">
               240 دلار
             </Text>
             <Text> / ماه </Text>
