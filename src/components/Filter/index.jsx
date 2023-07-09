@@ -19,11 +19,11 @@ import {
   skills,
   topics,
 } from "./_data";
-import { CheckboxFilterPopover } from "./CheckBoxFilterPopover";
+import { CheckboxFilterPopover } from "@/components/CheckBoxFilterPopover";
 import { Search2Icon } from "@chakra-ui/icons";
-import { MoreFilters } from "./MoreFilters";
-import { MobileFilter } from "./MobileFilter";
-import { ListBaseFilterPopover } from "./ListBaseFilterPopover";
+import { MoreFilters } from "@/components/MoreFilters";
+import { MobileFilter } from "@/components/MobileFilter";
+import { ListBaseFilterPopover } from "@/components/ListBaseFilterPopover";
 export const Filter = function () {
   return (
     <Box>

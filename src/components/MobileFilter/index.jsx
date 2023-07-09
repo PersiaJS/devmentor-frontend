@@ -17,9 +17,9 @@ import {
   services,
   skills,
   topics,
-} from "../_data";
+} from "@/components/Filter/_data";
 import { Search2Icon } from "@chakra-ui/icons";
-import { MoreFilters } from "../MoreFilters";
+import { MoreFilters } from "@/components/MoreFilters";
 import { PiSortAscending } from "react-icons/pi";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 import { CheckboxFilterPopover } from "../CheckBoxFilterPopover";
