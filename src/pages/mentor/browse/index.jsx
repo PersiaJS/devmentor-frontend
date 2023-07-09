@@ -1,5 +1,5 @@
 import { Filter } from "@/components/Filter";
-import Layout from "@/components/Layout/Layout";
+import Layout from "@/components/Layout";
 
 const FindAMentor = () => {
   return (

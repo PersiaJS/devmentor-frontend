@@ -1,5 +1,13 @@
-import { Box, Heading, Text, Flex, Container, Link, Center } from "@chakra-ui/react";
-import Layout from "@/components/Layout/Layout";
+import {
+  Box,
+  Heading,
+  Text,
+  Flex,
+  Container,
+  Link,
+  Center,
+} from "@chakra-ui/react";
+import Layout from "@/components/Layout";
 
 const About = () => {
   return (
@@ -35,13 +43,13 @@ const About = () => {
               یادگیری مستمر و رشد شخصی و حرفه‌ای برویم.
             </Text>
             <Text fontSize="lg" mt={4}>
-              برای ارتباط با ما روی این {" "}
+              برای ارتباط با ما روی این{" "}
               <Link
                 href="contact"
                 color="blue.600"
                 _hover={{ textColor: "red" }}
-                >
-                 لینک
+              >
+                لینک
               </Link>{" "}
               کلیک کن.{" "}
             </Text>
@@ -52,8 +60,7 @@ const About = () => {
               wrap={"wrap"}
               maxWidth={"rem"}
               mt={5}
-            >
-            </Flex>
+            ></Flex>
           </Box>
         </Center>
       </Container>
