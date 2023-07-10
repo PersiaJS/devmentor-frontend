@@ -14,6 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { forgetSchema } from "@/utils/yup/authValidations";
+import Layout from "@/components/Layout/Layout";
 
 const Forget = () => {
   const formik = useFormik({
@@ -46,9 +47,10 @@ const Forget = () => {
         <title>فراموشی رمز عبور</title>
         <meta name="description" content="Description of Register" />
       </Head>
+      <Layout>
       <Container
         maxW={990}
-        h="100vh"
+        h="80vh"
         display="flex"
         flexFlow="column"
         justifyContent="center"
@@ -70,7 +72,7 @@ const Forget = () => {
             </FormControl>
             <Button
               my={2}
-              colorScheme="blue"
+              colorScheme="red"
               w="100%"
               type="submit"
               onClick={handleToasts}
@@ -108,6 +110,7 @@ const Forget = () => {
           </Text>
         </Box>
       </Container>
+      </Layout>
     </>
   );
 };

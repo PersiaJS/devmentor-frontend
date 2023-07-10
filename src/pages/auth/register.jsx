@@ -16,6 +16,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import Logo from "@/components/Logo/logo";
+import Layout from "@/components/Layout/Layout";
 
 const Register = () => {
   const formik = useFormik({
@@ -55,93 +56,95 @@ const Register = () => {
         <title>ثبت نام</title>
         <meta name="description" content="Description of Register" />
       </Head>
-      <Container
-        maxW={"30rem"}
-        h="100vh"
-        display="flex"
-        flexFlow="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Link href="/">
-          <Logo />
-        </Link>
-        <Box w={"100%"} mt={20}>
-          <form onSubmit={handleSubmit}>
-            <FormControl>
-              <Input
+      <Layout>
+        <Container
+          maxW={"30rem"}
+          h="80vh"
+          display="flex"
+          flexFlow="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Link href="/">
+            <Logo />
+          </Link>
+          <Box w={"100%"} mt={20}>
+            <form onSubmit={handleSubmit}>
+              <FormControl>
+                <Input
+                  my={2}
+                  placeholder="نام"
+                  name="firstName"
+                  value={values.firstName}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <Input
+                  my={2}
+                  placeholder="نام خانوادگی"
+                  name="lastName"
+                  value={values.lastName}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <Input
+                  my={2}
+                  placeholder="ایمیل"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <Input
+                  my={2}
+                  placeholder="کلمه عبور"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <Checkbox
                 my={2}
-                placeholder="نام"
-                name="firstName"
-                value={values.firstName}
+                name="terms"
+                value={values.terms}
                 onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                my={2}
-                placeholder="نام خانوادگی"
-                name="lastName"
-                value={values.lastName}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                my={2}
-                placeholder="ایمیل"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                my={2}
-                placeholder="کلمه عبور"
-                name="password"
-                value={values.password}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <Checkbox
-              my={2}
-              name="terms"
-              value={values.terms}
-              onChange={handleChange}
-            >
-              ظوابط و قوانین را می پذیرم
-            </Checkbox>
-            <br />
-            <Button
-              my={2}
-              colorScheme="red"
-              w="100%"
-              type="submit"
-              onClick={handleToasts}
-            >
-              ثبت نام
-            </Button>
-          </form>
-          <Box mt={4}>
-            <Text
-              textAlign="right"
-              w="100%"
-              as="span"
-              mx="2"
-              fontSize={{ base: "sm", md: "md" }}
-            >
-              حساب کاربری دارید؟
-              <Link
-                href="/auth/login"
-                style={{ margin: "0 4px", color: "red" }}
               >
-                ورود
-              </Link>
-            </Text>
+                ظوابط و قوانین را می پذیرم
+              </Checkbox>
+              <br />
+              <Button
+                my={2}
+                colorScheme="red"
+                w="100%"
+                type="submit"
+                onClick={handleToasts}
+              >
+                ثبت نام
+              </Button>
+            </form>
+            <Box mt={4}>
+              <Text
+                textAlign="right"
+                w="100%"
+                as="span"
+                mx="2"
+                fontSize={{ base: "sm", md: "md" }}
+              >
+                حساب کاربری دارید؟
+                <Link
+                  href="/auth/login"
+                  style={{ margin: "0 4px", color: "red" }}
+                >
+                  ورود
+                </Link>
+              </Text>
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Container>
+      </Layout>
     </>
   );
 };

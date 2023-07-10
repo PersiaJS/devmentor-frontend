@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 import { resetSchema } from "@/utils/yup/authValidations";
+import Layout from "@/components/Layout/Layout";
 
 const Reset = () => {
   const formik = useFormik({
@@ -50,77 +51,79 @@ const Reset = () => {
         <title>بازیابی رمز عبور</title>
         <meta name="description" content="Description of Register" />
       </Head>
-      <Container
-        maxW={990}
-        h="100vh"
-        display="flex"
-        flexFlow="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Heading as="h2" size="xl" my={8}>
-          Dev Mentor
-        </Heading>
-        <Box w={{ base: "auto", md: "md" }}>
-          <form onSubmit={handleSubmit}>
-            <FormControl>
-              <Input
+      <Layout>
+        <Container
+          maxW={990}
+          h="80vh"
+          display="flex"
+          flexFlow="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Heading as="h2" size="xl" my={8}>
+            Dev Mentor
+          </Heading>
+          <Box w={{ base: "auto", md: "md" }}>
+            <form onSubmit={handleSubmit}>
+              <FormControl>
+                <Input
+                  my={2}
+                  placeholder="کلمه عبور"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <Input
+                  my={2}
+                  placeholder="تایید کلمه عبور"
+                  name="confirmPassword"
+                  value={values.confirmPassword}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <Button
                 my={2}
-                placeholder="کلمه عبور"
-                name="password"
-                value={values.password}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                my={2}
-                placeholder="تایید کلمه عبور"
-                name="confirmPassword"
-                value={values.confirmPassword}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <Button
-              my={2}
-              colorScheme="blue"
+                colorScheme="red"
+                w="100%"
+                type="submit"
+                onClick={handleToasts}
+              >
+                به روز رسانی
+              </Button>
+            </form>
+            <Text
+              textAlign="right"
               w="100%"
-              type="submit"
-              onClick={handleToasts}
+              my={2}
+              fontSize={{ base: "sm", md: "md" }}
             >
-              به روز رسانی
-            </Button>
-          </form>
-          <Text
-            textAlign="right"
-            w="100%"
-            my={2}
-            fontSize={{ base: "sm", md: "md" }}
-          >
-            کلمه عبور خود را بخاطر دارید؟
-            <Link
-              href="/auth/login"
-              style={{ margin: "0 4px", color: "#2B6CB0" }}
+              کلمه عبور خود را بخاطر دارید؟
+              <Link
+                href="/auth/login"
+                style={{ margin: "0 4px", color: "#2B6CB0" }}
+              >
+                ورود
+              </Link>
+            </Text>
+            <Text
+              textAlign="right"
+              w="100%"
+              as="span"
+              fontSize={{ base: "sm", md: "md" }}
             >
-              ورود
-            </Link>
-          </Text>
-          <Text
-            textAlign="right"
-            w="100%"
-            as="span"
-            fontSize={{ base: "sm", md: "md" }}
-          >
-            حساب کاربری ندارید؟
-            <Link
-              href="/auth/login"
-              style={{ margin: "0 4px", color: "#2B6CB0" }}
-            >
-              ثبت نام
-            </Link>
-          </Text>
-        </Box>
-      </Container>
+              حساب کاربری ندارید؟
+              <Link
+                href="/auth/login"
+                style={{ margin: "0 4px", color: "#2B6CB0" }}
+              >
+                ثبت نام
+              </Link>
+            </Text>
+          </Box>
+        </Container>
+      </Layout>
     </>
   );
 };

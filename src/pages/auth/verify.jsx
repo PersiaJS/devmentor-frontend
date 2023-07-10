@@ -14,6 +14,7 @@ import {
 import Head from "next/head";
 import { useFormik } from "formik";
 import { verifySchema } from "@/utils/yup/authValidations";
+import Layout from "@/components/Layout/Layout";
 
 const Verify = () => {
   const formik = useFormik({
@@ -46,9 +47,10 @@ const Verify = () => {
         <title>اعتبار سنجی</title>
         <meta name="description" content="Description of Register" />
       </Head>
+      <Layout>
       <Container
         maxW={990}
-        h="100vh"
+        h="80vh"
         display="flex"
         flexFlow="column"
         justifyContent="center"
@@ -70,7 +72,7 @@ const Verify = () => {
             </FormControl>
             <Button
               my={2}
-              colorScheme="blue"
+              colorScheme="red"
               w="100%"
               type="submit"
               onClick={handleToasts}
@@ -109,6 +111,7 @@ const Verify = () => {
           </Text>
         </Box>
       </Container>
+      </Layout>
     </>
   );
 };
