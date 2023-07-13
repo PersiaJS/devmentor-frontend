@@ -6,7 +6,9 @@ import {
   Container,
   Link,
   Center,
+  Button,
 } from "@chakra-ui/react";
+import CardUser from "@/components/UserCard/CardUser";
 import Layout from "@/components/Layout";
 
 const About = () => {
@@ -15,7 +17,29 @@ const About = () => {
       <Container as={"flex"} maxWidth={"100%"} justifyContent={"center"}>
         <Center>
           <Box p={4} maxW="650px">
-            <Heading as="h1" size="xl" mb={4}>
+            <Flex
+              mx={"auto"}
+              gap={"20px"}
+              justifyContent={"center"}
+              wrap={"wrap"}
+            >
+              <Heading as="h1" size="xl" mb={4}>
+                منبع معتبر شما برای راهنمایی و مربیگری
+              </Heading>
+              <Text fontSize="lg">
+                در عصری که برقراری ارتباط آسان‌تر از همیشه است، ما نباید به
+                تنهایی همه چیز را بفهمیم. بیایید به تجربه دیگران اعتماد کنیم.
+              </Text>
+            </Flex>
+            <Flex m="10" gap={"30px"} justifyContent={"center"} wrap={"wrap"}>
+              <Button minW="150" bg="blue.700" colorScheme="blue">
+                یک مربی پیدا کنید
+              </Button>
+              <Button minW="150" colorScheme="green">
+                مربی شوید
+              </Button>
+            </Flex>
+            <Heading mt="45" as="h2" size="lg" mb={4}>
               درباره DevMentor
             </Heading>
             <Text fontSize="lg">
@@ -63,6 +87,16 @@ const About = () => {
             ></Flex>
           </Box>
         </Center>
+        <Flex mx={"auto"} gap={"50px"} justifyContent={"center"} wrap={"wrap"}>
+          <CardUser
+            name="حسین کاربخش راوری"
+            image="Hossein.jpg"
+            bio=" هدف من در دنیای فناوری و نرم‌افزار ایجاد تغییری مثبت در جامعه است که همه بتوانند از تکنولوژی های جدید آگاه باشند و از آن ها به راحتی استفاده کنند."
+            linkedin="https://www.linkedin.com/in/hossein-karbakhsh-ravari/"
+            github="https://github.com/Hossein-K-R"
+          />
+          <CardUser />
+        </Flex>
       </Container>
     </Layout>
   );
