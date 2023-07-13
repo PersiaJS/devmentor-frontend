@@ -4,7 +4,8 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 const CardUser = ({ name, image, bio, linkedin, github }) => {
   return (
     <Flex
-    minH="205"
+      dir="rtl"
+      minH="205"
       maxW="md"
       borderWidth="1px"
       borderRadius="lg"
@@ -17,6 +18,15 @@ const CardUser = ({ name, image, bio, linkedin, github }) => {
       height="100%"
       justifyContent="space-between"
     >
+      <Box ml={4}>
+        <Text fontSize="xl" fontWeight="bold">
+          {name || "ممکن است شما باشید؟"}
+        </Text>
+        <Text color="gray.600" mt={2}>
+          {bio ||
+            "منبع باز است، بنابراین به ما بپیوندید و در کد ما مشارکت کنید."}
+        </Text>
+      </Box>
       <Box>
         <Avatar
           cursor="pointer"
@@ -51,16 +61,6 @@ const CardUser = ({ name, image, bio, linkedin, github }) => {
             </Link>
           )}
         </Flex>
-      </Box>
-
-      <Box ml={4} textAlign="left">
-        <Text fontSize="xl" fontWeight="bold">
-          {name || "ممکن است شما باشید؟"}
-        </Text>
-        <Text color="gray.600" mt={2}>
-          {bio ||
-            "منبع باز است، بنابراین به ما بپیوندید و در کد ما مشارکت کنید."}
-        </Text>
       </Box>
     </Flex>
   );
