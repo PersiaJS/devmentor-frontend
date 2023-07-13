@@ -6,7 +6,7 @@ const {
 } = require("@chakra-ui/react");
 
 const CheckboxCustomGroup = ({ title, options, ...rest }) => (
-  <SimpleGrid columns={rest.columns} fontFamily="Vazir,sans-serif">
+  <SimpleGrid columns={rest.columns}>
     <Text as="h3" mb={5} fontWeight="extrabold" fontSize="2xl">
       {title}
     </Text>
