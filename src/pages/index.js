@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout/Layout";
 import Hero from "@/components/Hero/Hero";
 import Head from "next/head";
 import { Box, Grid, GridItem } from "@chakra-ui/react";

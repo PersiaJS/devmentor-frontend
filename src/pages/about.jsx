@@ -9,7 +9,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import CardUser from "@/components/UserCard/CardUser";
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout/Layout";
 
 const About = () => {
   return (
