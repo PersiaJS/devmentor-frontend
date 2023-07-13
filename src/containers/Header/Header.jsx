@@ -70,24 +70,15 @@ export default function WithSubnavigation() {
               fontWeight={600}
               variant={"link"}
               href={"/auth/login"}
-              _hover={{
-                textDecoration: "none",
-                color: "gray.600",
-              }}
             >
               ورود
             </Button>
             <Button
               as={Link}
-              display={{ base: "none", md: "inline-flex" }}
               fontSize={"sm"}
               fontWeight={600}
-              color={"white"}
-              bg={"red.500"}
+              colorScheme="red"
               href={"/auth/register"}
-              _hover={{
-                bg: "red.600",
-              }}
             >
               ثبت نام
             </Button>

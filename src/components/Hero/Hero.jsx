@@ -1,6 +1,7 @@
-import { Text } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import styles from "./Hero.module.css";
-const { Container, Box, Image, Link } = require("@chakra-ui/react");
+import Link from "next/link";
+const { Container, Box } = require("@chakra-ui/react");
 
 const Hero = ({ title, description, textOfMentorLogo }) => {
   return (
@@ -16,53 +17,11 @@ const Hero = ({ title, description, textOfMentorLogo }) => {
             {description}
           </Text>
         </Box>
-        <Box className={styles.buttom_hero} mx="auto">
-          <Text fontSize="md" textAlign="center">
+        <Link href="/find-a-mentor">
+          <Button colorScheme="red" variant="solid">
             {textOfMentorLogo}
-          </Text>
-          <Box className={styles.hero_icon}>
-            <Link href="#" isExternal>
-              <Image
-                src="/mentor-logos/google-logo.svg"
-                alt="google logo"
-                w="70px"
-                mt="6"
-              />
-            </Link>
-            <Link href="#" isExternal>
-              <Image
-                src="/mentor-logos/microsoft-logo.svg"
-                alt="microsoft logo"
-                w="70px"
-                mt="6"
-              />
-            </Link>
-            <Link href="#" isExternal>
-              <Image
-                src="/mentor-logos/airbnb-logo.svg"
-                alt="airbnb logo"
-                w="70px"
-                mt="6"
-              />
-            </Link>
-            <Link href="#" isExternal>
-              <Image
-                src="/mentor-logos/netflix-logo.svg"
-                alt="netflix logo"
-                w="70px"
-                mt="6"
-              />
-            </Link>
-            <Link href="#" isExternal>
-              <Image
-                src="/mentor-logos/uber-logo.svg"
-                alt="uber logo"
-                w="70px"
-                mt="6"
-              />
-            </Link>
-          </Box>
-        </Box>
+          </Button>
+        </Link>
       </Container>
     </Box>
   );

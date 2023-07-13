@@ -10,11 +10,11 @@ import {
   HStack,
   Image,
   Badge,
-  Stack,
   Text,
   Divider,
   Button,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const MentorCard = () => {
   return (
@@ -107,9 +107,11 @@ const MentorCard = () => {
           </Flex>
         </Box>
         <Divider />
-        <Button w="full" colorScheme="red" my="2">
-          پروفایل
-        </Button>
+        <Link href="/mentor/1">
+          <Button w="full" colorScheme="red" my="2">
+            پروفایل
+          </Button>
+        </Link>
       </CardBody>
     </Card>
   );
