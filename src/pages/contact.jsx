@@ -1,4 +1,3 @@
-import Layout from "@/containers/layout/layout";
 import {
   Container,
   Flex,
@@ -23,6 +22,7 @@ import { MdFacebook, MdOutlineEmail } from "react-icons/md";
 import * as Yup from "yup";
 import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
 import { ErrorMessage, Field, Formik } from "formik";
+import Layout from "@/components/Layout/Layout";
 
 const contactSchema = Yup.object().shape({
   firstName: Yup.string().required("پرکردن این فیلد اجباری است "),
