@@ -19,7 +19,9 @@
     "framer-motion": "^10.12.17",
     "next": "13.4.1",
     "react": "18.2.0",
+    "react-confetti-explosion": "^2.1.2",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-icons": "^4.10.1",
     "yup": "^1.2.0"
   }
