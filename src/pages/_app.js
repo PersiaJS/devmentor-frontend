@@ -11,6 +11,10 @@ const theme = extendTheme({
       },
     },
   },
+  fonts: {
+    heading: vazirmatnFont.style.fontFamily,
+    body: vazirmatnFont.style.fontFamily,
+  },
 });
 
 export default function App({ Component, pageProps }) {
