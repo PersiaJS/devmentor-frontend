@@ -13,10 +13,12 @@ import {
   Checkbox,
   Box,
   useToast,
+  Center,
 } from "@chakra-ui/react";
 
 import { loginSchema } from "@/utils/yup/authValidations";
 import Layout from "@/components/Layout/Layout";
+import Logo from "@/components/Logo/logo";
 
 const Login = () => {
   const formik = useFormik({
@@ -61,9 +63,11 @@ const Login = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Heading as="h2" size="xl" my={8}>
-            Dev Mentor
-          </Heading>
+          <Center my="8">
+            <Link href="/">
+              <Logo />
+            </Link>
+          </Center>
           <Box w={{ base: "auto", md: "md" }}>
             <form onSubmit={handleSubmit}>
               <FormControl>

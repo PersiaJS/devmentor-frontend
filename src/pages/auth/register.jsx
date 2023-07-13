@@ -14,6 +14,7 @@ import {
   Checkbox,
   Box,
   useToast,
+  Center,
 } from "@chakra-ui/react";
 import Logo from "@/components/Logo/logo";
 import Layout from "@/components/Layout/Layout";
@@ -65,10 +66,12 @@ const Register = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Link href="/">
-            <Logo />
-          </Link>
-          <Box w={"100%"} mt={20}>
+          <Center my="8">
+            <Link href="/">
+              <Logo />
+            </Link>
+          </Center>
+          <Box w={"100%"}>
             <form onSubmit={handleSubmit}>
               <FormControl>
                 <Input
