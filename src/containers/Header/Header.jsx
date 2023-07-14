@@ -57,36 +57,10 @@ export default function WithSubnavigation() {
           </Link>
 
           <DesktopNav NAV_ITEMS={NAV_ITEMS} />
-
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
-            direction={"row"}
-            spacing={6}
-          >
-            <Button
-              as={Link}
-              fontSize={"sm"}
-              fontWeight={600}
-              variant={"link"}
-              href={"/auth/login"}
-            >
-              ورود
-            </Button>
-            <Button
-              as={Link}
-              fontSize={"sm"}
-              fontWeight={600}
-              colorScheme="red"
-              href={"/auth/register"}
-            >
-              ثبت نام
-            </Button>
-          </Stack>
         </Flex>
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse b in={isOpen} animateOpacity>
         <MobileNav NAV_ITEMS={NAV_ITEMS} />
       </Collapse>
     </Box>
