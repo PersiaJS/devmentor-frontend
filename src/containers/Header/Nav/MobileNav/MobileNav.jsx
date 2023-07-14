@@ -71,24 +71,23 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         p={2}
         as={Link}
-        borderBottom="2px"
-        borderColor={"red.500"}
+        borderBottom="1px"
+        borderColor={"red.100"}
         href={href ?? "#"}
         justify={"space-between"}
         align={"center"}
       >
         <Text
           width={"100%"}
-          p={3}
-          fontWeight={600}
+          p={1}
+          fontWeight={300}
           color={useColorModeValue("gray.600", "gray.200")}
-          _groupHover={{
+          _hover={{
             textDecoration: "none",
             bgColor: "red.500",
             color: "white",
           }}
         >
-          <Icon as={FaUser} color={"red.600"} />
           {label}
         </Text>
       </Flex>
