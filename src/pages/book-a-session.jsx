@@ -9,6 +9,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Divider,
   Flex,
   FormControl,
   FormLabel,
@@ -18,8 +19,11 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  Textarea,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { px } from "framer-motion";
+import Link from "next/link";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 const BookASession = () => {
@@ -33,7 +37,7 @@ const BookASession = () => {
         boxShadow={useColorModeValue("sm", "sm-dark")}
         borderRadius="lg"
       >
-        <SimpleGrid columns="2" spacingX={10}>
+        <SimpleGrid columns={{ xl: 2, lg: 2, base: 1 }} spacingX={10}>
           <Stack
             spacing="5"
             px={{
@@ -48,11 +52,13 @@ const BookASession = () => {
             <Text as="h3" fontSize="2xl">
               اطلاعات تماس
             </Text>
-            <Stack
+            <SimpleGrid
+              columns={{ xl: 2, lg: 2, base: 1 }}
               spacing="6"
               direction={{
                 base: "column",
-                md: "row",
+                md: "column",
+                sm: "column",
               }}
             >
               <FormControl>
@@ -63,13 +69,12 @@ const BookASession = () => {
                 <FormLabel>نام خانوادگی</FormLabel>
                 <Input type="text" />
               </FormControl>
-            </Stack>
-            <FormControl id="street">
-              <FormControl>
-                <FormLabel>ایمیل</FormLabel>
-                <Input type="email" w="full" />
-              </FormControl>
+            </SimpleGrid>
+            <FormControl mb={4}>
+              <FormLabel>ایمیل</FormLabel>
+              <Input type="email" w="full" />
             </FormControl>
+            <Divider />
             <Text as="h3" fontSize="2xl">
               اطلاعات جلسه
             </Text>
@@ -80,21 +85,24 @@ const BookASession = () => {
             <Text as="h3" fontSize="2xl">
               زمان های در دسترس
             </Text>
-            <Flex gap={3} scrollBehavior="smooth" w="full" overflowX="scroll">
+            <Flex gap={3} overflowX="scroll" whiteSpace="nowrap" py={10}>
               <Stack
                 as="button"
                 borderRadius="10px"
                 border="2px solid #ded9d9"
                 bg="white"
                 p={3}
+                _hover={{ bgColor: "gray.200" }}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  شنبه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  23 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="red.500">
+                  تکمیل ظرفیت
+                </Text>
               </Stack>
               <Stack
                 as="button"
@@ -104,12 +112,14 @@ const BookASession = () => {
                 p={3}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  یکشنبه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  24 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="red.500">
+                  تکمیل ظرفیت
+                </Text>
               </Stack>
               <Stack
                 as="button"
@@ -119,12 +129,14 @@ const BookASession = () => {
                 p={3}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  دوشنبه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  25 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="green.500">
+                  دو جای خالی
+                </Text>
               </Stack>
               <Stack
                 as="button"
@@ -134,12 +146,14 @@ const BookASession = () => {
                 p={3}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  سه شنبه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  26 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="red.500">
+                  تکمیل ظرفیت
+                </Text>
               </Stack>
               <Stack
                 as="button"
@@ -149,12 +163,14 @@ const BookASession = () => {
                 p={3}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  چهارشنبه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  27 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="green.500">
+                  1 جای خالی
+                </Text>
               </Stack>
               <Stack
                 as="button"
@@ -164,12 +180,14 @@ const BookASession = () => {
                 p={3}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  پنجشنبه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  28 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="red.500">
+                  تکمیل ظرفیت
+                </Text>
               </Stack>
               <Stack
                 as="button"
@@ -179,48 +197,93 @@ const BookASession = () => {
                 p={3}
               >
                 <Text as="p" fontWeight="bold" fontSize="xl">
-                  Sat
+                  جمعه
                 </Text>
                 <Text as="p" fontSize="lg">
-                  Jul 15th
+                  29 تیر
                 </Text>
-                <Text as="p">0 spots</Text>
+                <Text as="p" color="red.500">
+                  تکمیل ظرفیت
+                </Text>
               </Stack>
             </Flex>
+            <Divider />
+            <SimpleGrid columns={4} spacing={5} mb={10}>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+              <Button> 14:30 </Button>
+            </SimpleGrid>
+            <Box>
+              <Text as="p" mb={3}>
+                پیام شما به احسان گازار(اختیاری)
+              </Text>
+              <Textarea placeholder="پیام شما" size="lg" />
+            </Box>
           </Stack>
-          <Card maxW="xl">
-            <CardHeader>
-              <Flex spacing="4">
-                <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                  <Avatar name="Segun Adebayo" src="" />
+          <Box
+            alignSelf="flex-start"
+            display={{ md: "flex" }}
+            flexDirection={{ md: "column" }}
+            mx={{ md: "12px", sm: "12px" }}
+          >
+            <Text as="h3" fontSize="2xl" my={8}>
+              اطلاعات جلسه
+            </Text>
+            <Card maxW="xl" p={4}>
+              <CardHeader>
+                <Flex spacing="4">
+                  <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                    <Avatar name="Segun Adebayo" src="" />
 
-                  <Box>
-                    <Heading size="sm" mb={2}>
-                      احسان گازار
-                    </Heading>
-                    <Text>Team Lead , Software Engineer</Text>
-                  </Box>
+                    <Box>
+                      <Heading size="sm" mb={2}>
+                        احسان گازار
+                      </Heading>
+                      <Text>Team Lead , Software Engineer</Text>
+                    </Box>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </CardHeader>
-            <CardBody>
-              <Text></Text>
-            </CardBody>
+              </CardHeader>
+              <CardBody>
+                <Stack spacing={10}>
+                  <Flex justifyContent="space-between">
+                    <span> قیمت هر جلسه</span>
+                    <span>رایگان</span>
+                  </Flex>
+                  <Flex justifyContent="space-between">
+                    <span> مدت زمان</span>
+                    <span>30 دقیقه</span>
+                  </Flex>
+                  <Link href="#">کد تخفیف +</Link>
+                  <Flex justifyContent="space-between">
+                    <span> جمع کل</span>
+                    <span>0</span>
+                  </Flex>
+                </Stack>
+              </CardBody>
 
-            <CardFooter
-              justify="space-between"
-              flexWrap="wrap"
-              sx={{
-                "& > button": {
-                  minW: "136px",
-                },
-              }}
-            >
-              <Button flex="1" variant="solid" leftIcon={<ArrowRightIcon />}>
-                رزرو جلسه
-              </Button>
-            </CardFooter>
-          </Card>
+              <CardFooter
+                justify="space-between"
+                flexWrap="wrap"
+                sx={{
+                  "& > button": {
+                    minW: "136px",
+                  },
+                }}
+              >
+                <Button flex="1" variant="solid" leftIcon={<ArrowRightIcon />}>
+                  رزرو جلسه
+                </Button>
+              </CardFooter>
+            </Card>
+          </Box>
         </SimpleGrid>
       </Box>
     </Layout>
