@@ -3,9 +3,7 @@ import * as Yup from "yup";
 export const registerSchema = Yup.object().shape({
   firstName: Yup.string().required("نام الزامی است"),
   lastName: Yup.string().required("نام خانوادگی الزامی است"),
-  email: Yup.string()
-    .email("ایمیل معتبر نیست")
-    .required("ایمیل الزامی است"),
+  email: Yup.string().email("ایمیل معتبر نیست").required("ایمیل الزامی است"),
   password: Yup.string()
     .min(8, "کلمه عبور نمی تواند کمتر از 8 کاراکتر باشد")
     .required("کلمه عبور الزامی است"),
@@ -13,18 +11,14 @@ export const registerSchema = Yup.object().shape({
 });
 
 export const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("ایمیل معتبر نیست")
-    .required("ایمیل الزامی است"),
+  email: Yup.string().email("ایمیل معتبر نیست").required("ایمیل الزامی است"),
   password: Yup.string()
     .min(8, "کلمه عبور نمی تواند کمتر از 8 کاراکتر باشد")
     .required("کلمه عبور الزامی است"),
 });
 
 export const forgetSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("ایمیل معتبر نیست")
-    .required("ایمیل الزامی است"),
+  email: Yup.string().email("ایمیل معتبر نیست").required("ایمیل الزامی است"),
 });
 
 export const resetSchema = Yup.object().shape({
@@ -38,7 +32,7 @@ export const resetSchema = Yup.object().shape({
 });
 
 export const verifySchema = Yup.object().shape({
-  code: Yup.string()
+  securityHash: Yup.string()
     .min(6, "کد امنیتی نمی تواند کمتر از 6 کاراکتر باشد")
     .required("کد امنیتی الزامی است"),
 });
