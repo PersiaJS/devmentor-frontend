@@ -6,6 +6,7 @@ import { Container, Center } from "@chakra-ui/react";
 import Layout from "@/components/Layout/Layout";
 import Logo from "@/components/Logo/logo";
 import ResetForm from "@/components/Forms/resetForm";
+import ResetIllustration from "@/components/Illustrations/ResetIllustration";
 
 const Reset = () => {
   return (
@@ -23,11 +24,7 @@ const Reset = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Center my="8">
-            <Link href="/">
-              <Logo />
-            </Link>
-          </Center>
+          <ResetIllustration />
           <ResetForm />
         </Container>
       </Layout>

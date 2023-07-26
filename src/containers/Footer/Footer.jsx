@@ -1,26 +1,19 @@
+import Link from "next/link";
+
 import {
   Box,
   Button,
-  ButtonGroup,
   Container,
   Divider,
-  IconButton,
   SimpleGrid,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import {
-  FaTwitter,
-  FaGithub,
-  FaInstagram,
-  FaFacebook,
-  FaLinkedin,
-  FaTelegram,
-} from "react-icons/fa";
-import { BsCodeSlash } from "react-icons/bs";
-import { links } from "./_data";
-import Link from "next/link";
+
 import Logo from "@/components/Logo/logo";
+import SocialIcons from "./SocialIcons";
+import links from "./data";
+
 const Footer = () => {
   return (
     <Box borderTop={"2px solid #E2E8F0"}>
@@ -43,9 +36,11 @@ const Footer = () => {
               base: "6",
               md: "8",
             }}
-            align="start"
+            align={{ base: "center", md: "start" }}
           >
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
             <Text
               color="on-accent-muted"
               fontSize="18px"
@@ -80,14 +75,14 @@ const Footer = () => {
                 </Text>
                 <Stack spacing="3" shouldWrapChildren>
                   {group.links.map((link, idx) => (
-                    <Button
-                      key={idx}
-                      as="a"
-                      variant="link-on-accent"
-                      href={link.href}
-                    >
-                      {link.label}
-                    </Button>
+                    <Link href={link.href} key={idx}>
+                      <Button
+                        variant="link-on-accent"
+                        _hover={{ color: "red.500" }}
+                      >
+                        {link.label}
+                      </Button>
+                    </Link>
                   ))}
                 </Stack>
               </Stack>
@@ -95,48 +90,7 @@ const Footer = () => {
           </SimpleGrid>
         </Stack>
         <Divider borderColor="#E2E8F0" />
-        <Stack
-          pt="8"
-          pb="12"
-          justify="space-between"
-          direction={{
-            base: "column-reverse",
-            md: "row",
-          }}
-          align="center"
-        >
-          <ButtonGroup variant="ghost-on-accent">
-            <IconButton
-              as="a"
-              href="https://www.linkedin.com/company/persiajs/"
-              aria-label="LinkedIn"
-              icon={<FaLinkedin fontSize="1.25rem" />}
-            />
-            <IconButton
-              as="a"
-              href="https://github.com/PersiaJS/devmentor-frontend"
-              aria-label="GitHub"
-              icon={<FaGithub fontSize="1.25rem" />}
-            />
-            <IconButton
-              as="a"
-              href="https://t.me/persiajs"
-              aria-label="Twitter"
-              icon={<FaTelegram fontSize="1.25rem" />}
-            />
-            <IconButton
-              as="a"
-              href="https://www.instagram.com/persiajs.dev/"
-              aria-label="GitHub"
-              icon={<FaInstagram fontSize="1.25rem" />}
-            />
-          </ButtonGroup>
-          <Text fontSize="sm" dir="ltr" color="on-accent-subtle">
-            &copy; {new Date().getFullYear()}{" "}
-            <Link href="http://persiajs.com">PersiaJS</Link>. All rights
-            reserved
-          </Text>
-        </Stack>
+        <SocialIcons />
       </Container>
     </Box>
   );

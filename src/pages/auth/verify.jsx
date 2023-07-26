@@ -6,6 +6,7 @@ import { Container, Center } from "@chakra-ui/react";
 import Layout from "@/components/Layout/Layout";
 import Logo from "@/components/Logo/logo";
 import VerifyForm from "@/components/Forms/VerifyForm";
+import VerifyIllustration from "@/components/Illustrations/VerifyIllustration";
 
 const Verify = () => {
   return (
@@ -23,11 +24,7 @@ const Verify = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Center my="8">
-            <Link href="/">
-              <Logo />
-            </Link>
-          </Center>
+          <VerifyIllustration />
           <VerifyForm />
         </Container>
       </Layout>

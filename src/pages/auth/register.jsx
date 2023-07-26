@@ -6,6 +6,7 @@ import { Container, Center } from "@chakra-ui/react";
 import Logo from "@/components/Logo/logo";
 import Layout from "@/components/Layout/Layout";
 import RegisterForm from "@/components/Forms/RegisterForm";
+import RegisterIllustration from "@/components/Illustrations/RegisterIllustration";
 
 const Register = () => {
   return (
@@ -23,11 +24,7 @@ const Register = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Center my="8">
-            <Link href="/">
-              <Logo />
-            </Link>
-          </Center>
+          <RegisterIllustration />
           <RegisterForm />
         </Container>
       </Layout>

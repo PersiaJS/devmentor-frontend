@@ -1,18 +1,10 @@
-export const links = [
+const links = [
   {
     title: "شرکت",
     links: [
       {
         label: "درباره ما",
-        href: "#",
-      },
-      {
-        label: "سیاست محرمانگی",
-        href: "#",
-      },
-      {
-        label: "ضوابط رفتاری",
-        href: "#",
+        href: "/about",
       },
     ],
   },
@@ -21,15 +13,15 @@ export const links = [
     links: [
       {
         label: "جستجوی منتور",
-        href: "#",
+        href: "/find-a-mentor",
       },
       {
         label: "رزرو کردن جلسه",
-        href: "#",
+        href: "/book-a-session",
       },
       {
         label: "منتور شوید",
-        href: "#",
+        href: "/become-a-mentor",
       },
     ],
   },
@@ -39,11 +31,11 @@ export const links = [
     links: [
       {
         label: "درباره پرشیا جی اس",
-        href: "#",
+        href: "/about",
       },
       {
         label: "گروه تلگرام",
-        href: "#",
+        href: "https://t.me/persiajs",
       },
     ],
   },
@@ -52,8 +44,10 @@ export const links = [
     links: [
       {
         label: "تماس با ما",
-        href: "#",
+        href: "/contact",
       },
     ],
   },
 ];
+
+export default links;

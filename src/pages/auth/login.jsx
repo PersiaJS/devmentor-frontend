@@ -1,30 +1,13 @@
 "use client";
-import Link from "next/link";
 import Head from "next/head";
 
-import { useFormik } from "formik";
-import {
-  Container,
-  FormControl,
-  Text,
-  Input,
-  Button,
-  Heading,
-  Checkbox,
-  Box,
-  useToast,
-  Center,
-} from "@chakra-ui/react";
+import { Container, Box, Center } from "@chakra-ui/react";
 
-import { loginSchema } from "@/utils/yup/authValidations";
 import Layout from "@/components/Layout/Layout";
-import Logo from "@/components/Logo/logo";
-import handleRequest, { loginRequest } from "@/utils/handleRequest";
 import LoginForm from "@/components/Forms/LoginForm";
+import LoginIllustration from "@/components/Illustrations/LoginIllustration";
 
 const Login = () => {
-  
-
   return (
     <>
       <Head>
@@ -40,11 +23,7 @@ const Login = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Center my="8">
-            <Link href="/">
-              <Logo />
-            </Link>
-          </Center>
+          <LoginIllustration />
           <LoginForm />
         </Container>
       </Layout>

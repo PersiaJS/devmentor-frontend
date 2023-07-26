@@ -72,7 +72,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <Box w={"100%"}>
+    <Box w={"100%"} mb="12">
       <form onSubmit={handleSubmit}>
         <FormControl>
           <Input

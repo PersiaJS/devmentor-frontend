@@ -63,7 +63,7 @@ const ForgetForm = () => {
   };
 
   return (
-    <Box w={{ base: "full", md: "md" }}>
+    <Box w={{ base: "full", md: "md" }} mb="12">
       <form onSubmit={handleSubmit}>
         <FormControl>
           <Input

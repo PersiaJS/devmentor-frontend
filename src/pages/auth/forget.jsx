@@ -7,6 +7,7 @@ import { Container, Text, Center } from "@chakra-ui/react";
 import Layout from "@/components/Layout/Layout";
 import Logo from "@/components/Logo/logo";
 import ForgetForm from "@/components/Forms/ForgetForm";
+import ForgetIllustration from "@/components/Illustrations/ForgetIllustration";
 
 const Forget = () => {
   return (
@@ -24,11 +25,7 @@ const Forget = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Center my="8">
-            <Link href="/">
-              <Logo />
-            </Link>
-          </Center>
+          <ForgetIllustration />
           <ForgetForm />
         </Container>
       </Layout>
