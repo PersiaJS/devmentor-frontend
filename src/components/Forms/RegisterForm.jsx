@@ -97,6 +97,7 @@ const RegisterForm = () => {
             my={2}
             placeholder="ایمیل"
             name="email"
+            type="email"
             value={values.email}
             onChange={handleChange}
           />
@@ -106,6 +107,7 @@ const RegisterForm = () => {
             my={2}
             placeholder="کلمه عبور"
             name="password"
+            type="password"
             value={values.password}
             onChange={handleChange}
           />

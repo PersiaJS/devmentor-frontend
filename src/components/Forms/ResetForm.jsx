@@ -84,6 +84,7 @@ const ResetForm = () => {
             my={2}
             placeholder="کلمه عبور"
             name="password"
+            type="password"
             value={values.password}
             onChange={handleChange}
           />
@@ -93,6 +94,7 @@ const ResetForm = () => {
             my={2}
             placeholder="تایید کلمه عبور"
             name="confirmPassword"
+            type="password"
             value={values.confirmPassword}
             onChange={handleChange}
           />
