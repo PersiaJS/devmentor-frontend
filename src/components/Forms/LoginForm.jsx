@@ -40,6 +40,7 @@ const LoginForm = () => {
       try {
         setIsLoading(true);
         const response = await handleRequest().post("/auth/login", values);
+        console.log(response);
         if (response.data.status) {
           const cookies = new Cookies();
           cookies.set("auth", response.data.jwt, {
@@ -48,11 +49,16 @@ const LoginForm = () => {
           });
           setIsLoading(false);
           router.push("/");
+          toast({
+            title: "ورود موفقیت آمیز بود",
+            ...options,
+            status: "success",
+          });
           resetForm();
         } else {
           setIsLoading(false);
           toast({
-            title: "اطلاعات وارد شده صحیح نیست",
+            title: "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
             ...options,
             status: "error",
           });
@@ -60,7 +66,7 @@ const LoginForm = () => {
       } catch (err) {
         setIsLoading(false);
         toast({
-          title: "اطلاعات وارد شده صحیح نیست",
+          title: "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
           ...options,
           status: "error",
         });
@@ -135,6 +141,7 @@ const LoginForm = () => {
         as="span"
         my={2}
         fontSize={{ base: "sm", md: "md" }}
+        color="red.500"
       >
         <Link href="/auth/forget">کلمه عبور خود را فراموش کرده اید؟</Link>
       </Text>

@@ -30,9 +30,3 @@ export const resetSchema = Yup.object().shape({
     .required(" تکرار کلمه عبور الزامی است ")
     .oneOf([Yup.ref("password"), null], "تایید کلمه عبور یکسان نیست "),
 });
-
-export const verifySchema = Yup.object().shape({
-  securityHash: Yup.string()
-    .min(6, "کد امنیتی نمی تواند کمتر از 6 کاراکتر باشد")
-    .required("کد امنیتی الزامی است"),
-});

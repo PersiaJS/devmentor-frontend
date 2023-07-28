@@ -15,15 +15,34 @@ import {
 
 import { registerSchema } from "@/utils/yup/authValidations";
 import handleRequest from "@/utils/handleRequest";
+import axios from "axios";
 
 const RegisterForm = () => {
   const [isLoading, setISLoading] = useState(false);
+
   const router = useRouter();
   const toast = useToast();
   const options = {
     duration: 4000,
     position: "top-right",
     variant: "left-accent",
+  };
+
+  const handleSendVerificationRequest = async (values) => {
+    try {
+      const confirm = await handleRequest().post(
+        "/auth/send-verification-email",
+        {
+          email: values.email,
+        }
+      );
+      if (confirm.status) {
+        return confirm.status;
+      }
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
   };
 
   const formik = useFormik({
@@ -39,7 +58,9 @@ const RegisterForm = () => {
       setISLoading(true);
       try {
         const response = await handleRequest().post("/auth/register", values);
-        if (response.data.status) {
+        if (response.status === 200) {
+          //! send verification request
+          const confirm = await handleSendVerificationRequest(values);
           setISLoading(false);
           resetForm();
           router.push("/auth/login");
