@@ -28,7 +28,6 @@ import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { AiFillDashboard } from "react-icons/ai";
 import Cookies from "universal-cookie";
-
 export default function WithSubnavigation() {
   const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
@@ -42,153 +41,147 @@ export default function WithSubnavigation() {
     router.push("/");
   };
 
-  return (
-    <Box>
-      <Flex
-        bg={useColorModeValue("white", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
-        minH={"100px"}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        align={"center"}
-      >
-        <Flex
-          flex={{ base: 1 }}
-          justify={{ base: "center", md: "space-evenly" }}
-        >
-          <Flex
-            flex={{ base: 1, md: "auto" }}
-            ml={{ base: -2 }}
-            display={{ base: "flex", md: "none" }}
-          >
-            <IconButton
-              onClick={onToggle}
-              icon={
-                isOpen ? (
-                  <CloseIcon w={3} h={3} />
-                ) : (
-                  <HamburgerIcon w={5} h={5} />
-                )
-              }
-              variant={"ghost"}
-              aria-label={"Toggle Navigation"}
-            />
-          </Flex>
-          <Link href="/">
-            <Logo />
-          </Link>
-
-          <DesktopNav NAV_ITEMS={NAV_ITEMS} />
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
-            direction={"row"}
-            spacing={6}
-          >
-            {isLoading ? (
-              <Button paddingInline={"3rem"}>
-                <Spinner
-                  thickness="4px"
-                  speed="0.65s"
-                  emptyColor="gray.200"
-                  color="red.500"
-                  size="md"
-                />
-              </Button>
-            ) : user ? (
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  <Avatar size={"sm"} src={user.image} />
-                </MenuButton>
-                <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
-                    <Avatar size={"2xl"} src={user.image} />
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>
-                      {user.firstName} {user.lastName}
-                    </p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>
-                    <Button
-                      as={"a"}
-                      bg={"none"}
-                      onClick={handleLogout}
-                      leftIcon={<Icon as={AiFillDashboard} color={"red"} />}
-                      _hover={{
-                        bg: "none",
-                      }}
-                    >
-                      داشبورد
-                    </Button>
-                  </MenuItem>
-
-                  <MenuItem>
-                    {" "}
-                    <Button
-                      bg={"none"}
-                      onClick={handleLogout}
-                      leftIcon={<FiLogOut color="red" />}
-                      _hover={{
-                        bg: "none",
-                      }}
-                    >
-                      خروج
-                    </Button>
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            ) : (
-              <>
-                <Button
-                  as={"a"}
-                  fontSize={"sm"}
-                  fontWeight={600}
-                  variant={"link"}
-                  href={"/auth/login"}
-                  _hover={{
-                    textDecoration: "none",
-                    color: "gray.600",
-                  }}
-                >
-                  ورود
-                </Button>
-                <Button
-                  as={"a"}
-                  display={{ base: "none", md: "inline-flex" }}
-                  fontSize={"sm"}
-                  fontWeight={600}
-                  color={"white"}
-                  bg={"red.400"}
-                  href={"/auth/register"}
-                  _hover={{
-                    bg: "red.600",
-                  }}
-                >
-                  ثبت نام
-                </Button>
-              </>
-            )}
-          </Stack>
-        </Flex>
-      </Flex>
-
-      <Collapse b in={isOpen} animateOpacity>
-        <MobileNav NAV_ITEMS={NAV_ITEMS} />
-      </Collapse>
-    </Box>
-  );
+  router.push("/");
 }
+return (
+  <Box>
+    <Flex
+      bg={useColorModeValue("white", "gray.800")}
+      color={useColorModeValue("gray.600", "white")}
+      minH={"100px"}
+      py={{ base: 2 }}
+      px={{ base: 4 }}
+      align={"center"}
+    >
+      <Flex flex={{ base: 1 }} justify={{ base: "center", md: "space-evenly" }}>
+        <Flex
+          flex={{ base: 1, md: "auto" }}
+          ml={{ base: -2 }}
+          display={{ base: "flex", md: "none" }}
+        >
+          <IconButton
+            onClick={onToggle}
+            icon={
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+            }
+            variant={"ghost"}
+            aria-label={"Toggle Navigation"}
+          />
+        </Flex>
+        <Link href="/">
+          <Logo />
+        </Link>
+
+        <DesktopNav NAV_ITEMS={NAV_ITEMS} />
+        <Stack
+          flex={{ base: 1, md: 0 }}
+          justify={"flex-end"}
+          direction={"row"}
+          spacing={6}
+        >
+          {isLoading ? (
+            <Button paddingInline={"3rem"}>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="red.500"
+                size="md"
+              />
+            </Button>
+          ) : user ? (
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
+              >
+                <Avatar size={"sm"} src={user.image} />
+              </MenuButton>
+              <MenuList alignItems={"center"}>
+                <br />
+                <Center>
+                  <Avatar size={"2xl"} src={user.image} />
+                </Center>
+                <br />
+                <Center>
+                  <p>
+                    {user.firstName} {user.lastName}
+                  </p>
+                </Center>
+                <br />
+                <MenuDivider />
+                <MenuItem>
+                  <Button
+                    as={"a"}
+                    bg={"none"}
+                    onClick={handleLogout}
+                    leftIcon={<Icon as={AiFillDashboard} color={"red"} />}
+                    _hover={{
+                      bg: "none",
+                    }}
+                  >
+                    داشبورد
+                  </Button>
+                </MenuItem>
+
+                <MenuItem>
+                  {" "}
+                  <Button
+                    bg={"none"}
+                    onClick={handleLogout}
+                    leftIcon={<FiLogOut color="red" />}
+                    _hover={{
+                      bg: "none",
+                    }}
+                  >
+                    خروج
+                  </Button>
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
+            <>
+              <Button
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={600}
+                variant={"link"}
+                href={"/auth/login"}
+                _hover={{
+                  textDecoration: "none",
+                  color: "gray.600",
+                }}
+              >
+                ورود
+              </Button>
+              <Button
+                as={"a"}
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                color={"white"}
+                bg={"red.400"}
+                href={"/auth/register"}
+                _hover={{
+                  bg: "red.600",
+                }}
+              >
+                ثبت نام
+              </Button>
+            </>
+          )}
+        </Stack>
+      </Flex>
+    </Flex>
+
+    <Collapse b in={isOpen} animateOpacity>
+      <MobileNav NAV_ITEMS={NAV_ITEMS} />
+    </Collapse>
+  </Box>
+);
 
 const NAV_ITEMS = [
   {
