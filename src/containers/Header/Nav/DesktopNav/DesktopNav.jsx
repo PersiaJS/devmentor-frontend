@@ -10,18 +10,18 @@ const DesktopNav = ({ NAV_ITEMS }) => {
     <Stack direction={"row"} spacing={4} display={{ base: "none", md: "flex" }}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} display={"flex"} alignItems={"center"}>
-          <Link
-            p={2}
-            href={navItem.href ?? "#"}
-            fontSize={"lg"}
-            fontWeight={600}
-            color={linkColor}
-            _hover={{
-              textDecoration: "none",
-              color: linkHoverColor,
-            }}
-          >
-            {navItem.label}
+          <Link href={navItem.href ?? "#"} style={{ padding: 2 }}>
+            <Button
+              fontSize={"sm"}
+              fontWeight={600}
+              color={linkColor}
+              _hover={{
+                color: "red.500",
+              }}
+              variant="link-on-accent"
+            >
+              {navItem.label}
+            </Button>
           </Link>
         </Box>
       ))}
