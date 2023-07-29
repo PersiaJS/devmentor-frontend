@@ -22,17 +22,14 @@ export default function WithSubnavigation() {
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
-        minH={"60px"}
+        minH={"100px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
         <Flex
           flex={{ base: 1 }}
-          justify={{ base: "center", md: "space-around" }}
+          justify={{ base: "center", md: "space-evenly" }}
         >
           <Flex
             flex={{ base: 1, md: "auto" }}
@@ -66,7 +63,7 @@ export default function WithSubnavigation() {
           >
             <Button
               as={Link}
-              fontSize={"sm"}
+              fontSize={"lg"}
               fontWeight={600}
               variant={"link"}
               href={"/auth/login"}
@@ -80,7 +77,7 @@ export default function WithSubnavigation() {
             <Button
               as={Link}
               display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
+              fontSize={"lg"}
               fontWeight={600}
               color={"white"}
               bg={"red.500"}

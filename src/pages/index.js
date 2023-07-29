@@ -16,37 +16,7 @@ export default function Home() {
       </Head>
       <Layout>
         <Box>
-          <Flex h="80vh" alignItems="center" justifyContent="center">
-            <Hero
-              title="مربی خودتو پیدا کن"
-              description="برای تسلط بر جاوا اسکریپت تنهایی؟ از منتور های ما کمک بگیر و چیزای خارق‌العاده خلق کن."
-              textOfMentorLogo="منتورهاتو پیدا کن"
-            />
-          </Flex>
-          <Grid
-            templateColumns="repeat(auto-fit, minmax(250px, 1fr))"
-            mb="20"
-            gap={3}
-          >
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-            <GridItem display="flex" justifyContent="center">
-              <MentorCard />
-            </GridItem>
-          </Grid>
+          <Flex alignItems="center" justifyContent="center"></Flex>
         </Box>
       </Layout>
     </>

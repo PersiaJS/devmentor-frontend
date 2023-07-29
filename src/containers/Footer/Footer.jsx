@@ -23,7 +23,7 @@ import Link from "next/link";
 import Logo from "@/components/Logo/logo";
 const Footer = () => {
   return (
-    <Box borderTop={"2px solid #E2E8F0"}>
+    <Box overflow="hidden">
       <Container as="footer" role="contentinfo" maxWidth="max-content">
         <Stack
           justify="space-between"
