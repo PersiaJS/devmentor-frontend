@@ -92,7 +92,7 @@ export default function WithSubnavigation() {
         </Flex>
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse b in={isOpen} animateOpacity>
         <MobileNav NAV_ITEMS={NAV_ITEMS} />
       </Collapse>
     </Box>

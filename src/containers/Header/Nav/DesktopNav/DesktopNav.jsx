@@ -1,8 +1,9 @@
-import { Box, Link, Stack, useColorModeValue } from "@chakra-ui/react";
+import Link from "next/link";
+
+import { Box, Button, Stack, useColorModeValue } from "@chakra-ui/react";
 
 const DesktopNav = ({ NAV_ITEMS }) => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
