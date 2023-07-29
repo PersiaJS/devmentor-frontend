@@ -4,6 +4,11 @@ import Head from "next/head";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import MentorCard from "@/components/MentorCard";
 import { Flex } from "@chakra-ui/react";
+import MentorImage from "@/components/MentorImage";
+import AboutYouStep from "@/components/AboutYouStep";
+import ApplyingMentor from "@/components/ApplyingMentor";
+import CheckboxCustomGroup from "@/components/CheckboxCustomGroup";
+import MentorPropertys from "@/components/MentorPropertys";
 
 export default function Home() {
   return (
