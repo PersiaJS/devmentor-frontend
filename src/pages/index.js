@@ -1,8 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import Hero from "@/components/Hero/Hero";
 import Head from "next/head";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
-import MentorCard from "@/components/MentorCard";
+import { Box } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 
 export default function Home() {
@@ -15,9 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Box>
-          <Flex alignItems="center" justifyContent="center"></Flex>
-        </Box>
+        <Hero />
       </Layout>
     </>
   );

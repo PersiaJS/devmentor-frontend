@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   const options = {
     duration: 4000,
-    position: "top-right",
+    position: "bottom-right",
     variant: "left-accent",
   };
 
@@ -40,10 +40,9 @@ const LoginForm = () => {
       try {
         setIsLoading(true);
         const response = await handleRequest().post("/auth/login", values);
-        console.log(response);
         if (response.data.status) {
           const cookies = new Cookies();
-          cookies.set("auth", response.data.jwt, {
+          cookies.set("auth", response.data.jwt?.token, {
             path: "/",
             expires: new Date(new Date().getTime() + 60 * 60 * 24 * 180 * 1000),
           });

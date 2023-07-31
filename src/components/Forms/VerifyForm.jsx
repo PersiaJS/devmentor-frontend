@@ -25,7 +25,7 @@ const VerifyForm = () => {
 
   const options = {
     duration: 4000,
-    position: "top-right",
+    position: "bottom-right",
     variant: "left-accent",
   };
 
@@ -67,7 +67,7 @@ const VerifyForm = () => {
   const handleToasts = () => {
     const options = {
       duration: 4000,
-      position: "top-right",
+      position: "bottom-right",
       variant: "left-accent",
     };
 

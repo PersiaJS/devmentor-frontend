@@ -58,7 +58,7 @@ const AboutYouStep = ({ onNext }) => {
   const handleToasts = () => {
     const options = {
       duration: 4000,
-      position: "top-right",
+      position: "bottom-right",
       variant: "left-accent",
     };
     const { firstName, lastName, email, password, jobTitle, location } = errors;
