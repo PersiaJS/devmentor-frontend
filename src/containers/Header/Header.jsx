@@ -28,17 +28,20 @@ import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { AiFillDashboard } from "react-icons/ai";
 import Cookies from "universal-cookie";
-const cookies = new Cookies();
+
 export default function WithSubnavigation() {
   const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
   const { user, isLoading, refreshUser } = useContext(UserContext);
+
   const handleLogout = () => {
-    cookies.remove("auth");
+    const cookie = new Cookies();
+    cookie.remove("auth");
     refreshUser();
 
     router.push("/");
   };
+
   return (
     <Box>
       <Flex
