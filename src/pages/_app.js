@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { Vazirmatn } from "next/font/google";
-import { useCallback, useEffect, useState } from "react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
 import handleRequest from "@/utils/handleRequest";
 import Cookies from "universal-cookie";
-const vazirmatnFont = Vazirmatn({ subsets: ["latin"] });
 import UserContext from "@/contexts/userContext";
+
+const vazirmatnFont = Vazirmatn({ subsets: ["latin"] });
+
 const theme = extendTheme({
   styles: {
     global: {
