@@ -14,8 +14,7 @@ import {
 } from "@chakra-ui/react";
 
 import { registerSchema } from "@/utils/yup/authValidations";
-import handleRequest from "@/utils/handleRequest";
-import axios from "axios";
+import client from "@/utils/axios";
 
 const RegisterForm = () => {
   const [isLoading, setISLoading] = useState(false);
@@ -30,12 +29,9 @@ const RegisterForm = () => {
 
   const handleSendVerificationRequest = async (values) => {
     try {
-      const confirm = await handleRequest().post(
-        "/auth/send-verification-email",
-        {
-          email: values.email,
-        }
-      );
+      const confirm = await client.post("/auth/send-verification-email", {
+        email: values.email,
+      });
       if (confirm.status) {
         return confirm.status;
       }
@@ -57,7 +53,7 @@ const RegisterForm = () => {
     onSubmit: async (values, { resetForm }) => {
       setISLoading(true);
       try {
-        const response = await handleRequest().post("/auth/register", values);
+        const response = await client.post("/auth/register", values);
         if (response.status === 200) {
           //! send verification request
           const confirm = await handleSendVerificationRequest(values);
