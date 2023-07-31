@@ -11,7 +11,8 @@ import {
 import Link from "next/link";
 import { FaAd, FaUser } from "react-icons/fa";
 
-const MobileNav = ({ NAV_ITEMS }) => {
+const MobileNav = ({ NAV_ITEMS, user }) => {
+  console.log("yser", user);
   return (
     <Stack
       width={"100%"}
@@ -24,41 +25,43 @@ const MobileNav = ({ NAV_ITEMS }) => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-      <Stack
-        my={5}
-        flex={{ base: 1, md: 0 }}
-        justify={"center"}
-        direction={"row"}
-        gap={3}
-        spacing={6}
-      >
-        <Button
-          as={Link}
-          fontSize={"sm"}
-          fontWeight={600}
-          variant={"link"}
-          href={"/auth/login"}
-          _hover={{
-            textDecoration: "none",
-            color: "gray.600",
-          }}
+      {!user && (
+        <Stack
+          my={5}
+          flex={{ base: 1, md: 0 }}
+          justify={"center"}
+          direction={"row"}
+          gap={3}
+          spacing={6}
         >
-          ورود
-        </Button>
-        <Button
-          as={Link}
-          fontSize={"sm"}
-          fontWeight={600}
-          color={"white"}
-          bg={"red.500"}
-          href={"/auth/register"}
-          _hover={{
-            bg: "red.600",
-          }}
-        >
-          ثبت نام
-        </Button>
-      </Stack>
+          <Button
+            as={Link}
+            fontSize={"sm"}
+            fontWeight={600}
+            variant={"link"}
+            href={"/auth/login"}
+            _hover={{
+              textDecoration: "none",
+              color: "gray.600",
+            }}
+          >
+            ورود
+          </Button>
+          <Button
+            as={Link}
+            fontSize={"sm"}
+            fontWeight={600}
+            color={"white"}
+            bg={"red.500"}
+            href={"/auth/register"}
+            _hover={{
+              bg: "red.600",
+            }}
+          >
+            ثبت نام
+          </Button>
+        </Stack>
+      )}
     </Stack>
   );
 };
