@@ -6,9 +6,7 @@ import { Container, Box, useColorModeValue, Flex } from "@chakra-ui/react";
 const Layout = function ({ children }) {
   return (
     <Box>
-      <Box position="relative" overflow="hidden">
-        <Header />
-      </Box>
+      <Header />
 
       <Container maxW="container.xl" overflow="hidden">
         {children}

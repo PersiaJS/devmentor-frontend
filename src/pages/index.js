@@ -3,6 +3,11 @@ import Hero from "@/components/Hero/Hero";
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
+import MentorImage from "@/components/MentorImage";
+import AboutYouStep from "@/components/AboutYouStep";
+import ApplyingMentor from "@/components/ApplyingMentor";
+import CheckboxCustomGroup from "@/components/CheckboxCustomGroup";
+import MentorPropertys from "@/components/MentorPropertys";
 
 export default function Home() {
   return (
