@@ -150,6 +150,7 @@ export default function WithSubnavigation() {
             ) : (
               <>
                 <Button
+                  display={{ base: "none", md: "inline-flex" }}
                   as={"a"}
                   fontSize={"sm"}
                   fontWeight={600}
@@ -183,7 +184,7 @@ export default function WithSubnavigation() {
       </Flex>
 
       <Collapse b in={isOpen} animateOpacity>
-        <MobileNav NAV_ITEMS={NAV_ITEMS} />
+        <MobileNav NAV_ITEMS={NAV_ITEMS} user={user} />
       </Collapse>
     </Box>
   );
