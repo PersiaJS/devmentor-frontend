@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 
 import { verifySchema } from "@/utils/yup/authValidations";
-import handleRequest from "@/utils/handleRequest";
+import client from "@/utils/axios";
 
 const VerifyForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -40,7 +40,7 @@ const VerifyForm = () => {
     onSubmit: async (_, { resetForm }) => {
       try {
         setIsLoading(true);
-        const response = await handleRequest().post("/auth/confirm", {
+        const response = await client.post("/auth/confirm", {
           securityHash: token,
         });
 
