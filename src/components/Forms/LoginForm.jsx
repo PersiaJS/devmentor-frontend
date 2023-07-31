@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { useFormik } from "formik";
 import Cookies from "universal-cookie";
@@ -16,9 +16,11 @@ import {
 import client from "@/utils/axios";
 import { loginSchema } from "@/utils/yup/authValidations";
 import { useRouter } from "next/router";
+import UserContext from "@/contexts/userContext";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { refreshUser } = useContext(UserContext);
 
   const router = useRouter();
   const toast = useToast();
@@ -47,6 +49,7 @@ const LoginForm = () => {
             expires: new Date(new Date().getTime() + 60 * 60 * 24 * 180 * 1000),
           });
           setIsLoading(false);
+          refreshUser();
           router.push("/");
           toast({
             title: "ورود موفقیت آمیز بود",
