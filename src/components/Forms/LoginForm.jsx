@@ -44,7 +44,7 @@ const LoginForm = () => {
         const response = await handleRequest().post("/auth/login", values);
         if (response.data.status) {
           const cookies = new Cookies();
-          cookies.set("auth", response.data.jwt, {
+          cookies.set("auth", response.data.jwt?.token, {
             path: "/",
             expires: new Date(new Date().getTime() + 60 * 60 * 24 * 180 * 1000),
           });

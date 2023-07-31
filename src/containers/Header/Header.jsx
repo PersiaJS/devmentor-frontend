@@ -28,17 +28,20 @@ import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { AiFillDashboard } from "react-icons/ai";
 import Cookies from "universal-cookie";
-const cookies = new Cookies();
+
 export default function WithSubnavigation() {
   const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
   const { user, isLoading, refreshUser } = useContext(UserContext);
+
   const handleLogout = () => {
-    cookies.remove("auth");
+    const cookie = new Cookies();
+    cookie.remove("auth");
     refreshUser();
 
     router.push("/");
   };
+
   return (
     <Box>
       <Flex
@@ -155,7 +158,7 @@ export default function WithSubnavigation() {
                   fontSize={"sm"}
                   fontWeight={600}
                   variant={"link"}
-                  href={"#"}
+                  href={"/auth/login"}
                   _hover={{
                     textDecoration: "none",
                     color: "gray.600",
@@ -170,7 +173,7 @@ export default function WithSubnavigation() {
                   fontWeight={600}
                   color={"white"}
                   bg={"red.400"}
-                  href={"#"}
+                  href={"/auth/register"}
                   _hover={{
                     bg: "red.600",
                   }}
