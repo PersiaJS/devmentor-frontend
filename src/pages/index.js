@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import MentorCard from "@/components/MentorCard";
 import { Flex } from "@chakra-ui/react";
-
+import LayoutWfull from "@/components/LayoutWfull/LayoutWfull";
 export default function Home() {
   return (
     <>
@@ -14,11 +14,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Box>
-          <Flex alignItems="center" justifyContent="center"></Flex>
-        </Box>
-      </Layout>
+      <LayoutWfull>
+        <Hero />
+      </LayoutWfull>
     </>
   );
 }
