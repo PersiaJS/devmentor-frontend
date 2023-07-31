@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -18,30 +18,37 @@ import handleRequest from "@/utils/handleRequest";
 
 const VerifyForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [token, setToken] = useState("");
 
   const router = useRouter();
   const toast = useToast();
 
   const options = {
     duration: 4000,
-    position: "top-right",
+    position: "bottom-right",
     variant: "left-accent",
   };
 
+  useEffect(() => {
+    setToken(router.query.registerEmailToken);
+  }, [router.query]);
+
   const formik = useFormik({
     initialValues: {
-      securityHash: router.query.registerEmailToken,
+      securityHash: token,
     },
-    validationSchema: verifySchema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (_, { resetForm }) => {
       try {
         setIsLoading(true);
-        const response = await handleRequest().post("/auth/confirm", values);
+        const response = await handleRequest().post("/auth/confirm", {
+          securityHash: token,
+        });
 
         if (response.data.status) {
           setIsLoading(false);
           resetForm();
-          toast("حساب کاربری با موفقیت فعال شد", {
+          toast({
+            title: "حساب کاربری با موفقیت فعال شد",
             ...options,
             status: "success",
           });
@@ -49,10 +56,8 @@ const VerifyForm = () => {
         }
       } catch (err) {
         setIsLoading(false);
-        toast("حساب کاربری فعال نشد!", {
-          ...options,
-          status: "error",
-        });
+        toast({ title: "حساب کاربری فعال نشد!", ...options, status: "error" });
+        console.log(err);
       }
     },
   });
@@ -62,7 +67,7 @@ const VerifyForm = () => {
   const handleToasts = () => {
     const options = {
       duration: 4000,
-      position: "top-right",
+      position: "bottom-right",
       variant: "left-accent",
     };
 
@@ -77,8 +82,7 @@ const VerifyForm = () => {
             my={2}
             placeholder="کد امنیتی"
             name="securityHash"
-            value={values.securityHash}
-            onChange={handleChange}
+            value={token}
             isDisabled
           />
         </FormControl>

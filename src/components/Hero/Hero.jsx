@@ -1,27 +1,23 @@
 import Image from "next/image";
 import {
-  AspectRatio,
   Badge,
   Button,
-  Flex,
   Heading,
   Img,
-  SimpleGrid,
   Stack,
   Text,
   useBreakpointValue,
-  useColorModeValue,
 } from "@chakra-ui/react";
-const { Container, Box, Link } = require("@chakra-ui/react");
+const { Container, Box } = require("@chakra-ui/react");
 
-const Hero = ({ title, description, textOfMentorLogo }) => {
+const Hero = () => {
   return (
     <>
       <Box as="section" bg="bg-surface">
         <Box
           position="relative"
           height={{
-            lg: "720px",
+            md: "720px",
           }}
         >
           <Container
@@ -30,10 +26,6 @@ const Hero = ({ title, description, textOfMentorLogo }) => {
               md: "auto",
               lg: "0%",
               xl: "5%",
-            }}
-            py={{
-              base: "16",
-              md: "24",
             }}
             height="full"
           >
@@ -53,12 +45,7 @@ const Hero = ({ title, description, textOfMentorLogo }) => {
               }}
               height="full"
             >
-              <Stack
-                spacing={{
-                  base: "8",
-                  md: "12",
-                }}
-              >
+              <Stack>
                 <Stack spacing="4">
                   <Badge
                     colorScheme="blue"
@@ -152,7 +139,6 @@ const Hero = ({ title, description, textOfMentorLogo }) => {
                   lg: "absolute",
                 }}
                 right="0"
-                bottom="0"
                 w={{
                   base: "auto",
                   lg: "50%",

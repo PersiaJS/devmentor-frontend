@@ -6,7 +6,7 @@ const handleRequest = () => {
   };
 
   const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    baseURL: "https://devmentor-b.fly.dev",
     withCredentials: false,
     headers,
   });

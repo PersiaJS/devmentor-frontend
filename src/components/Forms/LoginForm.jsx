@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   const options = {
     duration: 4000,
-    position: "top-right",
+    position: "bottom-right",
     variant: "left-accent",
   };
 
@@ -42,17 +42,22 @@ const LoginForm = () => {
         const response = await handleRequest().post("/auth/login", values);
         if (response.data.status) {
           const cookies = new Cookies();
-          cookies.set("auth", response.data.jwt, {
+          cookies.set("auth", response.data.jwt?.token, {
             path: "/",
             expires: new Date(new Date().getTime() + 60 * 60 * 24 * 180 * 1000),
           });
           setIsLoading(false);
           router.push("/");
+          toast({
+            title: "ورود موفقیت آمیز بود",
+            ...options,
+            status: "success",
+          });
           resetForm();
         } else {
           setIsLoading(false);
           toast({
-            title: "اطلاعات وارد شده صحیح نیست",
+            title: "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
             ...options,
             status: "error",
           });
@@ -60,7 +65,7 @@ const LoginForm = () => {
       } catch (err) {
         setIsLoading(false);
         toast({
-          title: "اطلاعات وارد شده صحیح نیست",
+          title: "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
           ...options,
           status: "error",
         });
@@ -135,6 +140,7 @@ const LoginForm = () => {
         as="span"
         my={2}
         fontSize={{ base: "sm", md: "md" }}
+        color="red.500"
       >
         <Link href="/auth/forget">کلمه عبور خود را فراموش کرده اید؟</Link>
       </Text>
