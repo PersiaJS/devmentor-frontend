@@ -13,7 +13,7 @@ import {
 import { useFormik } from "formik";
 
 import { resetSchema } from "@/utils/yup/authValidations";
-import handleRequest from "@/utils/handleRequest";
+import client from "@/utils/axios";
 
 const ResetForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +36,7 @@ const ResetForm = () => {
     onSubmit: async (values, { resetForm }) => {
       try {
         setIsLoading(true);
-        const response = await handleRequest().post("/auth/reset", {
+        const response = await client().post("/auth/reset", {
           password: values.password,
           securityHash: router.query.forgotEmailToken,
         });

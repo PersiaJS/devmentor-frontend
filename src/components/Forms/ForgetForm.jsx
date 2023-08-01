@@ -13,7 +13,7 @@ import {
 import { useFormik } from "formik";
 
 import { forgetSchema } from "@/utils/yup/authValidations";
-import handleRequest from "@/utils/handleRequest";
+import client from "@/utils/axios";
 
 const ForgetForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +33,7 @@ const ForgetForm = () => {
     onSubmit: async (values) => {
       try {
         setIsLoading(true);
-        const response = await handleRequest().post("/auth/forget", values);
+        const response = await client.post("/auth/forget", values);
         if (response.data.status) {
           toast({ title: "ایمیل بازیابی برای شما ارسال شد", ...options });
           setIsLoading(false);

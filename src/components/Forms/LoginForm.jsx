@@ -13,7 +13,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import handleRequest from "@/utils/handleRequest";
+import client from "@/utils/axios";
 import { loginSchema } from "@/utils/yup/authValidations";
 import { useRouter } from "next/router";
 
@@ -39,7 +39,7 @@ const LoginForm = () => {
     onSubmit: async (values, { resetForm }) => {
       try {
         setIsLoading(true);
-        const response = await handleRequest().post("/auth/login", values);
+        const response = await client.post("/auth/login", values);
         if (response.data.status) {
           const cookies = new Cookies();
           cookies.set("auth", response.data.jwt?.token, {
