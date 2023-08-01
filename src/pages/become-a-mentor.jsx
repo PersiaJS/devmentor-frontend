@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cookies from "universal-cookie";
 import {
   Box,
   Heading,
@@ -14,13 +15,15 @@ import {
 } from "@chakra-ui/react";
 
 import Layout from "@/components/Layout/Layout";
-import AboutYouStep from "@/components/AboutYouStep";
-import ProfileStep from "@/components/ProfileStep";
-import ExperienceStep from "@/components/ExperienceStep";
+import AboutYouStep from "@/components/BecomeAMentor/AboutYouStep";
+import ProfileStep from "@/components/BecomeAMentor/ProfileStep";
+import ExperienceStep from "@/components/BecomeAMentor/ExperienceStep";
 import ApplyingMentor from "@/components/ApplyingMentor";
 
 const BecomeAMentor = () => {
   const [currentStep, setCurrentStep] = useState(0);
+
+  const cookies = new Cookies();
 
   const handleNextStep = () => {
     setCurrentStep((step) => step + 1);
@@ -45,6 +48,13 @@ const BecomeAMentor = () => {
 
   const max = steps.length - 1;
   const progressPercent = (currentStep / max) * 100;
+
+  useEffect(() => {
+    const token = cookies.get("auth");
+    if (token && currentStep === 0) {
+      setCurrentStep(1);
+    }
+  }, [currentStep]);
 
   return (
     <>

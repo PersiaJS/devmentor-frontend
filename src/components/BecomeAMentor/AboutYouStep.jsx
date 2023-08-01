@@ -40,9 +40,6 @@ const AboutYouStep = ({ onNext }) => {
       lastName: "",
       email: "",
       password: "",
-      jobTitle: "",
-      company: "",
-      location: "تهران",
     },
     validationSchema: aboutYouSchema,
     onSubmit: async (values) => {
@@ -183,58 +180,6 @@ const AboutYouStep = ({ onNext }) => {
                   value={values.password}
                   onChange={handleChange}
                 />
-              </FormControl>
-            </GridItem>
-            <GridItem
-              display="flex"
-              justifyContent="center"
-              w="full"
-              colSpan={{ base: 2, md: 1 }}
-            >
-              <FormControl isRequired>
-                <FormLabel>عنوان شغلی</FormLabel>
-                <Input
-                  type="text"
-                  name="jobTitle"
-                  value={values.jobTitle}
-                  onChange={handleChange}
-                />
-              </FormControl>
-            </GridItem>
-            <GridItem
-              display="flex"
-              justifyContent="center"
-              w="full"
-              colSpan={{ base: 2, md: 1 }}
-            >
-              <FormControl>
-                <FormLabel>شرکت</FormLabel>
-                <Input
-                  type="text"
-                  name="company"
-                  value={values.company}
-                  onChange={handleChange}
-                />
-              </FormControl>
-            </GridItem>
-            <GridItem
-              display="flex"
-              justifyContent="center"
-              w="full"
-              colSpan={2}
-            >
-              <FormControl>
-                <FormLabel>موقعیت مکانی</FormLabel>
-                <Select
-                  name="location"
-                  value={values.location}
-                  onChange={handleChange}
-                >
-                  <option value="تهران">تهران</option>
-                  <option value="اصفهان">اصفهان</option>
-                  <option value="تبریز">تبریز</option>
-                  <option value="مشهد">مشهد</option>
-                </Select>
               </FormControl>
             </GridItem>
           </Grid>

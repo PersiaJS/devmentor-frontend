@@ -14,6 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { citys } from "./data";
 
 const ProfileStep = ({ onBack, onNext }) => {
   const formik = useFormik({
@@ -21,6 +22,9 @@ const ProfileStep = ({ onBack, onNext }) => {
       category: "",
       skills: "",
       bio: "",
+      jobTitle: "",
+      company: "",
+      location: "تهران",
       twitter: "",
       linkdin: "",
       personalWebsite: "",
@@ -58,6 +62,7 @@ const ProfileStep = ({ onBack, onNext }) => {
             name="category"
             onChange={handleChange}
             value={values.category}
+            pr={3}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -93,6 +98,57 @@ const ProfileStep = ({ onBack, onNext }) => {
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
           </FormHelperText>
         </FormControl>
+        <Grid gap="8">
+          <GridItem
+            display="flex"
+            justifyContent="center"
+            w="full"
+            colSpan={{ base: 2, md: 1 }}
+          >
+            <FormControl isRequired>
+              <FormLabel>عنوان شغلی</FormLabel>
+              <Input
+                type="text"
+                name="jobTitle"
+                value={values.jobTitle}
+                onChange={handleChange}
+              />
+            </FormControl>
+          </GridItem>
+          <GridItem
+            display="flex"
+            justifyContent="center"
+            w="full"
+            colSpan={{ base: 2, md: 1 }}
+          >
+            <FormControl>
+              <FormLabel>شرکت</FormLabel>
+              <Input
+                type="text"
+                name="company"
+                value={values.company}
+                onChange={handleChange}
+              />
+            </FormControl>
+          </GridItem>
+          <GridItem display="flex" justifyContent="center" w="full" colSpan={2}>
+            <FormControl>
+              <FormLabel>موقعیت مکانی</FormLabel>
+              <Select
+                name="location"
+                value={values.location}
+                onChange={handleChange}
+                paddingRight={3}
+              >
+                {citys.map((city, index) => (
+                  <option key={index} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+          </GridItem>
+        </Grid>
         <Grid
           templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
           gap={6}
