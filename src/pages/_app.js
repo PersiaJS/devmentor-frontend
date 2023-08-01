@@ -15,6 +15,9 @@ const theme = extendTheme({
     heading: vazirmatnFont.style.fontFamily,
     body: vazirmatnFont.style.fontFamily,
   },
+  breakpoints: {
+    xs: "0em",
+  },
 });
 
 export default function App({ Component, pageProps }) {

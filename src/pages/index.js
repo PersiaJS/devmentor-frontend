@@ -3,7 +3,7 @@ import Hero from "@/components/Hero/Hero";
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
-
+import LayoutWfull from "@/components/LayoutWfull/LayoutWfull";
 export default function Home() {
   return (
     <>

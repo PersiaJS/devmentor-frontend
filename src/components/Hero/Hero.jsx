@@ -2,6 +2,9 @@ import Image from "next/image";
 import {
   Badge,
   Button,
+  Center,
+  Flex,
+  Grid,
   Heading,
   Img,
   Stack,
@@ -20,20 +23,20 @@ const Hero = () => {
             md: "720px",
           }}
         >
-          <Container
-            marginInlineEnd={{
-              sm: "auto",
-              md: "auto",
-              lg: "0%",
-              xl: "5%",
-            }}
-            height="full"
-          >
-            <Stack
+          <Container height="full" maxW="full">
+            <Grid
+              templateColumns={{
+                base: "1fr",
+                md: "1fr",
+                sm: "1fr",
+                xs: "1fr",
+                lg: "1fr 1fr",
+                xl: "1fr 1fr",
+              }}
               direction={{
                 base: "column",
                 lg: "row",
-                xl: "row", // Add this line
+                xl: "row",
               }}
               spacing={{
                 base: "16",
@@ -45,8 +48,24 @@ const Hero = () => {
               }}
               height="full"
             >
-              <Stack>
-                <Stack spacing="4">
+              <Box
+                order={{ base: "1", md: "2", sm: "2", xs: "2", lg: "1" }}
+                mt="auto"
+                mb="auto"
+                pt="20px"
+              >
+                <Img
+                  borderRadius={50}
+                  boxSize="full"
+                  objectFit="cover"
+                  src="/images/hero_photo2.avif"
+                  alt="developer"
+                  h={{ lg: "450px", sm: "450px" }}
+                  w={{ lg: "650px", sm: "650px" }}
+                />
+              </Box>
+              <Stack order={{ base: "2", md: "1", sm: "1", xs: "1" }}>
+                <Stack spacing="4" mt="auto" mb={5} mr="auto" ml="auto">
                   <Badge
                     colorScheme="blue"
                     alignSelf="center"
@@ -108,6 +127,7 @@ const Hero = () => {
                   spacing="3"
                   mr="auto"
                   ml="auto"
+                  mb="auto"
                 >
                   <Button
                     variant="solid"
@@ -134,29 +154,7 @@ const Hero = () => {
                   </Button>
                 </Stack>
               </Stack>
-              <Box
-                pos={{
-                  lg: "absolute",
-                }}
-                right="0"
-                w={{
-                  base: "auto",
-                  lg: "50%",
-                }}
-                height={{
-                  base: "96",
-                  lg: "auto",
-                }}
-              >
-                <Img
-                  borderRadius={50}
-                  boxSize="full"
-                  objectFit="cover"
-                  src="/images/hero_photo2.avif"
-                  alt="developer"
-                />
-              </Box>
-            </Stack>
+            </Grid>
           </Container>
         </Box>
       </Box>
