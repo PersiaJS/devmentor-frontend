@@ -49,8 +49,10 @@ const Hero = () => {
               height="full"
             >
               <Box
-                mt="50"
                 order={{ base: "1", md: "2", sm: "2", xs: "2", lg: "1" }}
+                mt="auto"
+                mb="auto"
+                pt="20px"
               >
                 <Img
                   borderRadius={50}
@@ -58,8 +60,8 @@ const Hero = () => {
                   objectFit="cover"
                   src="/images/hero_photo2.avif"
                   alt="developer"
-                  h={{ lg: "full", sm: "400px" }}
-                  w={{ lg: "auto", sm: "full" }}
+                  h={{ lg: "450px", sm: "450px" }}
+                  w={{ lg: "650px", sm: "650px" }}
                 />
               </Box>
               <Stack order={{ base: "2", md: "1", sm: "1", xs: "1" }}>
@@ -156,56 +158,6 @@ const Hero = () => {
           </Container>
         </Box>
       </Box>
-      <Container maxW="full" py={8} mt={{ md: "50px" }}>
-        <Flex mx="auto" justifyContent="space-around">
-          <Box>
-            <Img
-              alt="snapp logo"
-              src="/images/snapp_logo.png"
-              w="150px"
-              height="auto"
-              mt={6}
-            />
-          </Box>
-          <Box>
-            <Img
-              alt="filimo logo"
-              src="/images/filimo_logo.png"
-              w="150px"
-              height="auto"
-              mt={6}
-            />
-          </Box>
-
-          <Box>
-            <Img
-              alt="alibaba logo"
-              src="/images/alibaba_logo.png"
-              w="80px"
-              height="auto"
-              mt={6}
-            />
-          </Box>
-          <Box>
-            <Img
-              alt="tapsi logo"
-              src="/images/tapsi_logo.png"
-              w="150px"
-              height="auto"
-              mt={10}
-            />
-          </Box>
-          <Box>
-            <Img
-              alt="taghcheh logo"
-              src="/images/taghcheh_logo.png"
-              w="60px"
-              height="auto"
-              mt={8}
-            />
-          </Box>
-        </Flex>
-      </Container>
     </>
   );
 };
