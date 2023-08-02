@@ -30,7 +30,7 @@ import { AiFillDashboard } from "react-icons/ai";
 import Cookies from "universal-cookie";
 export default function WithSubnavigation() {
   const router = useRouter();
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const { user, isLoading, refreshUser } = useContext(UserContext);
 
   const handleLogout = () => {
@@ -103,6 +103,7 @@ export default function WithSubnavigation() {
                   variant={"link"}
                   cursor={"pointer"}
                   minW={0}
+                  onClick={() => onClose()}
                 >
                   <Button boxShadow={"md"} px={2}>
                     <Avatar
