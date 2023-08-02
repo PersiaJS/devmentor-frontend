@@ -2,17 +2,16 @@ import { useCallback, useEffect, useState } from "react";
 import { Vazirmatn } from "next/font/google";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
-import handleRequest from "@/utils/handleRequest";
+import client from "@/utils/axios";
 import Cookies from "universal-cookie";
 import UserContext from "@/contexts/userContext";
 
 const vazirmatnFont = Vazirmatn({ subsets: ["latin"] });
-
 const theme = extendTheme({
   styles: {
     global: {
-      body: {
-        fontFamily: "Vazir, sans-serif",
+      "html, body, label": {
+        fontFamily: vazirmatnFont.style.fontFamily,
         direction: "rtl",
       },
     },
@@ -35,13 +34,13 @@ export default function App({ Component, pageProps }) {
 
     setIsLoading(true);
     try {
-      const res = await handleRequest().get("/profile/get", {
-        method: "GET",
+      const response = await client.get("/profile/get", {
         headers: {
           Authorization: cookies.get("auth"),
         },
       });
-      setUser(res.data.user);
+
+      setUser(response.data.user);
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);

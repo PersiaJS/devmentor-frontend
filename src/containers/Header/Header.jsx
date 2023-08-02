@@ -188,19 +188,18 @@ export default function WithSubnavigation() {
       </Collapse>
     </Box>
   );
-
-  const NAV_ITEMS = [
-    {
-      label: "منتورها",
-      href: "find-a-mentor",
-    },
-    {
-      label: "درباره ما",
-      href: "about",
-    },
-    {
-      label: "تماس با ما",
-      href: "contact",
-    },
-  ];
 }
+const NAV_ITEMS = [
+  {
+    label: "منتورها",
+    href: "find-a-mentor",
+  },
+  {
+    label: "درباره ما",
+    href: "about",
+  },
+  {
+    label: "تماس با ما",
+    href: "contact",
+  },
+];
