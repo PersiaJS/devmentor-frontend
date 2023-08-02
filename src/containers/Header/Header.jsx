@@ -16,6 +16,7 @@ import {
   MenuDivider,
   Spinner,
   Icon,
+  Text,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Logo from "@/components/Logo/logo";
@@ -28,6 +29,8 @@ import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { AiFillDashboard } from "react-icons/ai";
 import Cookies from "universal-cookie";
+import { FaArrowDown } from "react-icons/fa";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 export default function WithSubnavigation() {
   const router = useRouter();
   const { isOpen, onToggle, onClose } = useDisclosure();
@@ -105,7 +108,11 @@ export default function WithSubnavigation() {
                   minW={0}
                   onClick={() => onClose()}
                 >
-                  <Button boxShadow={"md"} px={2}>
+                  <Button
+                    boxShadow={"md"}
+                    p={2}
+                    rightIcon={<Icon as={MdOutlineKeyboardArrowDown} />}
+                  >
                     <Avatar
                       size={"sm"}
                       src={user.image}
@@ -113,7 +120,9 @@ export default function WithSubnavigation() {
                       mx={2}
                     />
                     {"  "}
-                    {`${user.firstName} ${user.lastName}`}
+                    <Text display={{ base: "none", md: "block" }}>
+                      {`${user.firstName} ${user.lastName}`}
+                    </Text>
                   </Button>
                 </MenuButton>
                 <MenuList alignItems={"center"}>
