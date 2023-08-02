@@ -42,7 +42,7 @@ export default function WithSubnavigation() {
   };
 
   return (
-    <Box>
+    <Box mb={10}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -50,6 +50,7 @@ export default function WithSubnavigation() {
         py={{ base: 2 }}
         px={{ base: 4 }}
         align={"center"}
+        boxShadow="md"
       >
         <Flex
           flex={{ base: 1 }}
@@ -103,7 +104,16 @@ export default function WithSubnavigation() {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar size={"sm"} src={user.image} />
+                  <Button boxShadow={"md"} px={2}>
+                    <Avatar
+                      size={"sm"}
+                      src={user.image}
+                      name={`${user.firstName} ${user.lastName}`}
+                      mx={2}
+                    />
+                    {"  "}
+                    {`${user.firstName} ${user.lastName}`}
+                  </Button>
                 </MenuButton>
                 <MenuList alignItems={"center"}>
                   <br />
@@ -111,10 +121,8 @@ export default function WithSubnavigation() {
                     <Avatar size={"2xl"} src={user.image} />
                   </Center>
                   <br />
-                  <Center>
-                    <p>
-                      {user.firstName} {user.lastName}
-                    </p>
+                  <Center fontWeight={"600"}>
+                    {user.firstName} {user.lastName}
                   </Center>
                   <br />
                   <MenuDivider />
@@ -156,10 +164,6 @@ export default function WithSubnavigation() {
                   fontWeight={600}
                   variant={"link"}
                   href={"/auth/login"}
-                  _hover={{
-                    textDecoration: "none",
-                    color: "gray.600",
-                  }}
                 >
                   ورود
                 </Button>
@@ -167,13 +171,11 @@ export default function WithSubnavigation() {
                   as={"a"}
                   display={{ base: "none", md: "inline-flex" }}
                   fontSize={"sm"}
+                  colorScheme="red"
                   fontWeight={600}
                   color={"white"}
-                  bg={"red.400"}
+                  bg={"red"}
                   href={"/auth/register"}
-                  _hover={{
-                    bg: "red.600",
-                  }}
                 >
                   ثبت نام
                 </Button>

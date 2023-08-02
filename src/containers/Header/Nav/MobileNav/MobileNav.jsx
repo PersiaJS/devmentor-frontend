@@ -83,7 +83,7 @@ const MobileNavItem = ({ label, children, href }) => {
         <Text
           width={"100%"}
           p={1}
-          fontWeight={300}
+          fontWeight={600}
           color={useColorModeValue("gray.600", "gray.200")}
           _hover={{
             textDecoration: "none",
