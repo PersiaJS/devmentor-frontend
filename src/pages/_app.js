@@ -7,12 +7,11 @@ import Cookies from "universal-cookie";
 import UserContext from "@/contexts/userContext";
 
 const vazirmatnFont = Vazirmatn({ subsets: ["latin"] });
-
 const theme = extendTheme({
   styles: {
     global: {
-      body: {
-        fontFamily: "Vazir, sans-serif",
+      "html, body, label": {
+        fontFamily: vazirmatnFont.style.fontFamily,
         direction: "rtl",
       },
     },
