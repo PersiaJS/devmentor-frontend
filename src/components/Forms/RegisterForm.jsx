@@ -10,22 +10,17 @@ import {
   Input,
   Spinner,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 
 import { registerSchema } from "@/utils/yup/authValidations";
 import client from "@/utils/axios";
+import useCustomToast from "@/hooks/useCutomToast";
 
 const RegisterForm = () => {
   const [isLoading, setISLoading] = useState(false);
 
   const router = useRouter();
-  const toast = useToast();
-  const options = {
-    duration: 4000,
-    position: "bottom-right",
-    variant: "left-accent",
-  };
+  const toast = useCustomToast();
 
   const handleSendVerificationRequest = async (values) => {
     try {
@@ -60,19 +55,14 @@ const RegisterForm = () => {
           setISLoading(false);
           resetForm();
           router.push("/auth/login");
-          toast({
-            title: "ثبت نام با موفقیت انجام شد. لطفا ایمیل خود را بررسی کنید",
-            ...options,
-            status: "success",
-          });
+          toast(
+            "ثبت نام با موفقیت انجام شد. لطفا ایمیل خود را بررسی کنید",
+            "success"
+          );
         }
       } catch (err) {
         setISLoading(false);
-        toast({
-          title: "کاربری با این مشخصات ثبت شده است",
-          ...options,
-          status: "error",
-        });
+        toast("کاربری با این مشخصات ثبت شده است", "error");
         console.log(err);
       }
     },
@@ -81,11 +71,11 @@ const RegisterForm = () => {
   const { errors, values, handleChange, handleSubmit } = formik;
 
   const handleToasts = () => {
-    errors.firstName && toast({ title: errors.firstName, ...options });
-    errors.lastName && toast({ title: errors.lastName, ...options });
-    errors.email && toast({ title: errors.email, ...options });
-    errors.password && toast({ title: errors.password, ...options });
-    errors.terms && toast({ title: errors.terms, ...options });
+    errors.firstName && toast(errors.firstName, "error");
+    errors.lastName && toast(errors.lastName, "error");
+    errors.email && toast(errors.email, "error");
+    errors.password && toast(errors.password, "error");
+    errors.terms && toast(errors.terms, "error");
   };
 
   return (

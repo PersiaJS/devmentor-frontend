@@ -14,18 +14,13 @@ import { useFormik } from "formik";
 
 import { resetSchema } from "@/utils/yup/authValidations";
 import client from "@/utils/axios";
+import useCustomToast from "@/hooks/useCutomToast";
 
 const ResetForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
-  const toast = useToast();
-
-  const options = {
-    duration: 4000,
-    position: "bottom-right",
-    variant: "left-accent",
-  };
+  const toast = useCustomToast();
 
   const formik = useFormik({
     initialValues: {
@@ -42,28 +37,16 @@ const ResetForm = () => {
         });
         if (response.data.status) {
           setIsLoading(false);
-          toast({
-            title: "رمز عبور با موفقیت به روز رسانی شد",
-            ...options,
-            status: "success",
-          });
+          toast("رمز عبور با موفقیت به روز رسانی شد", "success");
           router.replace("/auth/login");
           resetForm();
         } else {
           setIsLoading(false);
-          toast({
-            title: "رمز عبور  به روز رسانی نشد",
-            ...options,
-            status: "error",
-          });
+          toast("رمز عبور  به روز رسانی نشد", "error");
         }
       } catch (err) {
         setIsLoading(false);
-        toast({
-          title: "رمز عبور  به روز رسانی نشد",
-          ...options,
-          status: "error",
-        });
+        toast("رمز عبور  به روز رسانی نشد", "error");
       }
     },
   });
@@ -71,9 +54,8 @@ const ResetForm = () => {
   const { errors, values, handleChange, handleSubmit } = formik;
 
   const handleToasts = () => {
-    errors.password && toast({ title: errors.password, ...options });
-    errors.confirmPassword &&
-      toast({ title: errors.confirmPassword, ...options });
+    errors.password && toast(errors.password, "error");
+    errors.confirmPassword && toast(errors.confirmPassword, "error");
   };
 
   return (

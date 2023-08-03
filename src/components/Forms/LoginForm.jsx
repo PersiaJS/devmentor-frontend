@@ -10,24 +10,18 @@ import {
   Input,
   Spinner,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 
 import client from "@/utils/axios";
 import { loginSchema } from "@/utils/yup/authValidations";
 import { useRouter } from "next/router";
+import useCustomToast from "@/hooks/useCutomToast";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
-  const toast = useToast();
-
-  const options = {
-    duration: 4000,
-    position: "bottom-right",
-    variant: "left-accent",
-  };
+  const toast = useCustomToast();
 
   const formik = useFormik({
     initialValues: {
@@ -48,27 +42,18 @@ const LoginForm = () => {
           });
           setIsLoading(false);
           router.push("/");
-          toast({
-            title: "ورود موفقیت آمیز بود",
-            ...options,
-            status: "success",
-          });
+          toast("ورود موفقیت آمیز بود", "success");
           resetForm();
         } else {
           setIsLoading(false);
-          toast({
-            title: "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
-            ...options,
-            status: "error",
-          });
+          toast(
+            "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
+            "error"
+          );
         }
       } catch (err) {
         setIsLoading(false);
-        toast({
-          title: "اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.",
-          ...options,
-          status: "error",
-        });
+        toast("اطلاعات وارد شده صحیح نیست و یا ایمیل فعال نشده است.", "error");
       }
     },
   });
@@ -76,8 +61,8 @@ const LoginForm = () => {
   const { errors, values, handleChange, handleSubmit } = formik;
 
   const handleToasts = () => {
-    errors.email && toast({ title: errors.email, ...options });
-    errors.password && toast({ title: errors.password, ...options });
+    errors.email && toast(errors.email, "error");
+    errors.password && toast(errors.password, "error");
   };
 
   return (

@@ -10,24 +10,17 @@ import {
   Input,
   Spinner,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 
-import { verifySchema } from "@/utils/yup/authValidations";
 import client from "@/utils/axios";
+import useCustomToast from "@/hooks/useCutomToast";
 
 const VerifyForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [token, setToken] = useState("");
 
   const router = useRouter();
-  const toast = useToast();
-
-  const options = {
-    duration: 4000,
-    position: "bottom-right",
-    variant: "left-accent",
-  };
+  const toast = useCustomToast();
 
   useEffect(() => {
     setToken(router.query.registerEmailToken);
@@ -47,16 +40,12 @@ const VerifyForm = () => {
         if (response.data.status) {
           setIsLoading(false);
           resetForm();
-          toast({
-            title: "حساب کاربری با موفقیت فعال شد",
-            ...options,
-            status: "success",
-          });
+          toast("حساب کاربری با موفقیت فعال شد", "success");
           router.replace("/auth/login");
         }
       } catch (err) {
         setIsLoading(false);
-        toast({ title: "حساب کاربری فعال نشد!", ...options, status: "error" });
+        toast("حساب کاربری فعال نشد!", "error");
         console.log(err);
       }
     },
@@ -65,13 +54,7 @@ const VerifyForm = () => {
   const { errors, values, handleChange, handleSubmit } = formik;
 
   const handleToasts = () => {
-    const options = {
-      duration: 4000,
-      position: "bottom-right",
-      variant: "left-accent",
-    };
-
-    errors.securityHash && toast({ title: errors.securityHash, ...options });
+    errors.securityHash && toast(errors.securityHash, "error");
   };
 
   return (

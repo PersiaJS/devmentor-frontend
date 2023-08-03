@@ -10,12 +10,12 @@ import {
   FormLabel,
   Input,
   Textarea,
-  useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 
 import UpdateProfileSchema from "@/utils/yup/updateProfileValidation";
 import client from "@/utils/axios";
+import useCustomToast from "@/hooks/useCutomToast";
 
 const initialValues = {
   firstName: "",
@@ -37,13 +37,7 @@ const UpdateProfileForm = () => {
   const cookies = new Cookies();
   const token = cookies.get("auth");
 
-  const toast = useToast();
-
-  const options = {
-    duration: 4000,
-    position: "bottom-right",
-    variant: "left-accent",
-  };
+  const toast = useCustomToast();
 
   const formik = useFormik({
     initialValues: {
@@ -70,18 +64,10 @@ const UpdateProfileForm = () => {
         });
         if (response.data.status) {
           setIsLoading(false);
-          toast({
-            title: "مشخصات با موفقیت به روز رسانی شد",
-            ...options,
-            status: "success",
-          });
+          toast("مشخصات با موفقیت به روز رسانی شد", "success");
         } else {
           setIsLoading(false);
-          toast({
-            title: "مشکلی به وجود آمده است",
-            ...options,
-            status: "error",
-          });
+          toast("مشکلی به وجود آمده است", "error");
         }
       } catch (err) {
         setIsLoading(false);
@@ -115,7 +101,7 @@ const UpdateProfileForm = () => {
 
   const handleRequest = () => {
     formik.errors.username &&
-      toast({ title: formik.errors.username, ...options, status: "error" });
+      toast(formik.errors.username, ...options, "error");
   };
 
   return (
