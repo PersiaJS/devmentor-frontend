@@ -19,6 +19,8 @@ import AboutYouStep from "@/components/BecomeAMentor/AboutYouStep";
 import ProfileStep from "@/components/BecomeAMentor/ProfileStep";
 import ExperienceStep from "@/components/BecomeAMentor/ExperienceStep";
 import ApplyingMentor from "@/components/ApplyingMentor";
+import client from "@/utils/axios";
+import { useRouter } from "next/router";
 
 const BecomeAMentor = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -49,12 +51,14 @@ const BecomeAMentor = () => {
   const max = steps.length - 1;
   const progressPercent = (currentStep / max) * 100;
 
+  const token = cookies.get("auth");
+  const router = useRouter();
+
   useEffect(() => {
-    const token = cookies.get("auth");
-    if (token && currentStep === 0) {
-      setCurrentStep(1);
+    if (!token) {
+      router.push("/auth/login");
     }
-  }, [currentStep]);
+  }, []);
 
   return (
     <>
