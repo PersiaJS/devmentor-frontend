@@ -11,6 +11,7 @@ import {
   Spinner,
   Text,
   useToast,
+  Flex,
 } from "@chakra-ui/react";
 
 import { registerSchema } from "@/utils/yup/authValidations";
@@ -135,7 +136,12 @@ const RegisterForm = () => {
           value={values.terms}
           onChange={handleChange}
         >
-          ظوابط و قوانین را می پذیرم
+          <Flex gap={"5px"}>
+            <Link href='/terms-and-conditions' style={{ color: "#d63031" }}>
+              ضوابط و قوانین
+            </Link>
+            را می پذیرم
+          </Flex>
         </Checkbox>
         <br />
         <Button
@@ -158,7 +164,7 @@ const RegisterForm = () => {
           fontSize={{ base: "sm", md: "md" }}
         >
           حساب کاربری دارید؟
-          <Link href="/auth/login" style={{ margin: "0 4px", color: "red" }}>
+          <Link href="/auth/login" style={{ margin: "0 4px", color: "#d63031" }}>
             ورود
           </Link>
         </Text>
