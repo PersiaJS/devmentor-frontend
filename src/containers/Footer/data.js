@@ -6,6 +6,10 @@ const links = [
         label: "درباره ما",
         href: "/about",
       },
+      {
+        label: "ضوابط و قوانین",
+        href: "/terms-and-conditions",
+      },
     ],
   },
   {
