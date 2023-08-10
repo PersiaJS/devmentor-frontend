@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { Vazirmatn } from "next/font/google";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-
 import client from "@/utils/axios";
 import Cookies from "universal-cookie";
 import UserContext from "@/contexts/userContext";
-
 const vazirmatnFont = Vazirmatn({ subsets: ["latin"] });
 const theme = extendTheme({
   styles: {
@@ -24,7 +22,6 @@ const theme = extendTheme({
     xs: "0em",
   },
 });
-
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

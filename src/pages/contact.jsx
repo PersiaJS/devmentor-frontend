@@ -17,12 +17,18 @@ import {
   InputLeftElement,
   Textarea,
   Select,
+  Alert,
+  AlertIcon,
+  ScaleFade,
+  useToast,
 } from "@chakra-ui/react";
 import { MdFacebook, MdOutlineEmail } from "react-icons/md";
 import * as Yup from "yup";
 import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
 import { ErrorMessage, Field, Formik } from "formik";
 import Layout from "@/components/Layout/Layout";
+import client from "@/utils/axios";
+import { useEffect, useState } from "react";
 
 const contactSchema = Yup.object().shape({
   firstName: Yup.string().required("پرکردن این فیلد اجباری است "),
@@ -35,9 +41,9 @@ const contactSchema = Yup.object().shape({
   message: Yup.string().required("پرکردن این فیلد اجباری است "),
 });
 const Contact = () => {
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
+  const toast = useToast();
+  const [isPending, setIsPending] = useState(false);
+
   return (
     <>
       <Layout>
@@ -127,9 +133,42 @@ const Contact = () => {
                             message: "",
                           }}
                           validationSchema={contactSchema}
-                          onSubmit={handleSubmit}
+                          onSubmit={async (values, { resetForm }) => {
+                            try {
+                              setIsPending(true);
+                              const response = await client.post(
+                                "/contact/send",
+                                values
+                              );
+                              if (response.data.status) {
+                                setIsPending(false);
+                                toast({
+                                  title: "پیام شما با موفیت ارسال شد",
+                                  position: "top",
+                                  status: "success",
+                                  duration: 9000,
+                                  isClosable: true,
+                                });
+                                resetForm();
+                              }
+                            } catch (error) {
+                              setIsPending(false);
+                              toast({
+                                title: "خطایی رخ داده",
+
+                                status: "error",
+                                duration: 9000,
+                                isClosable: true,
+                              });
+                            }
+                          }}
                         >
-                          {({ errors, touched, handleReset }) => (
+                          {({
+                            handleSubmit,
+                            errors,
+                            touched,
+                            setFieldValue,
+                          }) => (
                             <form onSubmit={handleSubmit}>
                               <VStack spacing={5}>
                                 <Flex
@@ -163,6 +202,7 @@ const Contact = () => {
                                       color="red"
                                     />
                                   </FormControl>
+
                                   <FormControl
                                     id="lastname"
                                     isInvalid={
@@ -205,12 +245,15 @@ const Contact = () => {
                                   <Select
                                     id="sections"
                                     name="section"
-                                    autoComplete="sections"
+                                    autoComplete="section"
                                     placeholder="انتخاب کنید"
                                     shadow="sm"
                                     w="full"
                                     rounded="md"
                                     textAlign={"center"}
+                                    onChange={(e) =>
+                                      setFieldValue("section", e.target.value)
+                                    }
                                   >
                                     <option value={"js"}>جاوااسکریت</option>
                                     <option value={"react"}>ریکت</option>
@@ -274,9 +317,7 @@ const Contact = () => {
 
                                 <FormControl
                                   id="name"
-                                  isInvalid={
-                                    errors.description && touched.description
-                                  }
+                                  isInvalid={errors.message && touched.message}
                                 >
                                   <FormLabel>توضیحات </FormLabel>
                                   <Field
@@ -292,15 +333,17 @@ const Contact = () => {
                                   <ErrorMessage
                                     component={Text}
                                     color="red"
-                                    name="description"
+                                    name="message"
                                     fontSize={"sm"}
                                   />
                                 </FormControl>
                                 <FormControl id="name" float="right">
                                   <Button
+                                    isLoading={isPending}
                                     type="submit"
+                                    colorScheme="red"
                                     variant="solid"
-                                    bg="#0D74FF"
+                                    bg="red"
                                     color="white"
                                     _hover={{}}
                                   >
