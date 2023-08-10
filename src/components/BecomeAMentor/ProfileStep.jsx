@@ -14,6 +14,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { citys } from "./data";
 
 const ProfileStep = ({ onBack, onNext }) => {
   const formik = useFormik({
@@ -58,6 +59,7 @@ const ProfileStep = ({ onBack, onNext }) => {
             name="category"
             onChange={handleChange}
             value={values.category}
+            pr={3}
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -93,6 +95,9 @@ const ProfileStep = ({ onBack, onNext }) => {
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
           </FormHelperText>
         </FormControl>
+        <Grid gap="8">
+          
+        </Grid>
         <Grid
           templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
           gap={6}

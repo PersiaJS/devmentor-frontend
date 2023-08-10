@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik";
 import { BsUpload } from "react-icons/bs";
@@ -20,11 +20,25 @@ import {
 
 import { aboutYouSchema } from "@/utils/yup/becomeAMentorValidation";
 import { AiFillInfoCircle } from "react-icons/ai";
+import { citys } from "./data";
+import Cookies from "universal-cookie";
+import client from "@/utils/axios";
+
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  jobTitle: "",
+  company: "",
+  location: "تهران",
+};
 
 const AboutYouStep = ({ onNext }) => {
   const [file, setFile] = useState({});
   const [url, setUrl] = useState("");
+  const [user, setUser] = useState(initialValues);
 
+  const cookies = new Cookies();
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     setFile(acceptedFiles[0]);
@@ -36,14 +50,14 @@ const AboutYouStep = ({ onNext }) => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
       jobTitle: "",
       company: "",
       location: "تهران",
     },
+    enableReinitialize: true,
     validationSchema: aboutYouSchema,
     onSubmit: async (values) => {
       console.log(values);
@@ -71,6 +85,27 @@ const AboutYouStep = ({ onNext }) => {
     location && toast({ title: location, ...options });
   };
 
+  useEffect(() => {
+    const handleGetProfile = async () => {
+      const token = cookies.get("auth");
+
+      try {
+        const response = await client("/profile/get", {
+          headers: {
+            Authorization: token,
+          },
+        });
+        if (response.data.status) {
+          setUser(response.data.user);
+          setUrl(response.data.user.image);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleGetProfile();
+  }, []);
+
   return (
     <>
       <Box
@@ -86,16 +121,7 @@ const AboutYouStep = ({ onNext }) => {
           از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
           سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
           متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-          درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
-          نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-          خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید
-          داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به
-          پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی
-          سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم
-          ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-          طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-          سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-          متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+          درصد گذشته،
         </Text>
         <Stack fontSize="xl" position="absolute" top="8" right="2">
           <AiFillInfoCircle />
@@ -103,13 +129,19 @@ const AboutYouStep = ({ onNext }) => {
       </Box>
       <Box my="8">
         <form onSubmit={handleSubmit}>
-          <HStack {...getRootProps()} w="52">
+          <HStack
+            justifyContent="center"
+            alignItems="center"
+            w="fit-content"
+            mx="auto"
+            {...getRootProps()}
+          >
             <Input {...getInputProps()} />
             <Avatar
               _hover={{ cursor: "pointer" }}
               src={url ? url : null}
               alt="mentor image"
-              size="lg"
+              size="xl"
             />
             <Button colorScheme="red">
               <Text mx="2">بارگزاری تصویر</Text>
@@ -132,8 +164,10 @@ const AboutYouStep = ({ onNext }) => {
                 <Input
                   type="text"
                   name="firstName"
+                  placeContent={user.firstName}
                   value={values.firstName}
                   onChange={handleChange}
+                  isDisabled
                 />
               </FormControl>
             </GridItem>
@@ -150,6 +184,7 @@ const AboutYouStep = ({ onNext }) => {
                   name="lastName"
                   value={values.lastName}
                   onChange={handleChange}
+                  isDisabled
                 />
               </FormControl>
             </GridItem>
@@ -157,7 +192,7 @@ const AboutYouStep = ({ onNext }) => {
               display="flex"
               justifyContent="center"
               w="full"
-              colSpan={{ base: 2, md: 1 }}
+              colSpan={2}
             >
               <FormControl isRequired>
                 <FormLabel>ایمیل</FormLabel>
@@ -166,22 +201,7 @@ const AboutYouStep = ({ onNext }) => {
                   name="email"
                   value={values.email}
                   onChange={handleChange}
-                />
-              </FormControl>
-            </GridItem>
-            <GridItem
-              display="flex"
-              justifyContent="center"
-              w="full"
-              colSpan={{ base: 2, md: 1 }}
-            >
-              <FormControl isRequired>
-                <FormLabel>کلمه عبور</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleChange}
+                  isDisabled
                 />
               </FormControl>
             </GridItem>
@@ -229,11 +249,13 @@ const AboutYouStep = ({ onNext }) => {
                   name="location"
                   value={values.location}
                   onChange={handleChange}
+                  paddingRight={3}
                 >
-                  <option value="تهران">تهران</option>
-                  <option value="اصفهان">اصفهان</option>
-                  <option value="تبریز">تبریز</option>
-                  <option value="مشهد">مشهد</option>
+                  {citys.map((city, index) => (
+                    <option key={index} value={city}>
+                      {city}
+                    </option>
+                  ))}
                 </Select>
               </FormControl>
             </GridItem>
