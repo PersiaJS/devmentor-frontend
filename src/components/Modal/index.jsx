@@ -12,7 +12,7 @@ import {
 
 export function FilterModal({ isOpen, onClose, overlay, children }) {
   return (
-    <Modal isCentered isOpen={isOpen} onClose={onClose} fontFamily="Vazir">
+    <Modal isCentered isOpen={isOpen} onClose={onClose}>
       {overlay}
       <ModalContent>
         <ModalHeader

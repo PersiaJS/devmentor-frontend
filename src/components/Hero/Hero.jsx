@@ -100,8 +100,6 @@ const Hero = () => {
                       textAlign="center"
                       lineHeight={10}
                       fontSize="4xl"
-                      fontWeight="bold"
-                      fontFamily="Vazir"
                     >
                       تمرین ، دیدن ویدیو آموزشی نظرت در مورد داشتن منتور چیه؟
                     </Heading>

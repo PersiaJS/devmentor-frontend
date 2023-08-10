@@ -54,12 +54,7 @@ const Contact = () => {
                 <Wrap mt={{ lg: 10, md: 10 }}>
                   <WrapItem>
                     <Box>
-                      <Heading
-                        as={"h1"}
-                        color={"black"}
-                        fontFamily={"__Vazirmatn_de2e02"}
-                        fontWeight={"900"}
-                      >
+                      <Heading as={"h1"} color={"black"}>
                         ارتباط ما
                       </Heading>
 
