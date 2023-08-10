@@ -8,22 +8,17 @@ import {
   Input,
   Spinner,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 
 import { forgetSchema } from "@/utils/yup/authValidations";
 import client from "@/utils/axios";
+import useCustomToast from "@/hooks/useCutomToast";
 
 const ForgetForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const toast = useToast();
-  const options = {
-    duration: 4000,
-    position: "bottom-right",
-    variant: "left-accent",
-  };
+  const toast = useCustomToast();
 
   const formik = useFormik({
     initialValues: {
@@ -35,22 +30,14 @@ const ForgetForm = () => {
         setIsLoading(true);
         const response = await client.post("/auth/forget", values);
         if (response.data.status) {
-          toast({ title: "ایمیل بازیابی برای شما ارسال شد", ...options });
+          toast("ایمیل بازیابی برای شما ارسال شد", "success");
           setIsLoading(false);
         } else {
-          toast({
-            title: "ایمیل وارد شده  ثبت نشده است",
-            ...options,
-            status: "error",
-          });
+          toast("ایمیل وارد شده  ثبت نشده است", "error");
           setIsLoading(false);
         }
       } catch (err) {
-        toast({
-          title: "ایمیل وارد شده  ثبت نشده است",
-          ...options,
-          status: "error",
-        });
+        toast("ایمیل وارد شده  ثبت نشده است", "error");
         setIsLoading(false);
       }
     },
@@ -59,7 +46,7 @@ const ForgetForm = () => {
   const { errors, values, handleChange, handleSubmit } = formik;
 
   const handleToasts = () => {
-    errors.email && toast({ title: errors.email, ...options });
+    errors.email && toast(errors.email, "error");
   };
 
   return (
