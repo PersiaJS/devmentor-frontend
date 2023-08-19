@@ -20,8 +20,8 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Logo from "@/components/Logo/logo";
-import DesktopNav from "./Nav/DesktopNav/DesktopNav";
-import MobileNav from "./Nav/MobileNav/MobileNav";
+import DesktopNav from "../Nav/DesktopNav/DesktopNav";
+import MobileNav from "../Nav/MobileNav/MobileNav";
 import Link from "next/link";
 import { useContext } from "react";
 import UserContext from "@/contexts/userContext";
@@ -29,8 +29,23 @@ import { FiLogOut } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { AiFillDashboard } from "react-icons/ai";
 import Cookies from "universal-cookie";
-import { FaArrowDown } from "react-icons/fa";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+
+const NAV_ITEMS = [
+  {
+    label: "منتورها",
+    href: "find-a-mentor",
+  },
+  {
+    label: "درباره ما",
+    href: "about",
+  },
+  {
+    label: "تماس با ما",
+    href: "contact",
+  },
+];
+
 export default function WithSubnavigation() {
   const router = useRouter();
   const { isOpen, onToggle, onClose } = useDisclosure();
@@ -195,23 +210,9 @@ export default function WithSubnavigation() {
         </Flex>
       </Flex>
 
-      <Collapse b in={isOpen} animateOpacity>
+      <Collapse in={isOpen} animateOpacity={false}>
         <MobileNav NAV_ITEMS={NAV_ITEMS} user={user} />
       </Collapse>
     </Box>
   );
 }
-const NAV_ITEMS = [
-  {
-    label: "منتورها",
-    href: "find-a-mentor",
-  },
-  {
-    label: "درباره ما",
-    href: "about",
-  },
-  {
-    label: "تماس با ما",
-    href: "contact",
-  },
-];

@@ -1,15 +1,6 @@
-import {
-  Stack,
-  Flex,
-  Text,
-  useDisclosure,
-  useColorModeValue,
-  Button,
-  Icon,
-} from "@chakra-ui/react";
+import { Stack, Flex, Text, useColorModeValue, Button } from "@chakra-ui/react";
 
 import Link from "next/link";
-import { FaAd, FaUser } from "react-icons/fa";
 
 const MobileNav = ({ NAV_ITEMS, user }) => {
   console.log("yser", user);
@@ -18,7 +9,7 @@ const MobileNav = ({ NAV_ITEMS, user }) => {
       width={"100%"}
       boxShadow="md"
       pos={"absolute"}
-      zIndex={1}
+      zIndex={10}
       bg={useColorModeValue("white", "gray.800")}
       display={{ md: "none" }}
     >
@@ -67,10 +58,8 @@ const MobileNav = ({ NAV_ITEMS, user }) => {
 };
 
 const MobileNavItem = ({ label, children, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
-
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4}>
       <Flex
         p={2}
         as={Link}

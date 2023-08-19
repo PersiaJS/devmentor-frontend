@@ -8,7 +8,7 @@ const useCustomToast = () => {
       title,
       status,
       duration: 4000,
-      position: "bottom-right",
+      position: "top",
       variant: "left-accent",
     });
 };
