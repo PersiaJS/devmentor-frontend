@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Cookies from "universal-cookie";
 
 import {
@@ -16,6 +16,7 @@ import { useFormik } from "formik";
 import UpdateProfileSchema from "@/utils/yup/updateProfileValidation";
 import client from "@/utils/axios";
 import useCustomToast from "@/hooks/useCutomToast";
+import { InputFile } from "../InputFile";
 
 const initialValues = {
   firstName: "",
@@ -33,7 +34,7 @@ const initialValues = {
 const UpdateProfileForm = () => {
   const [user, setUser] = useState(initialValues);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [imgSrc, setImgSrc] = useState("");
   const cookies = new Cookies();
   const token = cookies.get("auth");
 
@@ -51,17 +52,25 @@ const UpdateProfileForm = () => {
       linkedin: user.linkedin,
       telegram: user.telegram,
       newsletter: user.newsletter,
+      image: user.image,
     },
     enableReinitialize: true,
     validationSchema: UpdateProfileSchema,
     onSubmit: async (values) => {
       setIsLoading(true);
       try {
-        const response = await client.put("/profile/update", values, {
-          headers: {
-            Authorization: token,
+        const response = await client.put(
+          "/profile/update",
+          {
+            ...values,
+            image: imgSrc,
           },
-        });
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
         if (response.data.status) {
           setIsLoading(false);
           toast("مشخصات با موفقیت به روز رسانی شد", "success");
@@ -99,6 +108,10 @@ const UpdateProfileForm = () => {
     //   eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleChange = function (url) {
+    setImgSrc(url);
+  };
+
   const handleRequest = () => {
     formik.errors.username &&
       toast(formik.errors.username, ...options, "error");
@@ -106,6 +119,7 @@ const UpdateProfileForm = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      <InputFile handleChange={handleChange} imgSrc={imgSrc} />
       <Flex gap={5}>
         <FormControl>
           <FormLabel>نام</FormLabel>
