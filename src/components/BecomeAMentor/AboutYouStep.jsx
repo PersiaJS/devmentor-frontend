@@ -25,15 +25,12 @@ import Cookies from "universal-cookie";
 import client from "@/utils/axios";
 
 const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  jobTitle: "",
+  job: "",
   company: "",
   location: "تهران",
 };
 
-const AboutYouStep = ({ onNext }) => {
+const AboutYouStep = ({ onNext, onMentor }) => {
   const [file, setFile] = useState({});
   const [url, setUrl] = useState("");
   const [user, setUser] = useState(initialValues);
@@ -46,26 +43,26 @@ const AboutYouStep = ({ onNext }) => {
     setUrl(blob);
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const formik = useFormik({
     initialValues: {
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      jobTitle: "",
+      job: "",
       company: "",
       location: "تهران",
     },
     enableReinitialize: true,
     validationSchema: aboutYouSchema,
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async ({ job, company, location }) => {
+      onMentor({ job, company, location });
       onNext();
     },
   });
 
-  const { errors, values, handleChange, handleSubmit } = formik;
+  const { errors, values, handleChange, handleSubmit, getFieldProps } = formik;
 
   const toast = useToast();
 
@@ -75,13 +72,9 @@ const AboutYouStep = ({ onNext }) => {
       position: "bottom-right",
       variant: "left-accent",
     };
-    const { firstName, lastName, email, password, jobTitle, location } = errors;
+    const { job, location } = errors;
 
-    firstName && toast({ title: firstName, ...options });
-    lastName && toast({ title: lastName, ...options });
-    email && toast({ title: email, ...options });
-    password && toast({ title: password, ...options });
-    jobTitle && toast({ title: jobTitle, ...options });
+    job && toast({ title: job, ...options });
     location && toast({ title: location, ...options });
   };
 
@@ -159,7 +152,7 @@ const AboutYouStep = ({ onNext }) => {
               w="full"
               colSpan={{ base: 2, md: 1 }}
             >
-              <FormControl isRequired>
+              <FormControl>
                 <FormLabel>نام</FormLabel>
                 <Input
                   type="text"
@@ -177,7 +170,7 @@ const AboutYouStep = ({ onNext }) => {
               w="full"
               colSpan={{ base: 2, md: 1 }}
             >
-              <FormControl isRequired>
+              <FormControl>
                 <FormLabel>نام خانوادگی</FormLabel>
                 <Input
                   type="text"
@@ -194,7 +187,7 @@ const AboutYouStep = ({ onNext }) => {
               w="full"
               colSpan={2}
             >
-              <FormControl isRequired>
+              <FormControl>
                 <FormLabel>ایمیل</FormLabel>
                 <Input
                   type="email"
@@ -213,12 +206,7 @@ const AboutYouStep = ({ onNext }) => {
             >
               <FormControl isRequired>
                 <FormLabel>عنوان شغلی</FormLabel>
-                <Input
-                  type="text"
-                  name="jobTitle"
-                  value={values.jobTitle}
-                  onChange={handleChange}
-                />
+                <Input type="text" name="job" {...getFieldProps("job")} />
               </FormControl>
             </GridItem>
             <GridItem
@@ -232,8 +220,7 @@ const AboutYouStep = ({ onNext }) => {
                 <Input
                   type="text"
                   name="company"
-                  value={values.company}
-                  onChange={handleChange}
+                  {...getFieldProps("company")}
                 />
               </FormControl>
             </GridItem>
@@ -243,12 +230,11 @@ const AboutYouStep = ({ onNext }) => {
               w="full"
               colSpan={2}
             >
-              <FormControl>
+              <FormControl isRequired>
                 <FormLabel>موقعیت مکانی</FormLabel>
                 <Select
                   name="location"
-                  value={values.location}
-                  onChange={handleChange}
+                  {...getFieldProps("location")}
                   paddingRight={3}
                 >
                   {citys.map((city, index) => (

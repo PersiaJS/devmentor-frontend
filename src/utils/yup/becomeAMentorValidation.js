@@ -1,13 +1,7 @@
 import * as Yup from "yup";
 
 export const aboutYouSchema = Yup.object().shape({
-  firstName: Yup.string().required("نام الزامی است"),
-  lastName: Yup.string().required("نام خانوادگی الزامی است"),
-  email: Yup.string().email("ایمیل معتبر نیست").required("ایمیل الزامی است"),
-  password: Yup.string()
-    .required("کلمه عبوری الزامی است")
-    .min(8, "کلمه عبور نمی تواند کمتر از 8 کاراکتر باشد"),
-  jobTitle: Yup.string().required("عنوان شغلی الزامی است"),
+  job: Yup.string().required("عنوان شغلی الزامی است"),
   location: Yup.string().required("موقعیت مکانی الزامی است"),
 });
 
@@ -17,10 +11,11 @@ export const profileStepSchema = Yup.object().shape({
   bio: Yup.string().required("زندگی نامه الزامی است"),
 });
 export const experienceStep = Yup.object().shape({
-  goal: Yup.string()
+  intro: Yup.string().required("لطفا لینک ویدیوی خود را وارد کنید"),
+  why: Yup.string()
     .required("لطفا هدف خود را برای مربی شدن وارد کنید")
     .min(10, "دلیل شما برای مربی شدن نباید کمتر از 10 کاراکتر باشد"),
-  echivment: Yup.string()
+  achievement: Yup.string()
     .required("لطفا بزرگترین دستاوردی که داشته اید را وارد کنید")
     .min(10, "فیلد بزرگترین دستاورد شما نباید کمتر از 10 کاراکتر باشد"),
 });

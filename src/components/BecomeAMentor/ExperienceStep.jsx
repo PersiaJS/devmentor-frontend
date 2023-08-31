@@ -14,38 +14,62 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import React from "react";
 import { AiFillInfoCircle } from "react-icons/ai";
+import client from "@/utils/axios";
 
-const ExperienceStep = ({ onNext, onBack }) => {
+const ExperienceStep = ({ onNext, onBack, mentor }) => {
   const formik = useFormik({
     initialValues: {
-      introVideo: "",
-      featuredArticle: "",
-      goal: "",
-      echivment: "",
+      intro: "",
+      article: "",
+      why: "",
+      achievement: "",
     },
     validationSchema: experienceStep,
     onSubmit: async (values) => {
-      console.log(values);
-      onNext();
+      const data = Object.assign(mentor[0], mentor[1], values);
+      console.log(data);
+      try {
+        const response = await client.post("/mentor/create", data);
+        if (response.status === 200) {
+          onNext();
+        }
+      } catch (err) {
+        if (err.response.status === 400) {
+          toast({
+            title: "منتوری با این مشخصات در سیستم ثبت شده است",
+            ...options,
+            status: "error",
+          });
+        }
+
+        if (err.response.status === 500) {
+          toast({
+            title: "مشکلی در سیستم به وجود آمده است ، لطفا بعدا امتحان کنید",
+            ...options,
+            status: "error",
+          });
+        }
+      }
     },
   });
 
-  const { errors, values, handleChange, handleSubmit } = formik;
+  const { errors, handleSubmit, getFieldProps } = formik;
 
   const toast = useToast();
 
-  const handleToasts = () => {
-    const options = {
-      duration: 4000,
-      position: "bottom-right",
-      variant: "left-accent",
-    };
-    const { echivment, goal } = errors;
+  const options = {
+    duration: 4000,
+    position: "bottom-right",
+    variant: "left-accent",
+  };
 
-    echivment && toast({ title: echivment, ...options });
-    goal && toast({ title: goal, ...options });
+  const handleToasts = () => {
+    const { achievement, why, intro } = errors;
+
+    intro && toast({ title: intro, ...options });
+    achievement && toast({ title: achievement, ...options });
+    why && toast({ title: why, ...options });
   };
 
   return (
@@ -62,16 +86,6 @@ const ExperienceStep = ({ onNext, onBack }) => {
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
           از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
           سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-          متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-          درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
-          نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-          خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید
-          داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به
-          پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی
-          سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم
-          ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-          طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-          سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
           متنوع با هدف بهبود ابزارهای کاربردی می باشد.
         </Text>
         <Stack fontSize="xl" position="absolute" top="8" right="2">
@@ -80,13 +94,12 @@ const ExperienceStep = ({ onNext, onBack }) => {
       </Box>
       <form onSubmit={handleSubmit}>
         <Flex gap="4" flexFlow={{ base: "colum", md: "row" }} my="8">
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>ویدیوی مقدماتی</FormLabel>
             <Input
               type="text"
-              name="introVideo"
-              value={values.introVideo}
-              onChange={handleChange}
+              name="intro"
+              {...getFieldProps("intro")}
               placeholder="http://your-intro-video-URL"
             />
             <FormHelperText>
@@ -97,9 +110,8 @@ const ExperienceStep = ({ onNext, onBack }) => {
             <FormLabel>مقالات ویژه</FormLabel>
             <Input
               type="text"
-              name="featuredArticle"
-              value={values.featuredArticle}
-              onChange={handleChange}
+              name="article"
+              {...getFieldProps("article")}
               placeholder="http://your-featured-article-URL"
             />
             <FormHelperText>
@@ -111,12 +123,7 @@ const ExperienceStep = ({ onNext, onBack }) => {
           <FormLabel>
             چرا میخواهید مربی شوید؟(برای عموم قابل مشاهده نیست)
           </FormLabel>
-          <Textarea
-            resize="vertical"
-            name="goal"
-            value={values.goal}
-            onChange={handleChange}
-          />
+          <Textarea resize="vertical" name="why" {...getFieldProps("why")} />
         </FormControl>
         <FormControl isRequired my="4">
           <FormLabel>
@@ -125,9 +132,8 @@ const ExperienceStep = ({ onNext, onBack }) => {
           </FormLabel>
           <Textarea
             resize="vertical"
-            name="echivment"
-            value={values.echivment}
-            onChange={handleChange}
+            name="achievement"
+            {...getFieldProps("achievement")}
           />
         </FormControl>
         <HStack p="4" justifyContent="space-between">
