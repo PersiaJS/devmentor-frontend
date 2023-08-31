@@ -31,14 +31,12 @@ const initialValues = {
 };
 
 const AboutYouStep = ({ onNext, onMentor }) => {
-  const [file, setFile] = useState({});
   const [url, setUrl] = useState("");
   const [user, setUser] = useState(initialValues);
 
   const cookies = new Cookies();
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
-    setFile(acceptedFiles[0]);
     const blob = URL.createObjectURL(acceptedFiles[0]);
     setUrl(blob);
   }, []);

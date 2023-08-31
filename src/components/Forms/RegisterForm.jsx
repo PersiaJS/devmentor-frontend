@@ -52,7 +52,7 @@ const RegisterForm = () => {
         const response = await client.post("/auth/register", values);
         if (response.status === 200) {
           //! send verification request
-          const confirm = await handleSendVerificationRequest(values);
+          await handleSendVerificationRequest(values);
           setISLoading(false);
           resetForm();
           router.push("/auth/login");

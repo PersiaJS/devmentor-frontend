@@ -56,7 +56,7 @@ const MobileNav = ({ NAV_ITEMS, user }) => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, href }) => {
   return (
     <Stack spacing={4}>
       <Flex

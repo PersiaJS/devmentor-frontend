@@ -1,11 +1,9 @@
 "use client";
-import Link from "next/link";
 import Head from "next/head";
 
-import { Container, Text, Center } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 
 import Layout from "@/components/Layout/Layout";
-import Logo from "@/components/Logo/logo";
 import ForgetForm from "@/components/Forms/ForgetForm";
 import ForgetIllustration from "@/components/Illustrations/ForgetIllustration";
 

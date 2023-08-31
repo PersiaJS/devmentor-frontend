@@ -4,7 +4,6 @@ import {
   CardBody,
   HStack,
   Input,
-  useColorModeValue as mode,
   Flex,
   SimpleGrid,
   InputGroup,

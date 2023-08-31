@@ -1,4 +1,4 @@
-import { Box, Popover, useMediaQuery } from "@chakra-ui/react";
+import { Box, Popover } from "@chakra-ui/react";
 import { FilterPopoverContent } from "../FilterPopoverContent";
 import { FilterPopoverButton } from "../FilterPopoverButton";
 import { ListPicker } from "../ListPicker";

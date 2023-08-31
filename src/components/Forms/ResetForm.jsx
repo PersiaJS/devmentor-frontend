@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, FormControl, Input, Text } from "@chakra-ui/react";
 import { useFormik } from "formik";
 
 import { resetSchema } from "@/utils/yup/authValidations";
@@ -17,8 +10,6 @@ import client from "@/utils/axios";
 import useCustomToast from "@/hooks/useCutomToast";
 
 const ResetForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
   const router = useRouter();
   const toast = useCustomToast();
 
@@ -30,22 +21,18 @@ const ResetForm = () => {
     validationSchema: resetSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        setIsLoading(true);
         const response = await client().post("/auth/reset", {
           password: values.password,
           securityHash: router.query.forgotEmailToken,
         });
         if (response.data.status) {
-          setIsLoading(false);
           toast("رمز عبور با موفقیت به روز رسانی شد", "success");
           router.replace("/auth/login");
           resetForm();
         } else {
-          setIsLoading(false);
           toast("رمز عبور  به روز رسانی نشد", "error");
         }
       } catch (err) {
-        setIsLoading(false);
         toast("رمز عبور  به روز رسانی نشد", "error");
       }
     },

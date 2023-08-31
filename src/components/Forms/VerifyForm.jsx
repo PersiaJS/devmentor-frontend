@@ -51,7 +51,7 @@ const VerifyForm = () => {
     },
   });
 
-  const { errors, values, handleChange, handleSubmit } = formik;
+  const { errors, handleSubmit } = formik;
 
   const handleToasts = () => {
     errors.securityHash && toast(errors.securityHash, "error");

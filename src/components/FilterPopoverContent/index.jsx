@@ -1,21 +1,7 @@
-import {
-  PopoverBody,
-  PopoverContent,
-  PopoverHeader,
-  usePopoverContext,
-} from "@chakra-ui/react";
+import { PopoverBody, PopoverContent, PopoverHeader } from "@chakra-ui/react";
 
 export const FilterPopoverContent = (props) => {
-  const {
-    header,
-    children,
-    onClickCancel,
-    onClickApply,
-    isCancelDisabled,
-    isListItem = false,
-    buttonWidth,
-  } = props;
-  const { onClose } = usePopoverContext();
+  const { header, children, isListItem = false, buttonWidth } = props;
   return (
     <PopoverContent
       _focus={{ shadow: "none", outline: 0 }}

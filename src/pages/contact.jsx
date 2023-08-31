@@ -17,9 +17,6 @@ import {
   InputLeftElement,
   Textarea,
   Select,
-  Alert,
-  AlertIcon,
-  ScaleFade,
   useToast,
 } from "@chakra-ui/react";
 import { MdFacebook, MdOutlineEmail } from "react-icons/md";
@@ -28,7 +25,7 @@ import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
 import { ErrorMessage, Field, Formik } from "formik";
 import Layout from "@/components/Layout/Layout";
 import client from "@/utils/axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const contactSchema = Yup.object().shape({
   firstName: Yup.string().required("پرکردن این فیلد اجباری است "),

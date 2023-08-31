@@ -11,7 +11,6 @@ import {
   StepStatus,
   StepTitle,
   Stepper,
-  useSteps,
 } from "@chakra-ui/react";
 
 import Layout from "@/components/Layout/Layout";
@@ -44,13 +43,6 @@ const BecomeAMentor = () => {
     { id: 1, title: "پروفایل" },
     { id: 2, title: "تجربه" },
   ];
-
-  const { activeStep, setActiveStep } = useSteps({
-    index: 0,
-    count: steps.length,
-  });
-
-  const activeStepText = steps[currentStep]?.title;
 
   const max = steps.length - 1;
   const progressPercent = (currentStep / max) * 100;

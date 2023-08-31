@@ -1,9 +1,8 @@
-import Image from "next/image";
 import {
   Badge,
+  Box,
   Button,
-  Center,
-  Flex,
+  Container,
   Grid,
   Heading,
   Img,
@@ -11,7 +10,6 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-const { Container, Box } = require("@chakra-ui/react");
 
 const Hero = () => {
   return (
