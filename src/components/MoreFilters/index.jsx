@@ -10,7 +10,6 @@ import {
 
 import useFilterState from "@/hooks/useFilterState";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
-import { useButtonWidth } from "@/hooks/useButtonWidth";
 import { MoreCheckboxFilter } from "../MoreCheckboxFilter";
 import { useState } from "react";
 
@@ -24,7 +23,6 @@ export const MoreFilters = ({ companies, settings }) => {
   const state = useFilterState({
     onSubmit: console.log,
   });
-  const { buttonWidth, buttonRef } = useButtonWidth();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<Backdrop />);

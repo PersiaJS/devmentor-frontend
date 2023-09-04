@@ -1,15 +1,18 @@
-const { Flex, Avatar, Text } = require("@chakra-ui/react");
-const { AiOutlineUser, AiFillStar, AiOutlineStar } = require("react-icons/ai");
+import { Avatar, Flex, Text } from "@chakra-ui/react";
+import { AiFillStar, AiOutlineStar, AiOutlineUser } from "react-icons/ai";
 
 const ReviewCard = ({ name, image, text, rate, date }) => {
-  const localDate = new Date(date * 1000)
+  const localDate = new Date(date * 1000);
   const options = {
     year: "numeric",
     month: "long",
     day: "numeric",
     timeZone: "Asia/Tehran",
   };
-  const persianDate = localDate.toLocaleDateString("fa-IR-u-ca-persian", options);
+  const persianDate = localDate.toLocaleDateString(
+    "fa-IR-u-ca-persian",
+    options
+  );
   return (
     <Flex position="relative" my="2.5rem" flexDir="column">
       <Flex>

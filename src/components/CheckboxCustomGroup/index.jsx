@@ -1,9 +1,4 @@
-const {
-  Checkbox,
-  CheckboxGroup,
-  SimpleGrid,
-  Text,
-} = require("@chakra-ui/react");
+import { Checkbox, CheckboxGroup, SimpleGrid, Text } from "@chakra-ui/react";
 
 const CheckboxCustomGroup = ({ title, options, ...rest }) => (
   <SimpleGrid columns={rest.columns}>

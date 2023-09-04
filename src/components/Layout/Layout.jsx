@@ -1,7 +1,7 @@
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
-import { Container, Box, useColorModeValue, Flex } from "@chakra-ui/react";
+import { Container, Box } from "@chakra-ui/react";
 
 const Layout = function ({ children }) {
   return (

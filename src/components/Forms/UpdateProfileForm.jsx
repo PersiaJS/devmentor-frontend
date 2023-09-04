@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 
 import {
@@ -33,7 +33,6 @@ const initialValues = {
 
 const UpdateProfileForm = () => {
   const [user, setUser] = useState(initialValues);
-  const [isLoading, setIsLoading] = useState(false);
   const [imgSrc, setImgSrc] = useState("");
   const cookies = new Cookies();
   const token = cookies.get("auth");
@@ -57,7 +56,6 @@ const UpdateProfileForm = () => {
     enableReinitialize: true,
     validationSchema: UpdateProfileSchema,
     onSubmit: async (values) => {
-      setIsLoading(true);
       try {
         const response = await client.put(
           "/profile/update",
@@ -72,15 +70,11 @@ const UpdateProfileForm = () => {
           }
         );
         if (response.data.status) {
-          setIsLoading(false);
           toast("مشخصات با موفقیت به روز رسانی شد", "success");
         } else {
-          setIsLoading(false);
           toast("مشکلی به وجود آمده است", "error");
         }
       } catch (err) {
-        setIsLoading(false);
-        console.log(err);
         return err;
       }
     },
@@ -105,7 +99,6 @@ const UpdateProfileForm = () => {
 
   useEffect(() => {
     handleGetProfileRequest();
-    //   eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = function (url) {
@@ -113,8 +106,7 @@ const UpdateProfileForm = () => {
   };
 
   const handleRequest = () => {
-    formik.errors.username &&
-      toast(formik.errors.username, ...options, "error");
+    formik.errors.username && toast(formik.errors.username, "error");
   };
 
   return (

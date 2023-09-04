@@ -14,7 +14,6 @@ export const CheckboxFilter = (props) => {
     hideLabel,
     spacing = "2",
     showSearch,
-    data,
     ...rest
   } = props;
   return (

@@ -3,7 +3,6 @@ import { Stack, Flex, Text, useColorModeValue, Button } from "@chakra-ui/react";
 import Link from "next/link";
 
 const MobileNav = ({ NAV_ITEMS, user }) => {
-  console.log("yser", user);
   return (
     <Stack
       width={"100%"}
@@ -57,7 +56,7 @@ const MobileNav = ({ NAV_ITEMS, user }) => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, href }) => {
   return (
     <Stack spacing={4}>
       <Flex

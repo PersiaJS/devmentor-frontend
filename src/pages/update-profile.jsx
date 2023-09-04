@@ -21,7 +21,6 @@ const UpdateProfile = () => {
       router.push("/auth/login");
       toast("لطفا ابتدا وارد حساب کاربری خود شوید", "error");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

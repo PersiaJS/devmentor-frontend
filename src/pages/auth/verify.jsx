@@ -1,10 +1,8 @@
-import Link from "next/link";
 import Head from "next/head";
 
-import { Container, Center } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 
 import Layout from "@/components/Layout/Layout";
-import Logo from "@/components/Logo/logo";
 import VerifyForm from "@/components/Forms/VerifyForm";
 import VerifyIllustration from "@/components/Illustrations/VerifyIllustration";
 

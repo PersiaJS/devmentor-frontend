@@ -11,7 +11,6 @@ import {
   StepStatus,
   StepTitle,
   Stepper,
-  useSteps,
 } from "@chakra-ui/react";
 
 import Layout from "@/components/Layout/Layout";
@@ -19,13 +18,17 @@ import AboutYouStep from "@/components/BecomeAMentor/AboutYouStep";
 import ProfileStep from "@/components/BecomeAMentor/ProfileStep";
 import ExperienceStep from "@/components/BecomeAMentor/ExperienceStep";
 import ApplyingMentor from "@/components/ApplyingMentor";
-import client from "@/utils/axios";
 import { useRouter } from "next/router";
 
 const BecomeAMentor = () => {
+  const [mentorData, setMentorData] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
 
   const cookies = new Cookies();
+
+  const handleSetMentorData = (data) => {
+    setMentorData((prev) => [...prev, data]);
+  };
 
   const handleNextStep = () => {
     setCurrentStep((step) => step + 1);
@@ -40,13 +43,6 @@ const BecomeAMentor = () => {
     { id: 1, title: "پروفایل" },
     { id: 2, title: "تجربه" },
   ];
-
-  const { activeStep, setActiveStep } = useSteps({
-    index: 0,
-    count: steps.length,
-  });
-
-  const activeStepText = steps[currentStep]?.title;
 
   const max = steps.length - 1;
   const progressPercent = (currentStep / max) * 100;
@@ -77,7 +73,7 @@ const BecomeAMentor = () => {
             </Heading>
             <Box position="relative" my="12">
               <Stepper size="sm" index={currentStep} gap="0" colorScheme="red">
-                {steps.map((step, index) => (
+                {steps.map((step) => (
                   <Step key={step.id} gap="0">
                     <StepIndicator bg="white">
                       <StepStatus complete={<StepIcon />} />
@@ -100,11 +96,22 @@ const BecomeAMentor = () => {
             </Box>
           </>
           {currentStep === 0 ? (
-            <AboutYouStep onNext={handleNextStep} />
+            <AboutYouStep
+              onNext={handleNextStep}
+              onMentor={handleSetMentorData}
+            />
           ) : currentStep === 1 ? (
-            <ProfileStep onBack={handlePrevStep} onNext={handleNextStep} />
+            <ProfileStep
+              onBack={handlePrevStep}
+              onNext={handleNextStep}
+              onMentor={handleSetMentorData}
+            />
           ) : currentStep === 2 ? (
-            <ExperienceStep onBack={handlePrevStep} onNext={handleNextStep} />
+            <ExperienceStep
+              onBack={handlePrevStep}
+              onNext={handleNextStep}
+              mentor={mentorData}
+            />
           ) : null}
         </Layout>
       )}

@@ -1,7 +1,7 @@
 "use client";
 import Head from "next/head";
 
-import { Container, Box, Center } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 
 import Layout from "@/components/Layout/Layout";
 import LoginForm from "@/components/Forms/LoginForm";

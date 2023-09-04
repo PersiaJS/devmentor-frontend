@@ -14,9 +14,8 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { citys } from "./data";
 
-const ProfileStep = ({ onBack, onNext }) => {
+const ProfileStep = ({ onBack, onNext, onMentor }) => {
   const formik = useFormik({
     initialValues: {
       category: "",
@@ -24,16 +23,16 @@ const ProfileStep = ({ onBack, onNext }) => {
       bio: "",
       twitter: "",
       linkdin: "",
-      personalWebsite: "",
+      website: "",
     },
     validationSchema: profileStepSchema,
     onSubmit: async (values) => {
-      console.log(values);
+      onMentor(values);
       onNext();
     },
   });
 
-  const { errors, values, handleChange, handleSubmit } = formik;
+  const { errors, handleSubmit, getFieldProps } = formik;
 
   const toast = useToast();
 
@@ -55,12 +54,7 @@ const ProfileStep = ({ onBack, onNext }) => {
       <Flex flexFlow="column" gap="8">
         <FormControl isRequired>
           <FormLabel>دسته بندی</FormLabel>
-          <Select
-            name="category"
-            onChange={handleChange}
-            value={values.category}
-            pr={3}
-          >
+          <Select name="category" {...getFieldProps("category")} pr={3}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -76,8 +70,7 @@ const ProfileStep = ({ onBack, onNext }) => {
             type="text"
             placeholder="مهارت جدید اضافه کنید"
             name="skills"
-            onChange={handleChange}
-            value={values.skills}
+            {...getFieldProps("skills")}
           />
           <FormHelperText>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
@@ -85,19 +78,12 @@ const ProfileStep = ({ onBack, onNext }) => {
         </FormControl>
         <FormControl isRequired>
           <FormLabel>زندگی نامه</FormLabel>
-          <Textarea
-            resize="vertical"
-            name="bio"
-            onChange={handleChange}
-            value={values.bio}
-          />
+          <Textarea resize="vertical" name="bio" {...getFieldProps("bio")} />
           <FormHelperText>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
           </FormHelperText>
         </FormControl>
-        <Grid gap="8">
-          
-        </Grid>
+        <Grid gap="8"></Grid>
         <Grid
           templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
           gap={6}
@@ -105,12 +91,7 @@ const ProfileStep = ({ onBack, onNext }) => {
           <GridItem>
             <FormControl>
               <FormLabel>Twitter (اختیاری)</FormLabel>
-              <Input
-                type="text"
-                name="twitter"
-                onChange={handleChange}
-                value={values.twitter}
-              />
+              <Input type="text" name="twitter" {...getFieldProps("twitter")} />
               <FormHelperText>
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
               </FormHelperText>
@@ -119,12 +100,7 @@ const ProfileStep = ({ onBack, onNext }) => {
           <GridItem>
             <FormControl>
               <FormLabel>Linkdin URL (اختیاری)</FormLabel>
-              <Input
-                type="text"
-                name="linkdin"
-                onChange={handleChange}
-                value={values.linkdin}
-              />
+              <Input type="text" name="linkdin" {...getFieldProps("linkdin")} />
               <FormHelperText>
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
               </FormHelperText>
@@ -133,12 +109,7 @@ const ProfileStep = ({ onBack, onNext }) => {
           <GridItem>
             <FormControl>
               <FormLabel>وب سایت شخصی (اختیاری)</FormLabel>
-              <Input
-                type="text"
-                name="personalWebsite"
-                onChange={handleChange}
-                value={values.personalWebsite}
-              />
+              <Input type="text" name="website" {...getFieldProps("website")} />
               <FormHelperText>
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
               </FormHelperText>

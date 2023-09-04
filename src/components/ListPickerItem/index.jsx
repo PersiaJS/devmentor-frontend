@@ -1,7 +1,7 @@
 import { ListItem } from "@chakra-ui/react";
 
 export const ListPickerItem = (props) => {
-  const { value, label } = props;
+  const { label } = props;
 
   return (
     <ListItem

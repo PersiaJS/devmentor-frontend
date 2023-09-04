@@ -1,24 +1,15 @@
-import Layout from "@/components/Layout/Layout";
 import LayoutWfull from "@/components/LayoutWfull/LayoutWfull";
 import ReadMore from "@/components/ReadMore";
 import ReviewCard from "@/components/ReviewCard";
-import {
-  AddIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  StarIcon,
-} from "@chakra-ui/icons";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
   Heading,
   Avatar,
   Box,
-  Center,
-  Image,
   Flex,
   Text,
   Stack,
   Button,
-  useColorModeValue,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -45,17 +36,9 @@ import {
   FaHome,
   FaLinkedin,
   FaLocationArrow,
-  FaMap,
-  FaRegTimesCircle,
-  FaSearchLocation,
   FaSitemap,
-  FaSms,
   FaStar,
-  FaTimes,
-  FaTimesCircle,
 } from "react-icons/fa";
-import { MdCheckCircle, MdCheckCircleOutline, MdPhone } from "react-icons/md";
-import { PiTextAlignCenter, PiTextAlignRight } from "react-icons/pi";
 
 export default function singleMentor() {
   return (
