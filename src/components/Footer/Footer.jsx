@@ -14,10 +14,15 @@ import Logo from "@/components/Logo/logo";
 import SocialIcons from "./SocialIcons";
 import links from "./data";
 
-const Footer = () => {
+const Footer = ({ withBoader }) => {
   return (
     <Box overflow="hidden">
-      <Container as="footer" role="contentinfo" maxWidth="max-content">
+      <Container
+        as="footer"
+        borderBlock={`${withBoader ? "2px solid red" : ""}`}
+        role="contentinfo"
+        maxWidth="max-content"
+      >
         <Stack
           justify="space-between"
           align="start"
