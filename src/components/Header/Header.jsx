@@ -46,10 +46,16 @@ const NAV_ITEMS = [
   },
 ];
 
-export default function WithSubnavigation({ withBorder } = false) {
+export default function WithSubnavigation() {
   const router = useRouter();
   const { isOpen, onToggle, onClose } = useDisclosure();
   const { user, isLoading, refreshUser } = useContext(UserContext);
+
+  const handleDashboard = () => {
+    const cookie = new Cookies();
+    const token = cookie.get("auth");
+    if (token) router.push("/dashboard");
+  };
 
   const handleLogout = () => {
     const cookie = new Cookies();
@@ -155,7 +161,7 @@ export default function WithSubnavigation({ withBorder } = false) {
                     <Button
                       as={"a"}
                       bg={"none"}
-                      onClick={handleLogout}
+                      onClick={handleDashboard}
                       leftIcon={<Icon as={AiFillDashboard} color={"red"} />}
                       _hover={{
                         bg: "none",

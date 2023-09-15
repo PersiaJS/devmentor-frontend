@@ -1,6 +1,6 @@
 import { FiSearch } from "react-icons/fi";
 
-const {
+import {
   Button,
   HStack,
   Text,
@@ -10,13 +10,10 @@ const {
   Icon,
   Input,
   ButtonGroup,
-  Flex,
-  SimpleGrid,
   Stack,
-  useColorModeValue,
   useBreakpointValue,
   Container,
-} = require("@chakra-ui/react");
+} from "@chakra-ui/react";
 import { MemberTable } from "../MemberTable";
 
 const TableUI = function () {

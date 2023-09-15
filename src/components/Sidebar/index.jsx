@@ -7,22 +7,10 @@ import {
   DrawerBody,
   Drawer,
 } from "@chakra-ui/react";
-
 import { NavButton } from "../NavButton";
-import {
-  AiFillCloseCircle,
-  AiFillFileMarkdown,
-  AiFillInstagram,
-  AiFillLinkedin,
-  AiFillSetting,
-  AiFillTwitterCircle,
-  AiOutlineBarChart,
-  AiOutlineHome,
-} from "react-icons/ai";
-import { BsBookmarkCheck, BsCalendar2 } from "react-icons/bs";
-import { BiSupport } from "react-icons/bi";
+import React from "react";
 
-const SidebarContent = ({ variant }) => {
+const SidebarContent = ({ variant, nav }) => {
   return (
     <Box w="300px">
       <Flex
@@ -45,26 +33,14 @@ const SidebarContent = ({ variant }) => {
         <Stack justify="space-between" spacing="1" width="fit-content">
           <Stack spacing="8" shouldWrapChildren>
             <Stack spacing="1">
-              <NavButton label="داشبورد" icon={AiOutlineHome} />
-              <NavButton
-                label="کلاس های من"
-                icon={AiOutlineBarChart}
-                aria-current="page"
-              />
-            </Stack>
-            <Stack>
-              <Stack spacing="1">
-                <NavButton label="اطلاعات شخصی" icon={AiFillFileMarkdown} />
-                <NavButton label="استادهای نشان شده" icon={BsBookmarkCheck} />
-                <NavButton label="تقویم کلاس ها" icon={BsCalendar2} />
-              </Stack>
-            </Stack>
-            <Stack>
-              <Stack spacing="1">
-                <NavButton label="پشتیبانی" icon={BiSupport} />
-                <NavButton label="تنظیمات" icon={AiFillSetting} />
-                <NavButton label="خروج" icon={AiFillCloseCircle} />
-              </Stack>
+              {nav.map((item) => (
+                <NavButton
+                  key={item.id}
+                  label={item.title}
+                  url={item.href}
+                  icon={item.icon}
+                />
+              ))}
             </Stack>
           </Stack>
         </Stack>
@@ -73,17 +49,17 @@ const SidebarContent = ({ variant }) => {
   );
 };
 
-const Sidebar = function ({ isOpen, variant, onClose }) {
+const Sidebar = function ({ isOpen, variant, onClose, menu }) {
   return variant === "sidebar" ? (
     <Box>
-      <SidebarContent onClick={onClose} />
+      <SidebarContent nav={menu} onClick={onClose} />
     </Box>
   ) : (
     <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
       <DrawerContent>
         <DrawerBody>
-          <SidebarContent variant={variant} />
+          <SidebarContent variant={variant} nav={menu} />
         </DrawerBody>
       </DrawerContent>
     </Drawer>
