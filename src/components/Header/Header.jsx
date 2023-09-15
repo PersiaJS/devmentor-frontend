@@ -46,7 +46,7 @@ const NAV_ITEMS = [
   },
 ];
 
-export default function WithSubnavigation() {
+export default function WithSubnavigation({ withBorder } = false) {
   const router = useRouter();
   const { isOpen, onToggle, onClose } = useDisclosure();
   const { user, isLoading, refreshUser } = useContext(UserContext);
